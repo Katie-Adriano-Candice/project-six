@@ -5,6 +5,12 @@ import Qs from 'qs';
 const key = 'e9a6ca7347527ff3b4dabbf7e663f9f1';
 
 class GetData extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            getShelter = []
+        }
+    }
     componentDidMount() {
         axios({
             method: 'GET',
@@ -29,6 +35,15 @@ class GetData extends React.Component {
             }            
             }).then((res) => {
                 console.log(res);
+                let petArray = res.data.petfinder.pets.pet;
+                console.log(petArray);
+                // petArray.forEach(function(pet) {
+                //     console.log(shelterId);
+                // });
+                let getShelter = petArray.map(id => id.shelterId.$t);
+                console.log(getShelter);
+                this.setState(getShelter);
+                // let shelterId = 
                
             });
     }
@@ -42,18 +57,3 @@ class GetData extends React.Component {
 }
 
 export default GetData;
-
-
-
-    // axios.get('http://api.petfinder.com/pet.find', {
-    //     params: {
-    //         key: key,
-    //         animal: 'dog',
-    //         size: 'S',
-    //         location: 'M6J2Y7',
-    //         format: 'jsonp'
-    //     }
-    // })
-    // .then((res) => {
-    //     console.log(res);
-    // });
