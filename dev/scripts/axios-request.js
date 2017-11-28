@@ -29,7 +29,6 @@ class GetData extends React.Component {
             }            
             }).then((res) => {
                 console.log(res);
-               
             });
     }
     render() {
