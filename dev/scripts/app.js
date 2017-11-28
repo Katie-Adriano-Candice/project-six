@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Login from './login.js';
 import form from './form.js';i
 
+
 // smooth scroll component
 // const Link = Scroll.Link; -- might have to change this to const Element
 
@@ -14,6 +15,8 @@ class App extends React.Component {
     render() {
       return (
         <div>
+          <Login />
+          Hello  
           <main>
             <body>
               <nav>
