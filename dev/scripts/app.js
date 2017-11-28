@@ -23,7 +23,7 @@ class App extends React.Component {
               <nav>
                 <ul>
                   <li>
-                    <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-text="Adopt one of our animals" data-url="http://wewilladdasitelater.com">Tweet
+                    <a href="https://twitter.com/share" className="twitter-share-button" data-size="large" data-text="Adopt one of our animals" data-url="http://wewilladdasitelater.com">Tweet
                     </a>
                   </li>
                   <li>
