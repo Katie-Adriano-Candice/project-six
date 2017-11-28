@@ -5,6 +5,7 @@ import axios from 'axios';
 import Scroll, { scroller } from 'react-scroll';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Login from './login.js';
+import form from './form.js';i
 
 
 // smooth scroll component
@@ -14,10 +15,8 @@ class App extends React.Component {
     render() {
       return (
         <div>
-
           <Login />
           Hello  
-
           <main>
             <body>
               <nav>
@@ -25,6 +24,9 @@ class App extends React.Component {
                   <li>
                     <a href="https://twitter.com/share" className="twitter-share-button" data-size="large" data-text="Adopt one of our animals" data-url="http://wewilladdasitelater.com">Tweet
                     </a>
+                  </li>
+                  <li>
+                    <Form />
                   </li>
                   <li>
                     <Login />
