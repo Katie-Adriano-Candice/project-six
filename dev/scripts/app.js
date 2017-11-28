@@ -13,11 +13,25 @@ class App extends React.Component {
     render() {
       return (
         <div>
-          <Login />
-          Hello
-            <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-text="Adopt one of our animals" data-url="http://wewilladdasitelater.com">Tweet
-            </a>
-          {/* test */}
+          <main>
+            <body>
+              <nav>
+                <ul>
+                  <li>
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-text="Adopt one of our animals" data-url="http://wewilladdasitelater.com">Tweet
+                    </a>
+                  </li>
+                  <li>
+                    <Login />
+                  </li>
+                </ul>
+              </nav>
+              <header>
+                <h1>TITLE</h1>
+                <i className="fa fa-paw" aria-hidden="true"></i>
+              </header>
+              </body>
+            </main>
         </div>
       )
     }
