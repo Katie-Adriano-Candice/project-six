@@ -8,7 +8,7 @@ class GetData extends React.Component {
     constructor() {
         super();
         this.state = {
-            getShelter = []
+            getShelter: []
         }
     }
     componentDidMount() {
