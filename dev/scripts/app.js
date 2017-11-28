@@ -15,23 +15,11 @@ import GetData from './axios-request';
 class App extends React.Component {
     render() {
       return (
-        <div>
-              <nav>
-                <ul>
-                  <li>
-                    <a href="https://twitter.com/share" className="twitter-share-button" data-size="large" data-text="Adopt one of our animals" data-url="http://wewilladdasitelater.com">Tweet
-                    </a>
-                  </li>
-                  <li>
-                    <Login />
-                  </li>
-                </ul>
-              </nav>
-              <header>
-                <h1>TITLE</h1>
-                <i className="fa fa-paw" aria-hidden="true"></i>
-              </header>
-              <Form />
+        <div className="wrapper--max">
+          <main>
+              <Login />
+          </main>
+            <Form />
             <GetData />
         </div>
       )

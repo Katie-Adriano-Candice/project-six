@@ -35,6 +35,7 @@ class GetData extends React.Component {
             }            
             }).then((res) => {
                 console.log(res);
+
                 let petArray = res.data.petfinder.pets.pet;
                 console.log(petArray);
                 // petArray.forEach(function(pet) {
@@ -45,6 +46,7 @@ class GetData extends React.Component {
                 this.setState(getShelter);
                 // let shelterId = 
                
+
             });
     }
     render() {
