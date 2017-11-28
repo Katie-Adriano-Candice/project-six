@@ -5,7 +5,7 @@ import axios from 'axios';
 import Scroll, { scroller } from 'react-scroll';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Login from './login.js';
-import form from './form.js';
+import Form from './form.js';
 import GetData from './axios-request';
 
 
@@ -16,8 +16,6 @@ class App extends React.Component {
     render() {
       return (
         <div>
-          <main>
-            <body>
               <nav>
                 <ul>
                   <li>
@@ -34,8 +32,6 @@ class App extends React.Component {
                 <i className="fa fa-paw" aria-hidden="true"></i>
               </header>
               <Form />
-              </body>
-            </main>
             <GetData />
         </div>
       )
