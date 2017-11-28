@@ -18,7 +18,8 @@ class Login extends React.Component {
     constructor() {
         super();
         this.state = {
-            loggedIn: false
+            loggedIn: false,
+            user: ''
         }
         this.login = this.login.bind(this);
     }
@@ -28,13 +29,16 @@ class Login extends React.Component {
             console.log(user);
             if (user) {
                 console.log('user is logged in');
+                const userName = user.displayName;
                 this.setState({
-                    loggedIn: true
+                    loggedIn: true,
+                    user: userName
                 })
             } else {
                 console.log('user is logged out');
                 this.setState({
-                    loggedIn: false
+                    loggedIn: false,
+                    user: ''
                 })
             }
         })
@@ -59,14 +63,31 @@ class Login extends React.Component {
             })
     }
 
-
     render() {
         return (
         <div>
-            <a href="" onClick={this.login}>Login</a>
-            <a href="" onClick={this.logout}>Logout</a>
-
-            {this.state.loggedIn === true ? <p>Hi, USER NAME HERE</p> : <p>TAG LINE FOR PETS BEING ADOPTED</p>}
+            <section className="first-frame--nav-header">
+                <nav className="wrapper--nav">
+                    <ul>
+                        <li>
+                            <a href="https://twitter.com/share" className="nav--twitter" data-size="large" data-text="Adopt one of our animals" data-url="http://wewilladdasitelater.com">Tweet </a>
+                        </li>
+                        <div className="first-frame--login-logout">
+                            <li>
+                                <a href="" onClick={this.login}>Login</a>
+                            </li>
+                            <li>
+                                <a href="" onClick={this.logout}>Logout</a>
+                            </li>
+                        </div>
+                    </ul>
+                </nav>
+                <header className="wrapper--inner">
+                    <h1>TITLE</h1>
+                        {this.state.loggedIn === true ? <h2>{`Hi, ${this.state.user}, Let's find you a furrrever friend!`}</h2> : <h2>Find your furrrever friend!</h2>}
+                    <i className="fa fa-paw" aria-hidden="true"></i>
+                </header>
+            </section>
         </div>
         )
     }
