@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-class App extends React.Component {
+class Form extends React.Component {
     constructor() {
         super();
         this.state = {
