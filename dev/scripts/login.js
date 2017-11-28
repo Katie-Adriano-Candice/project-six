@@ -30,6 +30,7 @@ class Login extends React.Component {
             if (user) {
                 console.log('user is logged in');
                 const userName = user.displayName;
+                uid = user.getUid();
                 this.setState({
                     loggedIn: true,
                     user: userName
