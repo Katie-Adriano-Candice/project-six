@@ -27,6 +27,16 @@ html {
     margin: 0 auto;
 }
 
+.wrapper--inner {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.wrapper--nav {
+    max-width: 1200px;
+    margin: 0 auto; 
+}
+
 // general
 
 a {
@@ -35,4 +45,8 @@ a {
 
 li {
     list-style: none;
+}
+
+p, a, form {
+    font-family: $body-font;
 }
