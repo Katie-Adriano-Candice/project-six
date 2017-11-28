@@ -1,0 +1,34 @@
+// variables
+
+$header-font: 'Abril Fatface', cursive;
+$body-font: 'Montserrat', sans-serif;
+
+// mixins
+
+@mixin font-size-value($sizeValue){
+    font-size: $sizeValue * 1px;
+    font-size: ($sizeValue/10) * 1rem;
+}
+
+// base size
+
+html {
+    font-size: 62.5%;
+}
+
+// wrappers
+
+.wrapper--max {
+    max-width: 1900px;
+    margin: 0 auto;
+}
+
+// general
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
