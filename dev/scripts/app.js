@@ -13,6 +13,9 @@ class App extends React.Component {
         <div>
           <Login />
           Hello
+            <a href="https://twitter.com/share" class="twitter-share-button" data-size="large" data-text="Adopt one of our animals" data-url="http://wewilladdasitelater.com">Tweet
+            </a>
+          {/* test */}
         </div>
       )
     }
