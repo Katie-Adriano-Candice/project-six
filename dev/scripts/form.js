@@ -1,15 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-class App extends React.Component {
+
+
+class Form extends React.Component {
     constructor() {
         super();
         this.state = {
-            items: [{
-                name: "Ryan Christiani",
-                item: "Sour Cream"
-            }],
-            name: "",
-            item: ""
         }
         this.addItem = this.addItem.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -24,7 +19,6 @@ class App extends React.Component {
     addItem(e) {
     }
     render() {
-
         return (
             <div>
                 <section>
@@ -41,4 +35,4 @@ class App extends React.Component {
     }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+export default Form;

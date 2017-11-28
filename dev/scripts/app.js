@@ -5,7 +5,7 @@ import axios from 'axios';
 import Scroll, { scroller } from 'react-scroll';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Login from './login.js';
-// import Form from './form.js';
+import Form from './form.js';
 import GetData from './axios-request';
 
 
@@ -16,12 +16,19 @@ class App extends React.Component {
     render() {
       return (
         <div>
+
           <main>
             <body>
               <nav>
                 <ul>
                   <li>
                     <a href="https://twitter.com/share" className="nav--twitter" data-size="large" data-text="Adopt one of our animals" data-url="http://wewilladdasitelater.com">Tweet
+
+              <nav>
+                <ul>
+                  <li>
+                    <a href="https://twitter.com/share" className="twitter-share-button" data-size="large" data-text="Adopt one of our animals" data-url="http://wewilladdasitelater.com">Tweet
+
                     </a>
                   </li>
                   <li>
@@ -33,9 +40,13 @@ class App extends React.Component {
                 <h1>TITLE</h1>
                 <i className="fa fa-paw" aria-hidden="true"></i>
               </header>
-              {/* <Form /> */}
+
+            
               </body>
             </main>
+
+              <Form />
+
             <GetData />
         </div>
       )
