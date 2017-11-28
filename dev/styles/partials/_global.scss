@@ -1,0 +1,38 @@
+// variables
+
+$header-font: 'Abril Fatface', cursive;
+$body-font: 'Montserrat', sans-serif;
+$grey: rgb(242,242,242);
+$blue: rgb(153,205,216);
+$yellow: rgb(242,195,55);
+$red: rgb(216,79,67);
+
+// mixins
+
+@mixin font-size-value($sizeValue){
+    font-size: $sizeValue * 1px;
+    font-size: ($sizeValue/10) * 1rem;
+}
+
+// base size
+
+html {
+    font-size: 62.5%;
+}
+
+// wrappers
+
+.wrapper--max {
+    max-width: 1900px;
+    margin: 0 auto;
+}
+
+// general
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
