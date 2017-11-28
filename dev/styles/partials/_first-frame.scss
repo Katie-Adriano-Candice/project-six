@@ -1,0 +1,15 @@
+.first-frame--nav-header {
+    min-height: 100vh;
+    h1 {
+        font-family: $header-font;
+        transform: translateY(-50%);
+    }
+}
+
+.nav--twitter {
+    float: left;
+}
+
+.first-frame--login-logout {
+    float: right;
+}
