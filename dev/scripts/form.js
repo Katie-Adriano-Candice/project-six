@@ -17,8 +17,12 @@ class Form extends React.Component {
     constructor() {
         super();
         this.state = {
+            postalCode: '',
+            animal: '',
+            size: '',
+            sex: '',
         }
-        this.addItem = this.addItem.bind(this);
+        this.addRequest = this.addRequest.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
 
@@ -27,69 +31,91 @@ class Form extends React.Component {
             [e.target.name]: e.target.value
         });
     }
-    addItem(e) {
+
+    addRequest(e) {
         e.preventDefault();
-        const usersChoice = {
-            postalCode: this.state.postalCode,
-            type: this.state.type,
-            size: this.state.size,
-            sex: this.state.sex,
+        // console.log('submit')
+        // const usersChoice = {
+        //     postalCode: this.state.postalCode,
+        //     animal: this.state.animal,
+        //     size: this.state.size,
+        //     sex: this.state.sex,
+        // }
+        // this.setState ({
+        //     currentPostalCode: "",
+        //     currentAnimal: "",
+        //     currentSize: "",
+        //     currentSex: "",
+        // });
+        const location = this.state.postalCode;
+        if (location.length === 7) {
+            const locationPostalCode = {
+                postalCodeInfo: this.state.postalCode,
+
         }
         this.setState ({
-            postalCode: "",
-            type: "",
-            size: "",
-            sex: "",
+            postalCode: '',
         });
-        const dbRef = firebase.database().ref();
-        dbref.push(usersChoice);
+
+        } else {
+            alert("Please enter a valid postal code!");
+        }
     }
+
     render() {
         return (
             <div>
-                <section>
-                    <form onSubmit={this.addItem} className="addForm">
-                        <label htmlFor="location">Location: </label>
-                        <input type="text" name="postalCode" placeholder="Please enter a postal code" value= {this.state.postalCode} onChange={this.handleChange} />
+                <form onSubmit={this.addRequest} className="addForm">
+                    <label htmlFor="postalCode">Location: </label>
+                    <input type="text" name="postalCode" placeholder="Postal code ie.M9P 1N8" id="currentPostalCode" required="required" value={this.state.currentPostalCode} onChange={this.handleChange} />
 
-                        {/* selecting an animal */}
+                    {/* selecting between dog/cat */}
 
-                        <div className="radio">
-                            <div className="radioChoice">
-                                <label htmlFor="cat">Cat</label>
-                                <input type="radio" value="cat" name="type" id="currentType" onChange={this.handleChange}/>
-                            </div>
-                            <div className="radioChoice">
-                                <label htmlFor="cat">Dog</label>
-                                <input type="radio" value="dog" name="type" id="currentType" onChange={this.handleChange} />
-                            </div>
+                    <p>Select the type of animal</p>
+                    <div className="radio">
+                        <div className="radioChoice">
+                            <label htmlFor="cat">Cat</label>
+                            <input type="radio" value="cat" name="animal" required="required" id="currentType" onChange={this.handleChange} />
                         </div>
+                        <div className="radioChoice">
+                            <label htmlFor="dog">Dog</label>
+                            <input type="radio" value="dog" name="animal" required="required" id="currentAnimal" onChange={this.handleChange} />
+                        </div>
+                    </div>
 
-                        {/* selecting a size */}
+                    {/* selecting a size of the animal*/}
+                    <p>Select the size of animal</p>
+                    <div className="radio">
+                        <div className="radioChoice">
+                            <label htmlFor="small">Small</label>
+                            <input type="radio" value="small" name="size" required="required" id="currentSize" onChange={this.handleChange} />
+                        </div>
+                        <div className="radioChoice">
+                            <label htmlFor="medium">Medium</label>
+                            <input type="radio" value="medium" name="size" required="required" id="currentSize" onChange={this.handleChange} />
+                        </div>
+                        <div className="radioChoice">
+                            <label htmlFor="large">Large</label>
+                            <input type="radio" value="large" name="size" required="required" id="currentSize" onChange={this.handleChange} />
+                        </div>
+                    </div>
 
-                        {/* <div className>
-                            <div>
+                    {/* selecting the sex of the animal*/}
+                    <p>Select the sex of the animal</p>
+                    <div className="radio">
+                        <div className="radio">
+                            <label htmlFor="male">Male</label>
+                            <input type="radio" value="male" name="sex" required="required" id="currentSex" onChange={this.handleChange} />
+                        </div>
+                        <div className="radio">
+                            <label htmlFor="female">Female</label>
+                            <input type="radio" value="female" name="sex" required="required" id="currentSex" onChange={this.handleChange} />
+                        </div>
+                    </div>
 
-                            </div>
-                        </div> */}
-
-                        <p>How big do you want the animal to be:</p>
-                        <label htmlFor="size">Small</label>
-                        <input type="radio" name="size" value={this.state.size} onChange={this.handleChange}/>
-                        <label htmlFor="size">Medium</label>
-                        <input type="radio" name="size" value={this.state.size} onChange={this.handleChange}/>
-                        <label htmlFor="size">Large</label>
-                        <input type="radio" name="size" value={this.state.size} onChange={this.handleChange}/>
-
-                        <p>Select a sex:</p>
-                        <label htmlFor="sex">Male</label>
-                        <input type="radio" name="sex" value={this.state.sex} onChange={this.handleChange}/>
-                        <label htmlFor="sex">Female</label>
-                        <input type="radio" name="sex" value={this.state.sex} onChange={this.handleChange}/>
-
-                        <input type='submit' className='button-submit' value='Submit' onChange={this.handleChange}/>
-                    </form>
-                </section>
+                    <input type='submit' className='button-submit' value='Submit' onChange={this.handleChange} />
+                    
+                </form>
             </div>
         )
     }
