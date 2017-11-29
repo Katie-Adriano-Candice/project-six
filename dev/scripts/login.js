@@ -19,7 +19,8 @@ class Login extends React.Component {
         super();
         this.state = {
             loggedIn: false,
-            user: ''
+            user: '',
+            userIDSet: ''
         }
         this.login = this.login.bind(this);
     }
@@ -30,16 +31,19 @@ class Login extends React.Component {
             if (user) {
                 console.log('user is logged in');
                 const userName = user.displayName;
-                uid = user.getUid();
+                const userID = user.uid;
+                // console.log(user.uid);
                 this.setState({
                     loggedIn: true,
-                    user: userName
+                    user: userName,
+                    userIDSet: userID
                 })
             } else {
                 console.log('user is logged out');
                 this.setState({
                     loggedIn: false,
-                    user: ''
+                    user: '',
+                    userIDSet: ''
                 })
             }
         })
@@ -74,18 +78,24 @@ class Login extends React.Component {
                             <a href="https://twitter.com/share" className="nav--twitter" data-size="large" data-text="Adopt one of our animals" data-url="http://wewilladdasitelater.com">Tweet </a>
                         </li>
                         <div className="first-frame--login-logout">
-                            <li>
-                                <a href="" onClick={this.login}>Login</a>
-                            </li>
+                        {this.state.user ?
                             <li>
                                 <a href="" onClick={this.logout}>Logout</a>
                             </li>
+                            :
+                            <li>
+                                <a href="" onClick={this.login}>Login</a>
+                            </li>
+                        }
                         </div>
                     </ul>
                 </nav>
                 <header className="wrapper--inner">
                     <h1>TITLE</h1>
-                        {this.state.loggedIn === true ? <h2>{`Hi, ${this.state.user}, Let's find you a furrrever friend!`}</h2> : <h2>Find your furrrever friend!</h2>}
+                        {this.state.loggedIn === true ? 
+                        <h2>{`Hi, ${this.state.user}, Let's find you a furrrever friend!`}</h2> 
+                        : <h2>Find your furrrever friend!</h2>
+                        }
                     <i className="fa fa-paw" aria-hidden="true"></i>
                 </header>
             </section>
