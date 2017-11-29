@@ -14,6 +14,8 @@ firebase.initializeApp(config);
 
 const provider = new firebase.auth.GoogleAuthProvider()
 
+let unSubscribe = function(){}
+
 class Login extends React.Component {
     constructor() {
         super();
@@ -26,7 +28,7 @@ class Login extends React.Component {
     }
 
     componentDidMount() {
-        firebase.auth().onAuthStateChanged((user) => {
+        unSubscribe = firebase.auth().onAuthStateChanged((user) => {
             console.log(user);
             if (user) {
                 console.log('user is logged in');
@@ -47,6 +49,10 @@ class Login extends React.Component {
                 })
             }
         })
+    }
+
+    componentWillUnmount() {
+        unSubscribe();
     }
 
     login(event) {

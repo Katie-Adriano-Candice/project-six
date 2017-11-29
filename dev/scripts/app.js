@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Login from './login.js';
 import Form from './form.js';
 import { GetData, GetShelterInfo } from './axios-request';
+import  Notes from './user-notes.js';
 
 
 // smooth scroll component
@@ -22,6 +23,9 @@ class App extends React.Component {
             <Form />
             {/* <GetData />
             <GetShelterInfo /> */}
+            <section>
+              <Notes />
+            </section>
         </div>
       )
     }
