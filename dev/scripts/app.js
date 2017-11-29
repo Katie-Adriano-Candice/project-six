@@ -6,7 +6,7 @@ import Scroll, { scroller } from 'react-scroll';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Login from './login.js';
 import Form from './form.js';
-import { GetData, GetShelterInfo } from './axios-request';
+import DisplayAnimal from './axios-request';
 
 
 // smooth scroll component
@@ -20,8 +20,7 @@ class App extends React.Component {
               <Login />
           </main>
             <Form />
-            {/* <GetData />
-            <GetShelterInfo /> */}
+            <DisplayAnimal />
         </div>
       )
     }
