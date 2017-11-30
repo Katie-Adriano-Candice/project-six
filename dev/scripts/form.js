@@ -3,16 +3,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import DisplayAnimal from './axios-request';
 
-// var config = {
-//     apiKey: "AIzaSyC_fT1wegJor-5lw0KsHTglHEXHxAbQnBE",
-//     authDomain: "project-six-3b01e.firebaseapp.com",
-//     databaseURL: "https://project-six-3b01e.firebaseio.com",
-//     projectId: "project-six-3b01e",
-//     storageBucket: "",
-//     messagingSenderId: "747497473002"
-// };
-// firebase.initializeApp(config);
-
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyC_fT1wegJor-5lw0KsHTglHEXHxAbQnBE",
+    authDomain: "project-six-3b01e.firebaseapp.com",
+    databaseURL: "https://project-six-3b01e.firebaseio.com",
+    projectId: "project-six-3b01e",
+    storageBucket: "",
+    messagingSenderId: "747497473002"
+};
+firebase.initializeApp(config);
 
 class Form extends React.Component {
     constructor() {
