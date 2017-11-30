@@ -1,7 +1,9 @@
 import React from 'react';
 // import firebase from 'firebase';
 import ReactDOM from 'react-dom';
-import DisplayAnimal from './axios-request';
+// import DisplayAnimal from './axios-request';
+import axios from 'axios';
+import Qs from 'qs';
 
 // Initialize Firebase
 var config = {
@@ -22,6 +24,7 @@ class Form extends React.Component {
             animal: '',
             size: '',
             sex: '',
+            filteredResponse: []
         }
         this.addRequest = this.addRequest.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -33,8 +36,107 @@ class Form extends React.Component {
         });
     }
 
+    getAnimals(animal, size, place) {
+        console.log(place)
+        const key = 'e9a6ca7347527ff3b4dabbf7e663f9f1';
+        const apiUrl = 'http://api.petfinder.com/';
+        let getShelterList = [];
+        let getInfo = axios({
+            method: 'GET',
+            url: 'http://proxy.hackeryou.com',
+            dataResponse: 'jsonp',
+            paramsSerializer: function (params) {
+                return Qs.stringify(params, { arrayFormat: 'brackets' })
+            },
+            params: {
+                reqUrl: `${apiUrl}pet.find`,
+                params: {
+                    key: key,
+                    animal: animal,
+                    size: size,
+                    output: 'full',
+                    // offset: 'lastOffset',
+                    count: 20,
+                    location: place,
+                    format: 'json'
+                },
+                xmlToJSON: false
+            }
+        }).then((res) => {
+            console.log(res);
+            console.log(res.data.petfinder.pets.pet.age);
+            //map or use for each to get each index and then do the dot dot whatever.
+            let petArray = res.data.petfinder.pets.pet;
+
+            console.log(petArray);
+            // petArray.forEach(function(pet) {
+            //     console.log(shelterId);
+            // });
+            petArray.forEach(id => {
+                getShelterList.push(id.shelterId.$t);
+            });
+            console.log(getShelterList);
+            // this.setState(getShelterList);
+            let getShelter = (id) => axios({
+                method: 'GET',
+                url: 'http://proxy.hackeryou.com',
+                dataResponse: 'jsonp',
+                paramsSerializer: function (params) {
+                    return Qs.stringify(params, { arrayFormat: 'brackets' })
+                },
+                params: {
+                    reqUrl: `${apiUrl}shelter.get`,
+                    params: {
+                        key,
+                        id,
+                        // id: 'ON432',
+                        format: 'json'
+                    },
+                    xmlToJson: false
+                }
+            });
+                
+            let shelters = getShelterList.map(id => {
+                console.log(id);
+                return getShelter(id);
+            });
+            Promise.all(shelters).then((shelterResponse) => {
+                console.log(shelterResponse);
+                console.log(shelterResponse[0].data.petfinder.header.status.message.$t);
+                //for each animal that has message:{ $t: "shelter opt-out" }, set them so that they do not display/are not returned
+                let filteredResponse = shelterResponse.filter(hasInfo => {
+                    console.log(hasInfo.data.petfinder);
+                    return hasInfo.data.petfinder.header.status.message.$t != 'shelter opt-out';
+                }).map((shelter) => shelter.data);
+
+
+                this.setState({
+                    filteredResponse
+                })
+
+                console.log(filteredResponse);
+                //petArray is an array of all the pets
+                //filteredResponse is all the shelters that have opted in to be shown
+                //These are different sizes
+                //Take the filteredResponse and map through it, and for each shelter see if you can grab the pet
+                //From the pet array and pair them up, returing a new object 
+                //So in the end you have one array to display that is a match of the shelter and pets together
+                /* 
+                [{
+                    shelter: {},
+                    pets: [{},{}]
+                }]
+                */
+            });
+
+
+            
+
+        })}
+
     addRequest(e) {
         e.preventDefault();
+        
         // console.log('submit')
         // const usersChoice = {
         //     postalCode: this.state.postalCode,
@@ -53,11 +155,12 @@ class Form extends React.Component {
             const locationPostalCode = {
                 postalCodeInfo: this.state.postalCode,
 
-        }
-        this.setState ({
-            postalCode: '',
-        });
-
+            }
+            
+            this.getAnimals(this.state.animal, this.state.size, this.state.postalCode);
+            this.setState ({
+                postalCode: '',
+            });
         } else {
             alert("Please enter a valid postal code!");
         }
@@ -70,7 +173,7 @@ class Form extends React.Component {
                 <form onSubmit={this.addRequest} className="addForm">
                     <div className="text-input">
                         <label htmlFor="postalCode" className="locationInput">Enter your Postal Code: </label>
-                        <input type="text" name="postalCode" placeholder="ie.M9P 1N8" id="currentPostalCode" required="required" value={this.state.currentPostalCode} onChange={this.handleChange} />
+                        <input type="text" name="postalCode" placeholder="ie.M9P 1N8" id="currentPostalCode" required="required" value={this.state.postalCode} onChange={this.handleChange} />
                     </div>
 
                     {/* selecting between dog/cat */}
@@ -92,15 +195,15 @@ class Form extends React.Component {
                     <div className="radio clearfix">
                         <div className="radioChoice">
                             <label htmlFor="small">Small</label>
-                            <input type="radio" value="small" name="size" required="required" id="currentSize" onChange={this.handleChange} />
+                            <input type="radio" value="S" name="size" required="required" id="currentSize" onChange={this.handleChange} />
                         </div>
                         <div className="radioChoice">
                             <label htmlFor="medium">Medium</label>
-                            <input type="radio" value="medium" name="size" required="required" id="currentSize" onChange={this.handleChange} />
+                            <input type="radio" value="M" name="size" required="required" id="currentSize" onChange={this.handleChange} />
                         </div>
                         <div className="radioChoice">
                             <label htmlFor="large">Large</label>
-                            <input type="radio" value="large" name="size" required="required" id="currentSize" onChange={this.handleChange} />
+                            <input type="radio" value="L" name="size" required="required" id="currentSize" onChange={this.handleChange} />
                         </div>
                     </div>
 
@@ -117,11 +220,13 @@ class Form extends React.Component {
                         </div>
                     </div>
 
-                    <input type='submit' className='button-submit' value='Submit' onChange={this.handleChange} />
+                    <input type='submit' className='button-submit' value='Submit' />
                     
                 </form>
                 <div>
-                    <p></p>
+                    {this.state.filteredResponse.map(shelter => {
+                        return <p>Hey</p>
+                    })}
                 </div>
             </div>
         )

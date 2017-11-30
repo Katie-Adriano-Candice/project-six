@@ -7,17 +7,25 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Login from './login.js';
 import Form from './form.js';
 
-import DisplayAnimal from './axios-request';
+// import DisplayAnimal from './axios-request';
 
-import { GetData, GetShelterInfo } from './axios-request';
+// import { GetData, GetShelterInfo } from './axios-request';
 import  Notes from './user-notes.js';
 
 
 
-// smooth scroll component
+// smooth scroll componeent
 // const Link = Scroll.Link; -- might have to change this to const Element
 
 class App extends React.Component {
+    // constructor() {
+    //   super();
+    //   this.state = {
+    //     shelterName: '',
+    //     email: '',
+    //     phone: ''
+    //   }
+    // }  
     render() {
       return (
         <div className="wrapper--max">
@@ -26,7 +34,7 @@ class App extends React.Component {
           </main>
             <Form />
 
-            <DisplayAnimal />
+            {/* <DisplayAnimal /> */}
 
             {/* <GetData />
             <GetShelterInfo /> */}
