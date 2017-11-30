@@ -24,7 +24,9 @@ class Form extends React.Component {
             animal: '',
             size: '',
             sex: '',
-            filteredResponse: []
+            filteredResponse: [],
+            petNameUnique: '',
+            petDescription: ''
         }
         this.addRequest = this.addRequest.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -67,6 +69,7 @@ class Form extends React.Component {
             console.log(res.data.petfinder.pets.pet.age);
             //map or use for each to get each index and then do the dot dot whatever.
             let petArray = res.data.petfinder.pets.pet;
+            
 
             console.log(petArray);
             // petArray.forEach(function(pet) {
@@ -74,8 +77,14 @@ class Form extends React.Component {
             // });
             petArray.forEach(id => {
                 getShelterList.push(id.shelterId.$t);
+                let petNameUnique = id.name.$t;
+                let petDescription = id.description.$t;
+                // console.log(petNameUnique);
+                this.setState({petNameUnique});
+                this.setState({petDescription});
             });
             console.log(getShelterList);
+            const uniqueShelters = new Set(getShelterList);
             // this.setState(getShelterList);
             let getShelter = (id) => axios({
                 method: 'GET',
@@ -95,11 +104,14 @@ class Form extends React.Component {
                     xmlToJson: false
                 }
             });
-                
-            let shelters = getShelterList.map(id => {
-                console.log(id);
-                return getShelter(id);
-            });
+            let shelters = [];
+            for(let value of uniqueShelters.values()){
+                shelters.push(getShelter(value));
+            }
+            // let shelters = getShelterList.map(id => {
+            //     console.log(id);
+            //     return getShelter(id);
+            // });
             Promise.all(shelters).then((shelterResponse) => {
                 console.log(shelterResponse);
                 console.log(shelterResponse[0].data.petfinder.header.status.message.$t);
@@ -108,13 +120,14 @@ class Form extends React.Component {
                     console.log(hasInfo.data.petfinder);
                     return hasInfo.data.petfinder.header.status.message.$t != 'shelter opt-out';
                 }).map((shelter) => shelter.data);
-
+                console.log(filteredResponse);
 
                 this.setState({
                     filteredResponse
                 })
 
-                console.log(filteredResponse);
+                
+                console.log(petArray);
                 //petArray is an array of all the pets
                 //filteredResponse is all the shelters that have opted in to be shown
                 //These are different sizes
@@ -127,6 +140,22 @@ class Form extends React.Component {
                     pets: [{},{}]
                 }]
                 */
+                filteredResponse = filteredResponse.map((shelterPet) => {
+                    let petMatch = [];
+                    // if(shelter.petfinder.shelter.id.$t === )
+                    petArray.forEach((animalPet) => {
+                        if(shelterPet.petfinder.shelter.id.$t === animalPet.shelterId.$t) {
+                            petMatch.push(animalPet);
+                        }
+                    });
+                    return {
+                        shelter: shelterPet,
+                        pets: petMatch
+                    }
+                });
+                console.log(filteredResponse);
+                this.setState({filteredResponse});
+                
             });
 
 
@@ -137,19 +166,6 @@ class Form extends React.Component {
     addRequest(e) {
         e.preventDefault();
         
-        // console.log('submit')
-        // const usersChoice = {
-        //     postalCode: this.state.postalCode,
-        //     animal: this.state.animal,
-        //     size: this.state.size,
-        //     sex: this.state.sex,
-        // }
-        // this.setState ({
-        //     currentPostalCode: "",
-        //     currentAnimal: "",
-        //     currentSize: "",
-        //     currentSex: "",
-        // });
         const location = this.state.postalCode;
         if (location.length === 7) {
             const locationPostalCode = {
@@ -224,8 +240,17 @@ class Form extends React.Component {
                     
                 </form>
                 <div>
-                    {this.state.filteredResponse.map(shelter => {
-                        return <p>Hey</p>
+                    {this.state.filteredResponse.map((shelter, i) => {
+                        console.log(shelter);
+                        let shelterArrayFinal = shelter.pets;
+                        shelterArrayFinal.map((displayNamePage, displayDescription) => {
+                            console.log(displayNamePage);
+                            return <div key={i}>
+                                <p>{this.state.petNameUnique}</p>
+                                <p>{this.state.petDescription}</p>
+                            </div>
+                        });
+                        
                     })}
                 </div>
             </div>
