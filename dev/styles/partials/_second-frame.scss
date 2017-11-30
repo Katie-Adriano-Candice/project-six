@@ -1,0 +1,86 @@
+.second-frame {
+    font-family: $body-font;
+    border: 1px solid red;
+    text-align:center;
+    p, .text-input {
+        font-size: 2rem;
+        // max-width: 50%;
+        // border: 1px solid red;
+    }
+    
+}
+
+.radio, .addForm, .text-input, h3{
+    text-align:center;
+    // border: 1px solid red;
+    margin: 0 auto;
+    // max-width: 50%;
+}
+
+.radio {
+    text-align: center;
+}
+
+.radioChoice {
+    border: 1px solid red;
+    max-width: 25%;
+    // float:left;
+    margin: 0 auto;
+    padding: 1% 0;
+    font-size: 1.5rem; 
+}
+
+h3 {
+    font-size: 4rem;
+    text-transform: uppercase;
+}
+
+.button-submit {
+    padding: 2% 4%;
+    border-radius: 9%;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.8);
+    font-size: 1.5rem;
+    margin-top:2%;
+}
+
+.button-submit:hover {
+    transition: 0.3s;
+    background-color:blue;
+    border: 1px solid transparent;
+}
+
+// .radioChoice label{
+//   position: relative;
+// }
+
+// .radioChoice .custom-input::before,
+// .radioChoice .custom-input::after {
+//   content: '';
+//   position: absolute;
+//   top: 0;
+//   bottom: 0;
+//   margin: auto;
+// }
+
+// .radioChoice .custom-input.radio:hover {
+//   cursor: pointer;
+// }
+// .radioChoice .custom-input.radio::before {
+//   left: -52px;
+//   width: 45px;
+//   height: 25px;
+//   background-color: #A8AAC1;
+//   border-radius: 50px;
+// }
+// .radioChoice .custom-input.radio::after {
+//   left: -49px;
+//   width: 17px;
+//   height: 17px;
+//   border-radius: 10px;
+//   background-color: #6C788A;
+//   transition: left .25s, background-color .25s;
+// }
+// input[type="radio"]:checked + label .custom-input.radio::after {
+//   left: -27px;
+//   background-color: #EBFF43;
+// }

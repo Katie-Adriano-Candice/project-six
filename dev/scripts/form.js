@@ -64,18 +64,21 @@ class Form extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="second-frame wrapper-inner">
+                <h3>Find your Furrrever Friend!</h3>
                 <form onSubmit={this.addRequest} className="addForm">
-                    <label htmlFor="postalCode">Location: </label>
-                    <input type="text" name="postalCode" placeholder="Postal code ie.M9P 1N8" id="currentPostalCode" required="required" value={this.state.currentPostalCode} onChange={this.handleChange} />
+                    <div className="text-input">
+                        <label htmlFor="postalCode" className="locationInput">Enter your Postal Code: </label>
+                        <input type="text" name="postalCode" placeholder="ie.M9P 1N8" id="currentPostalCode" required="required" value={this.state.currentPostalCode} onChange={this.handleChange} />
+                    </div>
 
                     {/* selecting between dog/cat */}
 
                     <p>Select the type of animal</p>
-                    <div className="radio">
+                    <div className="radio clearfix">
                         <div className="radioChoice">
-                            <label htmlFor="cat">Cat</label>
-                            <input type="radio" value="cat" name="animal" required="required" id="currentType" onChange={this.handleChange} />
+                            <label htmlFor="cat"><span className="custom-input">Cat</span></label>
+                            <input type="radio" value="cat" name="animal" required="required" id="currentAnimal" onChange={this.handleChange} />
                         </div>
                         <div className="radioChoice">
                             <label htmlFor="dog">Dog</label>
@@ -85,7 +88,7 @@ class Form extends React.Component {
 
                     {/* selecting a size of the animal*/}
                     <p>Select the size of animal</p>
-                    <div className="radio">
+                    <div className="radio clearfix">
                         <div className="radioChoice">
                             <label htmlFor="small">Small</label>
                             <input type="radio" value="small" name="size" required="required" id="currentSize" onChange={this.handleChange} />
@@ -102,12 +105,12 @@ class Form extends React.Component {
 
                     {/* selecting the sex of the animal*/}
                     <p>Select the sex of the animal</p>
-                    <div className="radio">
-                        <div className="radio">
+                    <div className="radio clearfix">
+                        <div className="radioChoice">
                             <label htmlFor="male">Male</label>
                             <input type="radio" value="male" name="sex" required="required" id="currentSex" onChange={this.handleChange} />
                         </div>
-                        <div className="radio">
+                        <div className="radioChoice">
                             <label htmlFor="female">Female</label>
                             <input type="radio" value="female" name="sex" required="required" id="currentSex" onChange={this.handleChange} />
                         </div>
