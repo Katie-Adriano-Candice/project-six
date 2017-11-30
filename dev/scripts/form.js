@@ -1,6 +1,7 @@
 import React from 'react';
 // import firebase from 'firebase';
 import ReactDOM from 'react-dom';
+import DisplayAnimal from './axios-request';
 
 // var config = {
 //     apiKey: "AIzaSyC_fT1wegJor-5lw0KsHTglHEXHxAbQnBE",
@@ -119,6 +120,9 @@ class Form extends React.Component {
                     <input type='submit' className='button-submit' value='Submit' onChange={this.handleChange} />
                     
                 </form>
+                <div>
+                    <p></p>
+                </div>
             </div>
         )
     }

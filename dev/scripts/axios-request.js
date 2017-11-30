@@ -4,6 +4,7 @@ import Qs from 'qs';
 
 
 
+
 // export class GetData extends React.Component {
 //     constructor() {
 //         super();
@@ -97,8 +98,16 @@ import Qs from 'qs';
 // }
 
 class DisplayAnimal extends React.Component {
+    // constructor() {
+    //     super();
+    //     this.state = {
+    //         getShelterList: []
+    //     }
+
+    // }
     componentDidMount() {
         const key = 'e9a6ca7347527ff3b4dabbf7e663f9f1';
+        const apiUrl = 'http://api.petfinder.com/';
         let getShelterList = [];
         let getInfo = axios({
             method: 'GET',
@@ -108,14 +117,15 @@ class DisplayAnimal extends React.Component {
                 return Qs.stringify(params, { arrayFormat: 'brackets' })
             },
             params: {
-                reqUrl: 'http://api.petfinder.com/pet.find',
+                reqUrl: `${apiUrl}pet.find`,
                 params: {
                     key: key,
                     animal: 'dog',
+
                     size: 'S',
                     output: 'full',
                     // offset: 'lastOffset',
-                    count: 6,
+                    count: 20,
                     location: 'M2J2Y7',
                     format: 'json'
                 },
@@ -144,7 +154,7 @@ class DisplayAnimal extends React.Component {
                         return Qs.stringify(params, { arrayFormat: 'brackets' })
                     },
                     params: {
-                        reqUrl: 'http://api.petfinder.com/shelter.get',
+                        reqUrl: `${apiUrl}shelter.get`,
                         params: {
                             key,
                             id,
@@ -165,14 +175,30 @@ class DisplayAnimal extends React.Component {
                         console.log(shelterResponse);
                         console.log(shelterResponse[0].data.petfinder.header.status.message.$t);
                         //for each animal that has message:{ $t: "shelter opt-out" }, set them so that they do not display/are not returned
-                        shelterResponse.filter((hasInfo) => {
-                            [hasInfo].data.petfinder.header.status.message.$t != 'shelter opt-out';
-
+                        let filteredResponse = shelterResponse.filter(hasInfo => {
+                            console.log(hasInfo.data.petfinder);
+                            return hasInfo.data.petfinder.header.status.message.$t != 'shelter opt-out';
+                        }).map((eachAnimal) => {
+                            // name: eachAnimal.data.petfinder.shelter.name.$t
+                            // console.log(name);
+                            console.log(eachAnimal.data.petfinder.shelter.name.$t);
+                            console.log(eachAnimal.data.petfinder.shelter.email.$t);
+                            console.log(eachAnimal.data.petfinder.shelter.phone.$t);
+                            const name = eachAnimal.data.petfinder.shelter.name.$t;
+                            const email = eachAnimal.data.petfinder.shelter.email.$t;
+                            const phone = eachAnimal.data.petfinder.shelter.phone.$t;
+                            // console.log(eachAnimal);
+                            // console.log(eachAnimal);
                         });
+
+
                         
+                        // console.log(filteredResponse);
+                        // filteredResponse.map();
+                        // console.log(filteredResponse.data.petfinder);
                         });
 
-                    });
+                    
                 });
 
 
@@ -186,6 +212,6 @@ class DisplayAnimal extends React.Component {
             </div>
         )
     }
-}
 
+}
 export default DisplayAnimal;
