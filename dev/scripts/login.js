@@ -27,6 +27,7 @@ class Login extends React.Component {
         this.login = this.login.bind(this);
     }
 
+    // user logging in or out, while grabbing user uid
     componentDidMount() {
         unSubscribe = firebase.auth().onAuthStateChanged((user) => {
             console.log(user);
@@ -51,6 +52,7 @@ class Login extends React.Component {
         })
     }
 
+    // to ensure mounts do not "compete"
     componentWillUnmount() {
         unSubscribe();
     }
@@ -84,6 +86,7 @@ class Login extends React.Component {
                             <a href="https://twitter.com/share" className="nav--twitter" data-size="large" data-text="Adopt one of our animals" data-url="http://wewilladdasitelater.com">Tweet </a>
                         </li>
                         <div className="first-frame--login-logout">
+                        {/* different outputs given logged in or logged out */}
                         {this.state.user ?
                             <li>
                                 <a href="" onClick={this.logout}>Logout</a>
@@ -98,6 +101,7 @@ class Login extends React.Component {
                 </nav>
                 <header className="wrapper--inner">
                     <h1>TITLE</h1>
+                    {/* different outputs given logged in or logged out */}
                         {this.state.loggedIn === true ? 
                         <h2>{`Hi, ${this.state.user}, Let's find you a furrrever friend!`}</h2> 
                         : <h2>Find your furrrever friend!</h2>
