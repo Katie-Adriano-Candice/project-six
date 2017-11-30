@@ -5,6 +5,18 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import Qs from 'qs';
 
+
+// var config = {
+//     apiKey: "AIzaSyC_fT1wegJor-5lw0KsHTglHEXHxAbQnBE",
+//     authDomain: "project-six-3b01e.firebaseapp.com",
+//     databaseURL: "https://project-six-3b01e.firebaseio.com",
+//     projectId: "project-six-3b01e",
+//     storageBucket: "",
+//     messagingSenderId: "747497473002"
+// };
+// firebase.initializeApp(config);
+
+
 // Initialize Firebase
 var config = {
     apiKey: "AIzaSyC_fT1wegJor-5lw0KsHTglHEXHxAbQnBE",
