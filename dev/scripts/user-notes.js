@@ -8,6 +8,7 @@ class DeleteNotes extends React.Component {
         this.removeItem = this.removeItem.bind(this)
     }
 
+    // removing items with dynamtic folders
     removeItem(itemToRemove) {
         const userResponse = confirm('Are you sure you want to delete this note?')
         if (userResponse == true) {
@@ -48,7 +49,7 @@ class Notes extends React.Component {
         });
     }
 
-    // sending info to firebase for user notes
+    // sending info to firebase for user notes with dynamic user-specific id
     handleSubmit(event) {
         event.preventDefault();
         const petNotesFromUser = this.state.userNotes;
