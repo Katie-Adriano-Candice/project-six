@@ -211,15 +211,6 @@ class Form extends React.Component {
 
 
                     {this.state.filteredResponse.map((shelter, i) => {
-
-                        console.log(shelter);
-                        
-                        shelter.pets.map((displayNamePage, displayDescription) => {
-                            console.log(displayNamePage);
-                            return <div key={i}>
-                                <p>{this.state.petNameUnique}</p>
-                                <p>{this.state.petDescription}</p>
-
                         const pets = shelter.pets;
                         return (
                             <div key={i}>
@@ -246,5 +237,4 @@ class Form extends React.Component {
         )
     }
 }
-
 export default Form;
