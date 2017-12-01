@@ -227,6 +227,7 @@ class Form extends React.Component {
                                         </div>
                                     )
                                 })}
+
                             </div>
                         )
 
@@ -236,5 +237,4 @@ class Form extends React.Component {
         )
     }
 }
-
 export default Form;
