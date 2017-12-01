@@ -269,8 +269,5 @@ class Form extends React.Component {
         )
     }
 }
-<<<<<<< HEAD
+
 export default Form;
-=======
-export default Form;
->>>>>>> dc686fbd0175480b34c748aec862008c485c9cac
