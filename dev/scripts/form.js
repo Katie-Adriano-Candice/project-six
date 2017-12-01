@@ -249,11 +249,11 @@ class Form extends React.Component {
                                 <a href={shelter.shelter.email.$t}>Email the shelter!</a>
                                 {pets.map((pet, index) => {
                                     return (
-                                        <div key={index}>
+                                        <div className="animals-appear" key={index}>
                                             {/* displays first pet in array of images */}
                                             <img src={this.getPetPhotos(pet.media)[0]} />
                                             <p>{pet.name.$t}</p>
-                                            <p>{pet.description.$t}</p>
+                                            <p class="animals-description">{pet.description.$t}</p>
                                             <button onClick={this.addPet} data-shelterinfo={JSON.stringify(shelter)} data-animalinfo={JSON.stringify(pet)}>PRESS ME </button>
 
                                         </div>
@@ -270,4 +270,6 @@ class Form extends React.Component {
     }
 }
 
+
 export default Form;
+
