@@ -11,7 +11,7 @@ $primaryColour: #e26649;
 $secondaryColour: #f0ca49;
 $colourThree: #87bdce;
 $darkRed: #74382a;
-$colourFive: #f4ecd1;
+$formBackground: #f4ecd1;
 $headerBackground: #e8e8e8;
 
 // e26649
@@ -63,4 +63,8 @@ li {
 
 p, a, form {
     font-family: $body-font;
+}
+
+img {
+    max-width: 100%;
 }
