@@ -58,10 +58,13 @@ class Form extends React.Component {
                 getShelterList.push(id.shelterId.$t);
                 let petNameUnique = id.name.$t;
                 let petDescription = id.description.$t;
+
                 this.setState({petNameUnique});
                 this.setState({petDescription});
             });
             const uniqueShelters = new Set(getShelterList);
+
+                
             let getShelter = (id) => axios({
                 method: 'GET',
                 url: 'http://proxy.hackeryou.com',
@@ -83,10 +86,13 @@ class Form extends React.Component {
             for(let value of uniqueShelters.values()){
                 shelters.push(getShelter(value));
             }
+
             console.log('shelters', shelters);
+
             Promise.all(shelters).then((shelterResponse) => {
                 console.log('shelterResponse', shelterResponse);
                 let filteredResponse = shelterResponse.filter(hasInfo => {
+
                     const petfinder = hasInfo.data.petfinder;
                     return petfinder.shelter && petfinder.header.status.message.$t !== 'shelter opt-out';
                 }).map((shelter) => shelter.data.petfinder.shelter);
@@ -96,10 +102,13 @@ class Form extends React.Component {
                     
                     petArray.forEach((animalPet) => {
                         if(shelter.id.$t === animalPet.shelterId.$t) {
+
+
                             petMatch.push(animalPet);
                         }
                     });
                     return {
+
                         shelter,
                         pets: petMatch
                     }
@@ -107,6 +116,7 @@ class Form extends React.Component {
                 
                 this.setState({filteredResponse: matchedPetsResponse});
                 console.log(filteredResponse);
+
             });
         })}
 
@@ -199,6 +209,7 @@ class Form extends React.Component {
                 </form>
                 <div>
 
+
                     {this.state.filteredResponse.map((shelter, i) => {
                         const pets = shelter.pets;
                         return (
@@ -218,6 +229,7 @@ class Form extends React.Component {
                                 })}
                             </div>
                         )
+
                     })}
                 </div>
             </div>
