@@ -242,8 +242,8 @@ class Form extends React.Component {
                 <div>
                     {this.state.filteredResponse.map((shelter, i) => {
                         console.log(shelter);
-                        let shelterArrayFinal = shelter.pets;
-                        shelterArrayFinal.map((displayNamePage, displayDescription) => {
+                        
+                        shelter.pets.map((displayNamePage, displayDescription) => {
                             console.log(displayNamePage);
                             return <div key={i}>
                                 <p>{this.state.petNameUnique}</p>
