@@ -1,6 +1,7 @@
 import React from 'react';
 import firebase from 'firebase';
 import Login from './login.js';
+import Form from './form.js';
 
 class DeleteNotes extends React.Component {
     constructor(props) {
@@ -41,6 +42,7 @@ class Notes extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        // this.addPet = this.addPet.bind(this)
     }
 
     handleChange(event) {
