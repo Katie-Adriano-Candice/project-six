@@ -7,6 +7,20 @@ $blue: rgb(153,205,216);
 $yellow: rgb(242,195,55);
 $red: rgb(216,79,67);
 
+$primaryColour: #e26649;
+$colourTwo: #f0ca49;
+$colourThree: #87bdce;
+$darkRed: #74382a;
+$colourFive: #f4ecd1;
+$headerBackground: #e8e8e8;
+
+// e26649
+// f0ca49
+// 87bdce
+// 74382a
+// f4ecd1 - background colour for the input fields
+// e8e8e8 - header background colour
+
 // mixins
 
 @mixin font-size-value($sizeValue){

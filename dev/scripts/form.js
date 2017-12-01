@@ -57,19 +57,19 @@ class Form extends React.Component {
             }
         }).then((res) => {
             let petArray = res.data.petfinder.pets.pet;
-            
+
 
             petArray.forEach(id => {
                 getShelterList.push(id.shelterId.$t);
                 let petNameUnique = id.name.$t;
                 let petDescription = id.description.$t;
 
-                this.setState({petNameUnique});
-                this.setState({petDescription});
+                this.setState({ petNameUnique });
+                this.setState({ petDescription });
             });
             const uniqueShelters = new Set(getShelterList);
 
-                
+
             let getShelter = (id) => axios({
                 method: 'GET',
                 url: 'http://proxy.hackeryou.com',
@@ -88,7 +88,7 @@ class Form extends React.Component {
                 }
             });
             let shelters = [];
-            for(let value of uniqueShelters.values()){
+            for (let value of uniqueShelters.values()) {
                 shelters.push(getShelter(value));
             }
 
@@ -104,9 +104,9 @@ class Form extends React.Component {
 
                 const matchedPetsResponse = filteredResponse.map((shelter) => {
                     const petMatch = [];
-                    
+
                     petArray.forEach((animalPet) => {
-                        if(shelter.id.$t === animalPet.shelterId.$t) {
+                        if (shelter.id.$t === animalPet.shelterId.$t) {
 
 
                             petMatch.push(animalPet);
@@ -118,12 +118,13 @@ class Form extends React.Component {
                         pets: petMatch
                     }
                 });
-                
-                this.setState({filteredResponse: matchedPetsResponse});
+
+                this.setState({ filteredResponse: matchedPetsResponse });
                 console.log(filteredResponse);
 
             });
-        })}
+        })
+    }
 
     // adding the pet to firebase
     addPet(event) {
@@ -151,10 +152,10 @@ class Form extends React.Component {
     }
 
 
-// gets get photo at size of x
+    // gets get photo at size of x
     getPetPhotos(media) {
         return media.photos.photo.map(photo => {
-            if (photo['@size'] === 'x'){
+            if (photo['@size'] === 'x') {
                 return photo.$t
             }
         }).filter(photo => photo)
@@ -162,16 +163,16 @@ class Form extends React.Component {
 
     addRequest(e) {
         e.preventDefault();
-        
+
         const location = this.state.postalCode;
         if (location.length === 7) {
             const locationPostalCode = {
                 postalCodeInfo: this.state.postalCode,
 
             }
-            
+
             this.getAnimals(this.state.animal, this.state.size, this.state.postalCode);
-            this.setState ({
+            this.setState({
                 postalCode: '',
             });
         } else {
@@ -234,7 +235,7 @@ class Form extends React.Component {
                     </div>
 
                     <input type='submit' className='button-submit' value='Submit' />
-                    
+
                 </form>
                 <div>
 
@@ -249,8 +250,8 @@ class Form extends React.Component {
                                 {pets.map((pet, index) => {
                                     return (
                                         <div key={index}>
-                                        {/* displays first pet in array of images */}
-                                            <img src={this.getPetPhotos(pet.media)[0]}/>
+                                            {/* displays first pet in array of images */}
+                                            <img src={this.getPetPhotos(pet.media)[0]} />
                                             <p>{pet.name.$t}</p>
                                             <p>{pet.description.$t}</p>
                                             <button onClick={this.addPet} data-shelterinfo={JSON.stringify(shelter)} data-animalinfo={JSON.stringify(pet)}>PRESS ME </button>
@@ -268,4 +269,8 @@ class Form extends React.Component {
         )
     }
 }
+<<<<<<< HEAD
 export default Form;
+=======
+export default Form;
+>>>>>>> dc686fbd0175480b34c748aec862008c485c9cac
