@@ -1,20 +1,7 @@
-import React from 'react';
-// import firebase from 'firebase';
+import React from 'react';//
 import ReactDOM from 'react-dom';
-// import DisplayAnimal from './axios-request';
 import axios from 'axios';
 import Qs from 'qs';
-
-// var config = {
-//     apiKey: "AIzaSyC_fT1wegJor-5lw0KsHTglHEXHxAbQnBE",
-//     authDomain: "project-six-3b01e.firebaseapp.com",
-//     databaseURL: "https://project-six-3b01e.firebaseio.com",
-//     projectId: "project-six-3b01e",
-//     storageBucket: "",
-//     messagingSenderId: "747497473002"
-// };
-// firebase.initializeApp(config);
-
 
 class Form extends React.Component {
     constructor() {
@@ -30,6 +17,7 @@ class Form extends React.Component {
         }
         this.addRequest = this.addRequest.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.getPetPhotos = this.getPetPhotos.bind(this);
     }
 
     handleChange(e) {
@@ -39,7 +27,6 @@ class Form extends React.Component {
     }
 
     getAnimals(animal, size, place) {
-        console.log(place)
         const key = 'e9a6ca7347527ff3b4dabbf7e663f9f1';
         const apiUrl = 'http://api.petfinder.com/';
         let getShelterList = [];
@@ -57,7 +44,6 @@ class Form extends React.Component {
                     animal: animal,
                     size: size,
                     output: 'full',
-                    // offset: 'lastOffset',
                     count: 20,
                     location: place,
                     format: 'json'
@@ -65,27 +51,20 @@ class Form extends React.Component {
                 xmlToJSON: false
             }
         }).then((res) => {
-            console.log(res);
-            console.log(res.data.petfinder.pets.pet.age);
-            //map or use for each to get each index and then do the dot dot whatever.
             let petArray = res.data.petfinder.pets.pet;
-            
 
-            console.log(petArray);
-            // petArray.forEach(function(pet) {
-            //     console.log(shelterId);
-            // });
+
             petArray.forEach(id => {
                 getShelterList.push(id.shelterId.$t);
                 let petNameUnique = id.name.$t;
                 let petDescription = id.description.$t;
-                // console.log(petNameUnique);
-                this.setState({petNameUnique});
-                this.setState({petDescription});
+
+                this.setState({ petNameUnique });
+                this.setState({ petDescription });
             });
-            console.log(getShelterList);
             const uniqueShelters = new Set(getShelterList);
-            // this.setState(getShelterList);
+
+
             let getShelter = (id) => axios({
                 method: 'GET',
                 url: 'http://proxy.hackeryou.com',
@@ -98,83 +77,73 @@ class Form extends React.Component {
                     params: {
                         key,
                         id,
-                        // id: 'ON432',
                         format: 'json'
                     },
                     xmlToJson: false
                 }
             });
             let shelters = [];
-            for(let value of uniqueShelters.values()){
+            for (let value of uniqueShelters.values()) {
                 shelters.push(getShelter(value));
             }
-            // let shelters = getShelterList.map(id => {
-            //     console.log(id);
-            //     return getShelter(id);
-            // });
+
+            console.log('shelters', shelters);
+
             Promise.all(shelters).then((shelterResponse) => {
-                console.log(shelterResponse);
-                console.log(shelterResponse[0].data.petfinder.header.status.message.$t);
-                //for each animal that has message:{ $t: "shelter opt-out" }, set them so that they do not display/are not returned
+                console.log('shelterResponse', shelterResponse);
                 let filteredResponse = shelterResponse.filter(hasInfo => {
-                    console.log(hasInfo.data.petfinder);
-                    return hasInfo.data.petfinder.header.status.message.$t != 'shelter opt-out';
-                }).map((shelter) => shelter.data);
-                console.log(filteredResponse);
 
-                this.setState({
-                    filteredResponse
-                })
+                    const petfinder = hasInfo.data.petfinder;
+                    return petfinder.shelter && petfinder.header.status.message.$t !== 'shelter opt-out';
+                }).map((shelter) => shelter.data.petfinder.shelter);
 
-                
-                console.log(petArray);
-                //petArray is an array of all the pets
-                //filteredResponse is all the shelters that have opted in to be shown
-                //These are different sizes
-                //Take the filteredResponse and map through it, and for each shelter see if you can grab the pet
-                //From the pet array and pair them up, returing a new object 
-                //So in the end you have one array to display that is a match of the shelter and pets together
-                /* 
-                [{
-                    shelter: {},
-                    pets: [{},{}]
-                }]
-                */
-                filteredResponse = filteredResponse.map((shelterPet) => {
-                    let petMatch = [];
-                    // if(shelter.petfinder.shelter.id.$t === )
+                const matchedPetsResponse = filteredResponse.map((shelter) => {
+                    const petMatch = [];
+
                     petArray.forEach((animalPet) => {
-                        if(shelterPet.petfinder.shelter.id.$t === animalPet.shelterId.$t) {
+                        if (shelter.id.$t === animalPet.shelterId.$t) {
+
+
                             petMatch.push(animalPet);
                         }
                     });
                     return {
-                        shelter: shelterPet,
+
+                        shelter,
                         pets: petMatch
                     }
                 });
+
+                this.setState({ filteredResponse: matchedPetsResponse });
                 console.log(filteredResponse);
-                this.setState({filteredResponse});
-                
+
             });
+        })
+    }
 
 
-            
 
-        })}
+    // gets get photo at size of x
+    getPetPhotos(media) {
+        return media.photos.photo.map(photo => {
+            if (photo['@size'] === 'x') {
+                return photo.$t
+            }
+        }).filter(photo => photo)
+    }
 
     addRequest(e) {
         e.preventDefault();
-        
+
         const location = this.state.postalCode;
         if (location.length === 7) {
             const locationPostalCode = {
                 postalCodeInfo: this.state.postalCode,
 
             }
-            
+
             this.getAnimals(this.state.animal, this.state.size, this.state.postalCode);
-            this.setState ({
+            this.setState({
                 postalCode: '',
             });
         } else {
@@ -237,25 +206,36 @@ class Form extends React.Component {
                     </div>
 
                     <input type='submit' className='button-submit' value='Submit' />
-                    
+
                 </form>
                 <div>
+
+
                     {this.state.filteredResponse.map((shelter, i) => {
-                        console.log(shelter);
-                        
-                        shelter.pets.map((displayNamePage, displayDescription) => {
-                            console.log(displayNamePage);
-                            return <div key={i}>
-                                <p>{this.state.petNameUnique}</p>
-                                <p>{this.state.petDescription}</p>
+                        const pets = shelter.pets;
+                        return (
+                            <div key={i}>
+                                <p>{shelter.shelter.name.$t}</p>
+                                <p>{shelter.shelter.city.$t}</p>
+                                <a href={shelter.shelter.email.$t}>Email the shelter!</a>
+                                {pets.map((pet, index) => {
+                                    return (
+                                        <div key={index}>
+                                            {/* displays first pet in array of images */}
+                                            <img src={this.getPetPhotos(pet.media)[0]} />
+                                            <p>{pet.name.$t}</p>
+                                            <p>{pet.description.$t}</p>
+                                        </div>
+                                    )
+                                })}
+
                             </div>
-                        });
-                        
+                        )
+
                     })}
                 </div>
             </div>
         )
     }
 }
-
 export default Form;

@@ -6,10 +6,6 @@ import Scroll, { scroller } from 'react-scroll';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Login from './login.js';
 import Form from './form.js';
-
-// import DisplayAnimal from './axios-request';
-
-// import { GetData, GetShelterInfo } from './axios-request';
 import  Notes from './user-notes.js';
 
 
@@ -33,11 +29,6 @@ class App extends React.Component {
               <Login />
           </main>
             <Form />
-
-            {/* <DisplayAnimal /> */}
-
-            {/* <GetData />
-            <GetShelterInfo /> */}
             <section>
               <Notes />
             </section>

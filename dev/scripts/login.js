@@ -100,7 +100,7 @@ class Login extends React.Component {
                     </ul>
                 </nav>
                 <header className="wrapper--inner">
-                    <h1>TITLE</h1>
+                    <h1><span>Purrrfect</span> Friends</h1>
                     {/* different outputs given logged in or logged out */}
                         {this.state.loggedIn === true ? 
                         <h2>{`Hi, ${this.state.user}, Let's find you a furrrever friend!`}</h2> 
@@ -109,6 +109,29 @@ class Login extends React.Component {
                     <i className="fa fa-paw" aria-hidden="true"></i>
                 </header>
             </section>
+            <header className="header">
+                <nav className="header__nav">
+                    <ul>
+                        <li>
+                            <a href="https://twitter.com/share" className="nav--twitter" data-size="large" data-text="Adopt one of our animals" data-url="http://wewilladdasitelater.com"><div><i class="fa fa-twitter" aria-hidden="true"></i></div></a>
+                        </li>
+                        <li>
+                            <img src="public/assets/pup_kitten_logo.png" alt=""/>
+                            <h1><span>Purrrfect</span> Friends</h1>
+                        </li>
+                        {this.state.user ?
+                            <li>
+                                <a href="" onClick={this.logout}>Logout</a>
+                            </li>
+                            :
+                            <li>
+                                <a href="" onClick={this.login}>Login</a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            </header>
+
         </div>
         )
     }
