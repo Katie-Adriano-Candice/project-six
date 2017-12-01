@@ -1,6 +1,9 @@
 import React from 'react';//
 import ReactDOM from 'react-dom';
 import axios from 'axios';
+import firebase from 'firebase';
+import Login from './login.js';
+import Notes from './user-notes.js';
 import Qs from 'qs';
 
 class Form extends React.Component {
@@ -13,11 +16,13 @@ class Form extends React.Component {
             sex: '',
             filteredResponse: [],
             petNameUnique: '',
-            petDescription: ''
+            petDescription: '',
+            userID: ''
         }
         this.addRequest = this.addRequest.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.getPetPhotos = this.getPetPhotos.bind(this);
+        this.addPet = this.addPet.bind(this);
     }
 
     handleChange(e) {
@@ -121,6 +126,30 @@ class Form extends React.Component {
         })
     }
 
+    // adding the pet to firebase
+    addPet(event) {
+        event.preventDefault();
+
+        let sheltersToFirebase = (JSON.parse(event.target.dataset.shelterinfo));
+        const shelterToFirebase = sheltersToFirebase.shelter
+
+        let petToFirebase = (JSON.parse(event.target.dataset.animalinfo));
+
+        const sendingPetsToFirebase= {
+            
+            // petImage: petToFirebase.pet.media[0],
+            name: petToFirebase.name.$t,
+            petDescription: petToFirebase.description.$t,
+            shelterName: shelterToFirebase.name.$t,
+            shelterCity: shelterToFirebase.city.$t,
+            sheterContact: shelterToFirebase.email.$t
+            
+        };
+        console.log(sendingPetsToFirebase);
+    
+        const dbRef = firebase.database().ref(`${this.state.userID}/animal`);
+        const userPerferencePet = dbRef.push(sendingPetsToFirebase)
+    }
 
 
     // gets get photo at size of x
@@ -225,6 +254,8 @@ class Form extends React.Component {
                                             <img src={this.getPetPhotos(pet.media)[0]} />
                                             <p>{pet.name.$t}</p>
                                             <p>{pet.description.$t}</p>
+                                            <button onClick={this.addPet} data-shelterinfo={JSON.stringify(shelter)} data-animalinfo={JSON.stringify(pet)}>PRESS ME </button>
+
                                         </div>
                                     )
                                 })}
@@ -238,4 +269,8 @@ class Form extends React.Component {
         )
     }
 }
+<<<<<<< HEAD
 export default Form;
+=======
+export default Form;
+>>>>>>> dc686fbd0175480b34c748aec862008c485c9cac
