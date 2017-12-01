@@ -79,14 +79,14 @@ class Login extends React.Component {
     render() {
         return (
         <div>
-            <section className="first-frame--nav-header">
+            {/* <section className="first-frame--nav-header">
                 <nav className="wrapper--nav">
                     <ul>
                         <li>
                             <a href="https://twitter.com/share" className="nav--twitter" data-size="large" data-text="Adopt one of our animals" data-url="http://wewilladdasitelater.com">Tweet </a>
                         </li>
                         <div className="first-frame--login-logout">
-                        {/* different outputs given logged in or logged out */}
+                        //  different outputs given logged in or logged out 
                         {this.state.user ?
                             <li>
                                 <a href="" onClick={this.logout}>Logout</a>
@@ -101,14 +101,14 @@ class Login extends React.Component {
                 </nav>
                 <header className="wrapper--inner">
                     <h1><span>Purrrfect</span> Friends</h1>
-                    {/* different outputs given logged in or logged out */}
+                   // {/* different outputs given logged in or logged out 
                         {this.state.loggedIn === true ? 
                         <h2>{`Hi, ${this.state.user}, Let's find you a furrrever friend!`}</h2> 
                         : <h2>Find your furrrever friend!</h2>
                         }
                     <i className="fa fa-paw" aria-hidden="true"></i>
                 </header>
-            </section>
+            </section> */}
             <header className="header">
                 <nav className="header__nav">
                     <ul>
@@ -117,20 +117,28 @@ class Login extends React.Component {
                         </li>
                         <li>
                             <img src="public/assets/pup_kitten_logo.png" alt=""/>
-                            <h1><span>Purrrfect</span> Friends</h1>
                         </li>
+                        <li>
+                            <h1><span>Purrrfect</span> Friends</h1>
+                        </li>                            
                         {this.state.user ?
                         <li>
-                            <a href="" className="nav--signout"   onClick={this.logout}>Sign out <i class="fa fa-google" aria-hidden="true"></i></a>
+                            <a href="" className="nav--signout"   onClick={this.logout}><div>Sign out  <i className="fa fa-google" aria-hidden="true"></i></div></a>
                         </li>
                         :
                         <li>
-                            <a href="" className="nav--signin" onClick={this.login}><div>Sign in <i className="fa fa-google" aria-hidden="true"></i></div></a>
+                            <a href="" className="nav--signin" onClick={this.login}><div>Sign in  <i className="fa fa-google" aria-hidden="true"></i></div></a>
                         </li>
                         }
                     </ul>
                 </nav>
             </header>
+            <section className="headerAnimals">
+                <div className="imageContainer">
+                    <img src="public/assets/pup_header.png" alt=""/>
+                    <img src="public/assets/kitten_header.png" alt=""/>
+                </div>
+            </section>
 
         </div>
         )

@@ -16,10 +16,37 @@
 
 //===================================
 
+.header__nav {
+    background: $headerBackground;
+    ul {
+        position: relative;
+        height: 100px;
+
+        margin: 0;
+        li {
+             display: inline-block;
+             position: absolute;
+             top: 25px;
+             &:nth-child(2) {
+                 left: 35%;
+                 transform: tranlateX(-35%);
+                 top: 10px;
+             }
+             &:nth-child(3) {
+                left: 55%;
+                transform: translateX(-55%);
+             }
+             &:nth-child(4) {
+                right: 40px;
+             }
+        }
+    }
+}
 
 a.nav--twitter {
     color: $darkRed;
-    font-size: 30px;
+    // font-size: 30px;
+    @include font-size-value(30);
     div {
         width: 50px;
         height: 50px;
@@ -36,18 +63,40 @@ a.nav--twitter {
 } 
 
 a.nav--signin, a.nav--signout {
-    font-size: 20px;
+    color: black;
+    float: right;
+    @include font-size-value(20);
+    font-weight: 700;
     div {
         height: 50px;
-        width: 200px;
+        width: 140px;
+        border-radius: 30px;
         background: $secondaryColour;
+        text-align: center;
+        display:table-cell;
+        vertical-align:middle;
+        i {
+            color: $primaryColour;
+            @include font-size-value(26);
+            padding-left: 3px;
+        }
     }
 }
 
 h1 {
     letter-spacing: 4px;
-    background: $headerBackground;
     span {
         color: grey;
+    }
+}
+
+.imageContainer {
+    height: 90vh;
+    position: relative;
+    img {
+        // float: left;
+        width: 50%;
+        position:absolute;
+        
     }
 }
