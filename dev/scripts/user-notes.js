@@ -158,7 +158,12 @@ class Notes extends React.Component {
 
     render() {
         return (
-            <div>
+                <form onSubmit={this.handleSubmit}>
+
+                    <input type="text" name="userNotes" placeholder="Put some notes here!" onChange={this.handleChange} value={this.state.userNotes}/>
+
+                    <button>Add Note</button>
+                </form>
                 <div>
                     <section>
 
