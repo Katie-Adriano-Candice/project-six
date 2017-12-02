@@ -1,17 +1,14 @@
 import React from 'react';//
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import firebase from 'firebase';
+import { firebaseRef, firebaseBase, provider, firebaseAuth } from './firebase-code';
 import Login from './login.js';
 import Notes from './user-notes.js';
 import Qs from 'qs';
 
-
-
-
 class Form extends React.Component {
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = {
             postalCode: '',
             animal: '',
@@ -19,12 +16,12 @@ class Form extends React.Component {
             sex: '',
             filteredResponse: [],
             petNameUnique: '',
-            petDescription: '',
-            FirebasePet: ''
+            petDescription: ''
         }
         this.addRequest = this.addRequest.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.getPetPhotos = this.getPetPhotos.bind(this);
+        this.addPet = this.addPet.bind(this);
     }
 
     handleChange(e) {
@@ -126,44 +123,35 @@ class Form extends React.Component {
 
             });
         })
-    };
+    }
 
     // adding the pet to firebase
     addPet(event) {
         event.preventDefault();
+
         let sheltersToFirebase = (JSON.parse(event.target.dataset.shelterinfo));
         const shelterToFirebase = sheltersToFirebase.shelter
 
         let petToFirebase = (JSON.parse(event.target.dataset.animalinfo));
 
-        const animalID = petToFirebase.id.$t
-        console.log(animalID);
 
-        const sendingPetsToFirebase = {
-
+        const sendingPetsToFirebase= {
+            
+            // petImage: petToFirebase.pet.media[0],
             name: petToFirebase.name.$t,
             petDescription: petToFirebase.description.$t,
             shelterName: shelterToFirebase.name.$t,
             shelterCity: shelterToFirebase.city.$t,
-            sheterContact: shelterToFirebase.email.$t,
-
+            shelterContact: shelterToFirebase.email.$t,
+            comments: {}
         };
         console.log(sendingPetsToFirebase);
-
-        const dbRef = firebase.database().ref(`${firebase.auth().currentUser.uid}/animalID/`);
+    
+        const dbRef = firebaseBase.ref(`${this.props.userID}/animal`);
         const userPerferencePet = dbRef.push(sendingPetsToFirebase)
     }
 
-    componentDidMount() {
-        // const dbRef = firebase.database().ref(`${firebase.auth().currentUser.uid}/animalID/`);
-        // dbRef.on("value", (firebaseData) => {
-        //     const addPetArray = [];
-        //     const addPetData = firebaseData.val();
-        //     this.setState({
-        //         FirebasePet: addPetData
-        //     })
-        // })
-    }
+
 
     // gets get photo at size of x
     getPetPhotos(media) {
@@ -252,6 +240,7 @@ class Form extends React.Component {
                 </form>
                 <div>
 
+
                     {this.state.filteredResponse.map((shelter, i) => {
                         const pets = shelter.pets;
                         return (
@@ -277,14 +266,8 @@ class Form extends React.Component {
 
                     })}
                 </div>
-                <div>
-                    {this.state.FirebasePet}
-                </div>
             </div>
         )
     }
 }
-
-
 export default Form;
-
