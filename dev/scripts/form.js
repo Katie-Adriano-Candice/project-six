@@ -154,16 +154,16 @@ class Form extends React.Component {
         const userPerferencePet = dbRef.push(sendingPetsToFirebase)
     }
 
-    componentDidMount() {
-        // const dbRef = firebase.database().ref(`${firebase.auth().currentUser.uid}/animalID/`);
-        // dbRef.on("value", (firebaseData) => {
-        //     const addPetArray = [];
-        //     const addPetData = firebaseData.val();
-        //     this.setState({
-        //         FirebasePet: addPetData
-        //     })
-        // })
-    }
+    // componentDidMount() {
+    //     const dbRef = firebase.database().ref(`${firebase.auth().currentUser.uid}/animalID/`);
+    //     dbRef.on("value", (firebaseData) => {
+    //         const addPetArray = [];
+    //         const addPetData = firebaseData.val();
+    //         this.setState({
+    //             FirebasePet: addPetData
+    //         })
+    //     })
+    // }
 
     // gets get photo at size of x
     getPetPhotos(media) {
