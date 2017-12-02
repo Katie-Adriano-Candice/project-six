@@ -1,21 +1,6 @@
 import React from 'react';
 import { firebaseRef, firebaseBase, provider, firebaseAuth } from './firebase-code';
 
-// // Initialize Firebase
-// var config = {
-//     apiKey: "AIzaSyC_fT1wegJor-5lw0KsHTglHEXHxAbQnBE",
-//     authDomain: "project-six-3b01e.firebaseapp.com",
-//     databaseURL: "https://project-six-3b01e.firebaseio.com",
-//     projectId: "project-six-3b01e",
-//     storageBucket: "",
-//     messagingSenderId: "747497473002"
-// };
-// firebaseRef;
-
-// const provider = new provider
-
-// let unSubscribe = function(){}
-
 class Login extends React.Component {
     constructor() {
         super();
@@ -27,36 +12,6 @@ class Login extends React.Component {
         this.login = this.login.bind(this);
         this.logout = this.logout.bind(this);
     }
-
-    // // user logging in or out, while grabbing user uid
-    // componentDidMount() {
-    //     unSubscribe = firebaseAuth.onAuthStateChanged((user) => {
-    //         console.log(user);
-    //         if (user) {
-    //             console.log('user is logged in');
-    //             const userName = user.displayName;
-    //             const userID = user.uid;
-    //             // console.log(user.uid);
-    //             this.setState({
-    //                 loggedIn: true,
-    //                 user: userName,
-    //                 userIDSet: userID
-    //             })
-    //         } else {
-    //             console.log('user is logged out');
-    //             this.setState({
-    //                 loggedIn: false,
-    //                 user: '',
-    //                 userIDSet: ''
-    //             })
-    //         }
-    //     })
-    // }
-
-    // // to ensure mounts do not "compete"
-    // componentWillUnmount() {
-    //     unSubscribe();
-    // }
 
     login(event) {
         event.preventDefault();
