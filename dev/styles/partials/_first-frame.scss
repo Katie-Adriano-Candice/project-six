@@ -91,12 +91,17 @@ h1 {
 }
 
 .imageContainer {
-    height: 90vh;
+    // height: 90vh;
     position: relative;
-    img {
+    img{
         // float: left;
         width: 50%;
         position:absolute;
-        
+        &.dogImage {
+        padding-top: 34px;
+        }
     }
+    img.dogImage {
+        padding-top: 34px;
+    }    
 }
