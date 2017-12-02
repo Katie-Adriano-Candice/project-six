@@ -135,8 +135,10 @@ class Login extends React.Component {
             </header>
             <section className="headerAnimals">
                 <div className="imageContainer">
-                    <img src="public/assets/pup_header.png" alt=""/>
-                    <img src="public/assets/kitten_header.png" alt=""/>
+                    <img src="public/assets/pup_header.png" className="dogImage" alt=""/>
+                    <img src="public/assets/kitten_header.png" className="catImage" alt=""/>
+                    {/* <div className="dogImage"></div>
+                    <div className="catImage"></div> */}
                 </div>
             </section>
 
