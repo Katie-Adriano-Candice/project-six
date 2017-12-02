@@ -116,11 +116,11 @@ class Login extends React.Component {
                             <a href="https://twitter.com/share" className="nav--twitter" data-size="large" data-text="Adopt one of our animals" data-url="http://wewilladdasitelater.com"><div><i className="fa fa-twitter" aria-hidden="true"></i></div></a>
                         </li>
                         <li>
-                            <img src="public/assets/pup_kitten_logo.png" alt=""/>
+                            <img src="public/assets/pup_kitten_logo.png" className="petLogo" alt=""/>
+                            <h1>
+                                <span>Purrrfect</span> Friends
+                            </h1>
                         </li>
-                        <li>
-                            <h1><span>Purrrfect</span> Friends</h1>
-                        </li>                            
                         {this.state.user ?
                         <li>
                             <a href="" className="nav--signout"   onClick={this.logout}><div>Sign out  <i className="fa fa-google" aria-hidden="true"></i></div></a>
@@ -134,12 +134,14 @@ class Login extends React.Component {
                 </nav>
             </header>
             <section className="headerAnimals">
-                <div className="imageContainer">
-                    <img src="public/assets/pup_header.png" className="dogImage" alt=""/>
-                    <img src="public/assets/kitten_header.png" className="catImage" alt=""/>
-                    {/* <div className="dogImage"></div>
-                    <div className="catImage"></div> */}
-                </div>
+                    {this.state.loggedIn === true ?
+                        <h2>{`Hi, ${this.state.user}, let's find you a furrrever friend!`}</h2>
+                        : <h2>Sign in to find your furrrever friend!</h2>
+                    }
+                    <div className="circleContainer">
+                        <p>Find a furry friend <span>near you!</span></p>
+                    </div>
+                
             </section>
 
         </div>
