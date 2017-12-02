@@ -7,12 +7,10 @@ $blue: rgb(153,205,216);
 $yellow: rgb(242,195,55);
 $red: rgb(216,79,67);
 
-$primaryColour: #e26649;
-$secondaryColour: #f0ca49;
-$colourThree: #87bdce;
-$darkRed: #74382a;
-$formBackground: #f4ecd1;
-$headerBackground: #e8e8e8;
+$primaryColour: rgb(226,102,73);
+$secondaryColour: rgb(240,202,73);
+$colourThree: rgb(135,189,206);
+$headerBackground: rgb(136,142,136);
 
 // e26649
 // f0ca49
@@ -27,6 +25,7 @@ $headerBackground: #e8e8e8;
     font-size: $sizeValue * 1px;
     font-size: ($sizeValue/10) * 1rem;
 }
+
 
 // base size
 

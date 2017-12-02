@@ -1,23 +1,6 @@
-.first-frame--nav-header {
-    min-height: 100vh;
-    h1 {
-        font-family: $header-font;
-        transform: translateY(-50%);
-    }
-}
-
-.nav--twitter {
-    float: left;
-}
-
-.first-frame--login-logout {
-    float: right;
-}
-
-//===================================
-
 .header__nav {
-    background: $headerBackground;
+    background: lighten($headerBackground, 40);
+     box-shadow: 1px 1px 50px lighten($headerBackground, 20);
     ul {
         position: relative;
         height: 100px;
@@ -28,24 +11,19 @@
              position: absolute;
              top: 25px;
              &:nth-child(2) {
-                 left: 35%;
-                 transform: tranlateX(-35%);
-                 top: 10px;
+                left: 48%;
+                transform: translateX(-48%);
+                position: relative;
              }
-             &:nth-child(3) {
-                left: 55%;
-                transform: translateX(-55%);
-             }
-             &:nth-child(4) {
+             &:nth-child(3) {                
                 right: 40px;
-             }
+             }             
         }
     }
 }
 
 a.nav--twitter {
-    color: $darkRed;
-    // font-size: 30px;
+    color: darken($primaryColour, 30);
     @include font-size-value(30);
     div {
         width: 50px;
@@ -84,24 +62,52 @@ a.nav--signin, a.nav--signout {
 }
 
 h1 {
-    letter-spacing: 4px;
+    letter-spacing: 5px;
+    font-family: $header-font;
+    display: inline-block;
+    // margin-left: 10px;
     span {
         color: grey;
     }
 }
 
-.imageContainer {
-    // height: 90vh;
+.petLogo {
+    margin-right: 20px;
+}
+
+.headerAnimals {
+    background-image: url("../assets/pup_kitten_solo.png");
+    height: 80vh;    
+    background-repeat: no-repeat;
+    background-size: cover;
     position: relative;
-    img{
-        // float: left;
-        width: 50%;
-        position:absolute;
-        &.dogImage {
-        padding-top: 34px;
-        }
+    h2 {
+        text-align: center;
+        margin-top: 40px;
+        letter-spacing: 2px;
     }
-    img.dogImage {
-        padding-top: 34px;
-    }    
+    .circleContainer {
+        height: 300px;
+        width: 300px;
+        border-radius: 50%;
+        background: $primaryColour;
+        text-align: center;
+        display:table-cell;
+        vertical-align:middle;
+        @include font-size-value(20);
+        color: white;
+        position: absolute;
+        left: 40%;
+        transform: translateX(-40%);
+        top: 50%;
+        transform: translateY(-50%);
+        p {
+            margin-top: 128px;
+        }
+        span {
+            display: block;
+            font-weight: 700;
+        }
+        
+    }
 }
