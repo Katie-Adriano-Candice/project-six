@@ -244,18 +244,22 @@ class Form extends React.Component {
                     {this.state.filteredResponse.map((shelter, i) => {
                         const pets = shelter.pets;
                         return (
-                            <div key={i}>
-                                <p>{shelter.shelter.name.$t}</p>
-                                <p>{shelter.shelter.city.$t}</p>
+                            <div className="shelter-appear" key={i}>
+                                <div className="shelter-sub wrapper--inner">
+                                <p className="shelter-name">{shelter.shelter.name.$t}</p>
+                                <p className="shelter-city">{shelter.shelter.city.$t}</p>
                                 <a href={shelter.shelter.email.$t}>Email the shelter!</a>
+                                </div>
                                 {pets.map((pet, index) => {
                                     return (
-                                        <div className="animals-appear" key={index}>
+                                        <div className="animals-appear wrapper--inner clearfix" key={index}>
                                             {/* displays first pet in array of images */}
                                             <img src={this.getPetPhotos(pet.media)[0]} />
-                                            <p>{pet.name.$t}</p>
-                                            <p class="animals-description">{pet.description.$t}</p>
-                                            <button onClick={this.addPet} data-shelterinfo={JSON.stringify(shelter)} data-animalinfo={JSON.stringify(pet)}>PRESS ME </button>
+                                            <div className="animal-info">
+                                                <p className="anmials-name">{pet.name.$t}</p>
+                                                <p className="animals-description">{pet.description.$t}</p>
+                                                <button onClick={this.addPet} data-shelterinfo={JSON.stringify(shelter)} data-animalinfo={JSON.stringify(pet)}>PRESS ME </button>
+                                            </div>
 
                                         </div>
                                     )
