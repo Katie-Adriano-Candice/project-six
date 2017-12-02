@@ -1,21 +1,3 @@
-.first-frame--nav-header {
-    min-height: 100vh;
-    h1 {
-        font-family: $header-font;
-        transform: translateY(-50%);
-    }
-}
-
-.nav--twitter {
-    float: left;
-}
-
-.first-frame--login-logout {
-    float: right;
-}
-
-//===================================
-
 .header__nav {
     background: $headerBackground;
     ul {
@@ -45,7 +27,7 @@
 
 a.nav--twitter {
     color: $darkRed;
-    // font-size: 30px;
+    font-size: 30px;
     @include font-size-value(30);
     div {
         width: 50px;
@@ -90,18 +72,22 @@ h1 {
     }
 }
 
-.imageContainer {
-    // height: 90vh;
-    position: relative;
-    img{
-        // float: left;
-        width: 50%;
-        position:absolute;
-        &.dogImage {
-        padding-top: 34px;
-        }
-    }
-    img.dogImage {
-        padding-top: 34px;
-    }    
-}
+// .imageContainer {
+//     // height: 90vh;
+//     position: relative;
+//     img{
+//         // float: left;
+//         width: 50%;
+//         position:absolute;
+//         // &.dogImage {
+//         // padding-top: 34px;
+//         // }
+//     }
+//     img.dogImage {
+//         padding-top: 34px;
+//     }    
+// }
+
+// img.dogImage {
+//     padding-top: 34px;
+// }
