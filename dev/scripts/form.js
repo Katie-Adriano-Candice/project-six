@@ -1,7 +1,7 @@
 import React from 'react';//
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import firebase from 'firebase';
+import { firebaseRef, firebaseBase, provider, firebaseAuth } from './firebase-code';
 import Login from './login.js';
 import Notes from './user-notes.js';
 import Qs from 'qs';
@@ -16,8 +16,7 @@ class Form extends React.Component {
             sex: '',
             filteredResponse: [],
             petNameUnique: '',
-            petDescription: '',
-            userID: ''
+            petDescription: ''
         }
         this.addRequest = this.addRequest.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -135,6 +134,7 @@ class Form extends React.Component {
 
         let petToFirebase = (JSON.parse(event.target.dataset.animalinfo));
 
+
         const sendingPetsToFirebase= {
             
             // petImage: petToFirebase.pet.media[0],
@@ -142,14 +142,15 @@ class Form extends React.Component {
             petDescription: petToFirebase.description.$t,
             shelterName: shelterToFirebase.name.$t,
             shelterCity: shelterToFirebase.city.$t,
-            sheterContact: shelterToFirebase.email.$t
-            
+            shelterContact: shelterToFirebase.email.$t,
+            comments: {}
         };
         console.log(sendingPetsToFirebase);
     
-        const dbRef = firebase.database().ref(`${this.state.userID}/animal`);
+        const dbRef = firebaseBase.ref(`${this.props.userID}/animal`);
         const userPerferencePet = dbRef.push(sendingPetsToFirebase)
     }
+
 
 
     // gets get photo at size of x

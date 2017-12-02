@@ -1,78 +1,92 @@
 import React from 'react';
-import firebase from 'firebase';
+import { firebaseRef, firebaseBase, provider, firebaseAuth } from './firebase-code';
 
-// Initialize Firebase
-var config = {
-    apiKey: "AIzaSyC_fT1wegJor-5lw0KsHTglHEXHxAbQnBE",
-    authDomain: "project-six-3b01e.firebaseapp.com",
-    databaseURL: "https://project-six-3b01e.firebaseio.com",
-    projectId: "project-six-3b01e",
-    storageBucket: "",
-    messagingSenderId: "747497473002"
-};
-firebase.initializeApp(config);
+// // Initialize Firebase
+// var config = {
+//     apiKey: "AIzaSyC_fT1wegJor-5lw0KsHTglHEXHxAbQnBE",
+//     authDomain: "project-six-3b01e.firebaseapp.com",
+//     databaseURL: "https://project-six-3b01e.firebaseio.com",
+//     projectId: "project-six-3b01e",
+//     storageBucket: "",
+//     messagingSenderId: "747497473002"
+// };
+// firebaseRef;
 
-const provider = new firebase.auth.GoogleAuthProvider()
+// const provider = new provider
 
-let unSubscribe = function(){}
+// let unSubscribe = function(){}
 
 class Login extends React.Component {
     constructor() {
         super();
         this.state = {
             loggedIn: false,
-            user: '',
-            userIDSet: ''
+            // user: '',
+            // userIDSet: ''
         }
         this.login = this.login.bind(this);
+        this.logout = this.logout.bind(this);
     }
 
-    // user logging in or out, while grabbing user uid
-    componentDidMount() {
-        unSubscribe = firebase.auth().onAuthStateChanged((user) => {
-            console.log(user);
-            if (user) {
-                console.log('user is logged in');
-                const userName = user.displayName;
-                const userID = user.uid;
-                // console.log(user.uid);
-                this.setState({
-                    loggedIn: true,
-                    user: userName,
-                    userIDSet: userID
-                })
-            } else {
-                console.log('user is logged out');
-                this.setState({
-                    loggedIn: false,
-                    user: '',
-                    userIDSet: ''
-                })
-            }
-        })
-    }
+    // // user logging in or out, while grabbing user uid
+    // componentDidMount() {
+    //     unSubscribe = firebaseAuth.onAuthStateChanged((user) => {
+    //         console.log(user);
+    //         if (user) {
+    //             console.log('user is logged in');
+    //             const userName = user.displayName;
+    //             const userID = user.uid;
+    //             // console.log(user.uid);
+    //             this.setState({
+    //                 loggedIn: true,
+    //                 user: userName,
+    //                 userIDSet: userID
+    //             })
+    //         } else {
+    //             console.log('user is logged out');
+    //             this.setState({
+    //                 loggedIn: false,
+    //                 user: '',
+    //                 userIDSet: ''
+    //             })
+    //         }
+    //     })
+    // }
 
-    // to ensure mounts do not "compete"
-    componentWillUnmount() {
-        unSubscribe();
-    }
+    // // to ensure mounts do not "compete"
+    // componentWillUnmount() {
+    //     unSubscribe();
+    // }
 
     login(event) {
         event.preventDefault();
         console.log('logged in');
-        firebase.auth().signInWithPopup(provider)
+        firebaseAuth.signInWithPopup(provider)
             .then((user) => {
+                const userName = user.displayName;
+                const userID = user.uid;
                 this.setState({
-                    loggedIn: true
+                    loggedIn: true,
                 });
+                this.props.userLogin(
+                    userName,
+                    userID
+                )
             })
     }
 
     logout(event) {
         event.preventDefault();
-        firebase.auth().signOut()
+        firebaseAuth.signOut()
             .then(() => {
                 console.log('logged out');
+                this.setState({
+                    loggedIn: false,
+                });
+                this.props.userLogin(
+                    '',
+                    ''
+                )
             })
     }
 
@@ -87,7 +101,7 @@ class Login extends React.Component {
                         </li>
                         <div className="first-frame--login-logout">
                         //  different outputs given logged in or logged out 
-                        {this.state.user ?
+                        {this.props.user ?
                             <li>
                                 <a href="" onClick={this.logout}>Logout</a>
                             </li>
@@ -103,7 +117,7 @@ class Login extends React.Component {
                     <h1><span>Purrrfect</span> Friends</h1>
                    // {/* different outputs given logged in or logged out 
                         {this.state.loggedIn === true ? 
-                        <h2>{`Hi, ${this.state.user}, Let's find you a furrrever friend!`}</h2> 
+                        <h2>{`Hi, ${this.props.user}, Let's find you a furrrever friend!`}</h2> 
                         : <h2>Find your furrrever friend!</h2>
                         }
                     <i className="fa fa-paw" aria-hidden="true"></i>
@@ -121,7 +135,7 @@ class Login extends React.Component {
                         <li>
                             <h1><span>Purrrfect</span> Friends</h1>
                         </li>                            
-                        {this.state.user ?
+                        {this.props.user ?
                         <li>
                             <a href="" className="nav--signout"   onClick={this.logout}><div>Sign out  <i className="fa fa-google" aria-hidden="true"></i></div></a>
                         </li>
