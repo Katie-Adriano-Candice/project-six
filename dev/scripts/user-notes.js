@@ -11,7 +11,7 @@ class Pet extends React.Component {
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this)
+        this.handleChange = this.handleChange.bind(this);
     }
 
          // sending info to firebase for user notes with dynamic user-specific id
