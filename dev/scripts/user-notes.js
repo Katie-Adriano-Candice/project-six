@@ -12,7 +12,10 @@ class Pet extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+
     }
+
+    
 
          // sending info to firebase for user notes with dynamic user-specific id
     handleSubmit(event) {
@@ -43,8 +46,24 @@ class Pet extends React.Component {
         render(){
             const pet = this.props.pet;
             return(
+
+//                 <div>
+//                     <p>{pet.name}</p>
+//                     <img src={pet.image} alt=""/>
+//                     <p>{pet.petDescription}</p>
+//                     <p>{pet.shelterName}</p>
+//                     <p>{pet.shelterCity}</p>
+//                     <p>{pet.shelterContact}</p>
+//                     {pet.comments.map((comment, i) => {
+//                             return(
+//                                 <Note key={i} definedUserNote={comment.userComment} noteKey={comment.userCommentKey} userID={this.props.userID} petKey={pet.key}/>
+//                             )
+//                         })
+//                     }
+
                 <div className="clearfix">
                     <p className="user-pet-name">{pet.name}</p>
+                    <img src={pet.image} alt=""/>
                         <p className="user-description">{pet.petDescription}</p>
                         <div className="user-display">
                             <div className="shelter-user clearfix">
@@ -58,6 +77,7 @@ class Pet extends React.Component {
                                 )
                             })
                         }
+
                     <form onSubmit={this.handleSubmit}>
                         <div className="user-input">
                             <input type="text" name="userNotes" cols="66" rows="11" placeholder="Put some notes here!" onChange={this.handleChange} value={this.state.userNotes}/>
@@ -66,7 +86,11 @@ class Pet extends React.Component {
                             <button>Add Note</button>
                         </div>
                     </form>
+
+                    <button value={pet.key} onClick={this.props.removeEntireItem}>Delete All</button>
+
                     </div>
+
                 </div>
             )
         }
@@ -77,6 +101,25 @@ class Pets extends React.Component {
         super(props);
         this.state = {
             firebasePet: [],
+        }
+        this.removeEntireItem = this.removeEntireItem.bind(this);
+    }
+
+    // removing both note and description
+    removeEntireItem(e) {
+        const userResponse = confirm('Are you sure you want to delete this animal?');
+        if (userResponse === true) {
+            const dbRef = firebaseBase.ref(`${this.props.userID}/animal/${e.target.value}`);
+            dbRef.remove();
+            
+            let oldState = this.state.firebasePet;
+            let newState = oldState.filter(pet => {
+                return pet.key !== e.target.value;
+            });
+            this.setState({firebasePet: newState});
+        }
+        else {
+            return null;
         }
     }
 
@@ -99,11 +142,13 @@ class Pets extends React.Component {
                     addPetArray.push({
                             key: petsData,
                             name: addPetData[petsData].name,
+                            image: addPetData[petsData].petImage,
                             petDescription: addPetData[petsData].petDescription,
                             shelterName: addPetData[petsData].shelterName,
                             shelterCity:addPetData[petsData].shelterCity,
                             shelterContact: addPetData[petsData].shelterContact,
-                            comments: comments
+                            comments: comments,
+                            petImage: addPetData[petsData].petImage
                         })
                 }
                 this.setState({
@@ -118,7 +163,7 @@ class Pets extends React.Component {
         return this.state.firebasePet.map((pet, i) => {
             console.log(pet);
             return(
-                    <Pet key={i} pet={pet} userID= {this.props.userID}/>
+                    <Pet key={i} pet={pet} userID= {this.props.userID} removeEntireItem={this.removeEntireItem}/>
             )
         })
     }
@@ -127,8 +172,11 @@ class Pets extends React.Component {
 class Note extends React.Component {
     constructor(props) {
         super(props);
-        this.removeItem = this.removeItem.bind(this)
+        this.removeItem = this.removeItem.bind(this);
+        
     }
+
+    
 
     // removing items with dynamtic folders
     removeItem() {
@@ -146,9 +194,14 @@ class Note extends React.Component {
         return (
             <div className="defined-user-note">
                 <p>{this.props.definedUserNote}</p>
+
+//                 <button onClick={this.removeItem}>Delete Note</button>
+                
+
                 <div className="delete-note">
                     <button onClick={this.removeItem}>Delete Note</button>
                 </div>
+
             </div>
         )
     }
@@ -164,18 +217,34 @@ class Notes extends React.Component {
         
     }
 
+   
+
     render() {
         return (
+
+            <div>
+                {/* <form onSubmit={this.handleSubmit}>
+
+                    <input type="text" name="userNotes" placeholder="Put some notes here!" onChange={this.handleChange} value={this.state.userNotes}/>
+
+                    <button>Add Note</button>
+                    
+                </form> */}
+                
+                <div>
+                    <section>
+
             <div className="third-frame">
                <div className="wrapper--inner">
-                    <form onSubmit={this.handleSubmit}>
+//                     <form onSubmit={this.handleSubmit}>
 {/* 
                         <input type="text" name="userNotes" placeholder="Put some notes here!" onChange={this.handleChange} value={this.state.userNotes}/> */}
+
 
                         {/* <div className="button-notes">
                             <button>Add Note</button>
                         </div> */}
-                    </form>
+//                     </form>
                     <div>
                         <section>
 

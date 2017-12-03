@@ -70,6 +70,7 @@ class App extends React.Component {
     
     render() {
       return (
+
         <div className="wrapper--max">
           <main>
             <section>
@@ -83,6 +84,7 @@ class App extends React.Component {
             </section>
           </main>
         </div>
+
       )
     }
 }
