@@ -6,8 +6,8 @@ class Login extends React.Component {
         super();
         this.state = {
             loggedIn: false,
-            // user: '',
-            // userIDSet: ''
+            user: '',
+            userIDSet: ''
         }
         this.login = this.login.bind(this);
         this.logout = this.logout.bind(this);
@@ -109,7 +109,7 @@ class Login extends React.Component {
             </header>
             <section className="headerAnimals">
                     {this.state.loggedIn === true ?
-                        <h2>{`Hi, ${this.state.user}, let's find you a furrrever friend!`}</h2>
+                        <h2>{`Hi, ${this.login.user}, let's find you a furrrever friend!`}</h2>
                         : <h2>Sign in to find your furrrever friend!</h2>
                     }
                     <div className="circleContainer">
