@@ -8,6 +8,7 @@
     background-position:center;
     background-attachment:fixed;
     margin-top:1%;
+    min-height: 100vh;
     // border: 1px solid red;
     text-align:center;
     // height: 100vh;
@@ -37,22 +38,46 @@
 
 .radio {
     text-align: center;
+    width: 60%;
+    margin: 0 auto;
 }
 
+// .radioChoice {
+//     // border: 1px solid red;
+//     border-radius: 15px;
+//     max-width: 15%;
+//     // float:left;
+//     margin: 1% auto;
+//     padding: 1% 0;
+//     @include font-size-value(22);
+//     background-color:$grey;
+//     label {
+//         color: $red;
+//         margin: 2%;
+//         @include font-size-value(20);
+//     }
+// }
+
 .radioChoice {
-    // border: 1px solid red;
-    border-radius: 15px;
-    max-width: 15%;
-    // float:left;
-    margin: 1% auto;
+    max-width: 50%;
+    color: $red;
+    float:left;
+    width: calc(33% - 9px);
+    border: 1px solid $grey;
+    background: $grey;
     padding: 1% 0;
+    border-radius: 15px;
     @include font-size-value(22);
-    background-color:$grey;
+    margin-right: 9px;
+    text-align:center;
     label {
-        color: $red;
         margin: 2%;
-        @include font-size-value(20);
+         @include font-size-value(20);
     }
+}
+
+.radioChoice:nth-child(3) {
+    margin-right: 0;
 }
 
 h3 {

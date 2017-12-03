@@ -189,7 +189,8 @@ class Form extends React.Component {
 
     render() {
         return (
-            <div className="second-frame wrapper-inner">
+            <div className="second-frame">
+                <div className="wrapper--inner">
                 <h3>Find your Furrrever Friend!</h3>
                 <form onSubmit={this.addRequest} className="addForm">
                     <div className="text-input">
@@ -200,7 +201,7 @@ class Form extends React.Component {
                     {/* selecting between dog/cat */}
 
                     <p>Select the type of animal</p>
-                    <div className="radio clearfix">
+                    <div className="radio two-options clearfix">
                         <div className="radioChoice">
                             <label htmlFor="cat"><span className="custom-input">Cat</span></label>
                             <input type="radio" value="cat" name="animal" required="required" id="currentAnimal" onChange={this.handleChange} />
@@ -230,7 +231,7 @@ class Form extends React.Component {
 
                     {/* selecting the sex of the animal*/}
                     <p>Select the sex of the animal</p>
-                    <div className="radio clearfix">
+                    <div className="radio two-options clearfix">
                         <div className="radioChoice">
                             <label htmlFor="male">Male</label>
                             <input type="radio" value="male" name="sex" required="required" id="currentSex" onChange={this.handleChange} />
@@ -244,6 +245,7 @@ class Form extends React.Component {
                     <input type='submit' className='button-submit' value='Submit' />
 
                 </form>
+                </div>
                 <div>
 
 

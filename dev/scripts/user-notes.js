@@ -59,10 +59,12 @@ class Pet extends React.Component {
                             })
                         }
                     <form onSubmit={this.handleSubmit}>
-
-                        <input type="text" name="userNotes" placeholder="Put some notes here!" onChange={this.handleChange} value={this.state.userNotes}/>
-
-                        <button>Add Note</button>
+                        <div className="user-input">
+                            <input type="text" name="userNotes" cols="66" rows="11" placeholder="Put some notes here!" onChange={this.handleChange} value={this.state.userNotes}/>
+                        </div>
+                        <div className="user-add-button">
+                            <button>Add Note</button>
+                        </div>
                     </form>
                     </div>
                 </div>
