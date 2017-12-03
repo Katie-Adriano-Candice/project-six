@@ -133,8 +133,13 @@ class Form extends React.Component {
     addPet(event) {
         event.preventDefault();
 
+        if (!this.props.user) {
+            alert("Please login to save an animal to your profile.");
+            return;
+        }
+
         let sheltersToFirebase = (JSON.parse(event.target.dataset.shelterinfo));
-        const shelterToFirebase = sheltersToFirebase.shelter
+        const shelterToFirebase = sheltersToFirebase.shelter;
 
         let petToFirebase = (JSON.parse(event.target.dataset.animalinfo));
         
@@ -165,6 +170,7 @@ class Form extends React.Component {
         const dbRef = firebaseBase.ref(`${this.props.userID}/animal`);
         const userPerferencePet = dbRef.push(sendingPetsToFirebase)
     }
+
 
 
 
@@ -199,7 +205,8 @@ class Form extends React.Component {
 
     render() {
         return (
-            <div className="second-frame wrapper-inner">
+            <div className="second-frame">
+                <div className="wrapper--inner">
                 <h3>Find your Furrrever Friend!</h3>
                 <form onSubmit={this.addRequest} className="addForm">
                     <div className="text-input">
@@ -210,7 +217,7 @@ class Form extends React.Component {
                     {/* selecting between dog/cat */}
 
                     <p>Select the type of animal</p>
-                    <div className="radio clearfix">
+                    <div className="radio two-options clearfix">
                         <div className="radioChoice">
                             <label htmlFor="cat"><span className="custom-input">Cat</span></label>
                             <input type="radio" value="cat" name="animal" required="required" id="currentAnimal" onChange={this.handleChange} />
@@ -240,7 +247,7 @@ class Form extends React.Component {
 
                     {/* selecting the sex of the animal*/}
                     <p>Select the sex of the animal</p>
-                    <div className="radio clearfix">
+                    <div className="radio two-options clearfix">
                         <div className="radioChoice">
                             <label htmlFor="male">Male</label>
                             <input type="radio" value="male" name="sex" required="required" id="currentSex" onChange={this.handleChange} />
@@ -254,24 +261,29 @@ class Form extends React.Component {
                     <input type='submit' className='button-submit' value='Submit' />
 
                 </form>
+                </div>
                 <div>
 
 
                     {this.state.filteredResponse.map((shelter, i) => {
                         const pets = shelter.pets;
                         return (
-                            <div key={i}>
-                                <p>{shelter.shelter.name.$t}</p>
-                                <p>{shelter.shelter.city.$t}</p>
+                            <div className="shelter-appear" key={i}>
+                                <div className="shelter-sub wrapper--inner clearfix">
+                                <p className="shelter-name" id="name">{shelter.shelter.name.$t}</p>
+                                <p className="shelter-city" id="city">{shelter.shelter.city.$t}</p>
                                 <a href={shelter.shelter.email.$t}>Email the shelter!</a>
+                                </div>
                                 {pets.map((pet, index) => {
                                     return (
-                                        <div className="animals-appear" key={index}>
+                                        <div className="animals-appear wrapper--inner clearfix" key={index}>
                                             {/* displays first pet in array of images */}
                                             <img src={this.getPetPhotos(pet.media)[0]} />
-                                            <p>{pet.name.$t}</p>
-                                            <p class="animals-description">{pet.description.$t}</p>
-                                            <button onClick={this.addPet} data-shelterinfo={JSON.stringify(shelter)} data-animalinfo={JSON.stringify(pet)}>PRESS ME </button>
+                                            <div className="animal-info">
+                                                <p className="animals-name" id="animalsName">{pet.name.$t}</p>
+                                                <p className="animals-description" id="animals-descrip">{pet.description.$t}</p>
+                                                <button onClick={this.addPet} data-shelterinfo={JSON.stringify(shelter)} data-animalinfo={JSON.stringify(pet)}>PRESS ME </button>
+                                            </div>
 
                                         </div>
                                     )

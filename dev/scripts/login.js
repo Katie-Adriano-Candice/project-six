@@ -8,8 +8,8 @@ class Login extends React.Component {
         super();
         this.state = {
             loggedIn: false,
-            // user: '',
-            // userIDSet: ''
+            user: null,
+            userIDSet: null
         }
         this.login = this.login.bind(this);
         this.logout = this.logout.bind(this);
@@ -19,14 +19,14 @@ class Login extends React.Component {
         event.preventDefault();
         console.log('logged in');
         firebaseAuth.signInWithPopup(provider)
-            .then((user) => {
-                const userName = user.displayName;
-                const userID = user.uid;
+            .then((data) => {
+                const user = data.user.displayName;
+                const userID = data.user.uid;
                 this.setState({
                     loggedIn: true,
                 });
                 this.props.userLogin(
-                    userName,
+                    user,
                     userID
                 )
             })
@@ -40,10 +40,7 @@ class Login extends React.Component {
                 this.setState({
                     loggedIn: false,
                 });
-                this.props.userLogin(
-                    '',
-                    ''
-                )
+                this.props.userLogout();
             })
     }
 

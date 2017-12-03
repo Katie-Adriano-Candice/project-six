@@ -18,10 +18,11 @@ class App extends React.Component {
     constructor() {
       super();
       this.state = {
-        user: '',
-        userIDSet: ''
+        user: null,
+        userIDSet: null
       }
       this.login = this.login.bind(this);
+      this.logout = this.logout.bind(this);
     }  
 
 
@@ -41,8 +42,8 @@ class App extends React.Component {
       } else {
         console.log('user is logged out');
         this.setState({
-          user: '',
-          userIDSet: ''
+          user: null,
+          userIDSet: null
         })
       }
     })
@@ -57,27 +58,33 @@ class App extends React.Component {
     this.setState({
       user,
       userIDSet
+    });
+  }
+
+  logout() {
+    this.setState({
+      user: null,
+      userIDSet: null
     })  
   }
     
     render() {
       return (
-        <Router>
-          <div className="wrapper--max">
-            <main>
-              <Login user={this.state.user} userID={this.state.userIDSet} userLogin={this.login}/>
-              <Link to="/profile">Profile</Link>
-              
-            </main>
-              <Form user={this.state.user} userID={this.state.userIDSet}/>
-              <section>
-              
-                  <Notes userID={this.state.userIDSet}/>
-                  
-              </section>
 
-          </div>
-        </Router>
+        <div className="wrapper--max">
+          <main>
+            <section>
+            <Login user={this.state.user} userID={this.state.userIDSet} userLogin={this.login} userLogout={this.logout}/>
+         
+            <Form user={this.state.user} userID={this.state.userIDSet}/>
+           
+            
+                <Notes userID={this.state.userIDSet}/>
+              
+            </section>
+          </main>
+        </div>
+
       )
     }
 }

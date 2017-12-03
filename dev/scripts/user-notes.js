@@ -12,7 +12,7 @@ class Pet extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        
+
     }
 
     
@@ -33,7 +33,7 @@ class Pet extends React.Component {
             })
 
         } else {
-            alert("You can't submit empty feilds!");
+            alert("You can't submit empty fields!");
         }
     }
 
@@ -46,26 +46,51 @@ class Pet extends React.Component {
         render(){
             const pet = this.props.pet;
             return(
-                <div>
-                    <p>{pet.name}</p>
+
+//                 <div>
+//                     <p>{pet.name}</p>
+//                     <img src={pet.image} alt=""/>
+//                     <p>{pet.petDescription}</p>
+//                     <p>{pet.shelterName}</p>
+//                     <p>{pet.shelterCity}</p>
+//                     <p>{pet.shelterContact}</p>
+//                     {pet.comments.map((comment, i) => {
+//                             return(
+//                                 <Note key={i} definedUserNote={comment.userComment} noteKey={comment.userCommentKey} userID={this.props.userID} petKey={pet.key}/>
+//                             )
+//                         })
+//                     }
+
+                <div className="clearfix">
+                    <p className="user-pet-name">{pet.name}</p>
                     <img src={pet.image} alt=""/>
-                    <p>{pet.petDescription}</p>
-                    <p>{pet.shelterName}</p>
-                    <p>{pet.shelterCity}</p>
-                    <p>{pet.shelterContact}</p>
-                    {pet.comments.map((comment, i) => {
-                            return(
-                                <Note key={i} definedUserNote={comment.userComment} noteKey={comment.userCommentKey} userID={this.props.userID} petKey={pet.key}/>
-                            )
-                        })
-                    }
+                        <p className="user-description">{pet.petDescription}</p>
+                        <div className="user-display">
+                            <div className="shelter-user clearfix">
+                                <p>{pet.shelterName}</p>
+                                <p>{pet.shelterCity}</p>
+                                <p>{pet.shelterContact}</p>
+                            </div>
+                        {pet.comments.map((comment, i) => {
+                                return(
+                                    <Note key={i} definedUserNote={comment.userComment} noteKey={comment.userCommentKey} userID={this.props.userID} petKey={pet.key}/>
+                                )
+                            })
+                        }
+
                     <form onSubmit={this.handleSubmit}>
-
-                        <input type="text" name="userNotes" placeholder="Put some notes here!" onChange={this.handleChange} value={this.state.userNotes}/>
-
-                        <button>Add Note</button>
+                        <div className="user-input">
+                            <input type="text" name="userNotes" cols="66" rows="11" placeholder="Put some notes here!" onChange={this.handleChange} value={this.state.userNotes}/>
+                        </div>
+                        <div className="user-add-button">
+                            <button>Add Note</button>
+                        </div>
                     </form>
+
                     <button value={pet.key} onClick={this.props.removeEntireItem}>Delete All</button>
+
+                    </div>
+
                 </div>
             )
         }
@@ -167,10 +192,16 @@ class Note extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="defined-user-note">
                 <p>{this.props.definedUserNote}</p>
-                <button onClick={this.removeItem}>Delete Note</button>
+
+//                 <button onClick={this.removeItem}>Delete Note</button>
                 
+
+                <div className="delete-note">
+                    <button onClick={this.removeItem}>Delete Note</button>
+                </div>
+
             </div>
         )
     }
@@ -190,6 +221,7 @@ class Notes extends React.Component {
 
     render() {
         return (
+
             <div>
                 {/* <form onSubmit={this.handleSubmit}>
 
@@ -202,10 +234,25 @@ class Notes extends React.Component {
                 <div>
                     <section>
 
-                        <Pets userID={this.props.userID} /> 
-                           
-                        
-                    </section>
+            <div className="third-frame">
+               <div className="wrapper--inner">
+//                     <form onSubmit={this.handleSubmit}>
+{/* 
+                        <input type="text" name="userNotes" placeholder="Put some notes here!" onChange={this.handleChange} value={this.state.userNotes}/> */}
+
+
+                        {/* <div className="button-notes">
+                            <button>Add Note</button>
+                        </div> */}
+//                     </form>
+                    <div>
+                        <section>
+
+                            <Pets userID={this.props.userID} /> 
+                            
+                            
+                        </section>
+                    </div>
                 </div>
             </div>
         )
