@@ -19,7 +19,7 @@ class App extends React.Component {
       super();
       this.state = {
         user: null,
-        userIDSet: null
+        userIDSet: null,
       }
       this.login = this.login.bind(this);
       this.logout = this.logout.bind(this);
@@ -34,7 +34,6 @@ class App extends React.Component {
         console.log('user is logged in');
         const userName = user.displayName;
         const userID = user.uid;
-        // console.log(user.uid);
         this.setState({
           user: userName,
           userIDSet: userID
@@ -70,19 +69,25 @@ class App extends React.Component {
     
     render() {
       return (
-        <div className="wrapper--max">
-          <main>
-            <section>
-            <Login user={this.state.user} userID={this.state.userIDSet} userLogin={this.login} userLogout={this.logout}/>
-         
-            <Form user={this.state.user} userID={this.state.userIDSet}/>
-           
-            
-                <Notes userID={this.state.userIDSet}/>
-              
-            </section>
-          </main>
-        </div>
+        <Router>
+          <div className="wrapper--max">
+            <main>
+              <section>
+              <Login user={this.state.user} userID={this.state.userIDSet} userLogin={this.login} userLogout={this.logout}/>
+
+                <Route exact path="/" render = {() => <Form user={this.state.user} userID={this.state.userIDSet} />} /> 
+                {/* // <Form user={this.state.user} userID={this.state.userIDSet}/> */}
+
+              <Route path="/profile/:userID" component={Notes} />
+              {/* {this.state.user ?
+                  // <Notes userID={this.state.userIDSet} />
+                  :
+                  null
+              } */}
+              </section>
+            </main>
+          </div>
+        </Router>
       )
     }
 }

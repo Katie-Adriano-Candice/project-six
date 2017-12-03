@@ -1,5 +1,6 @@
 import React from 'react';
 import { firebaseRef, firebaseBase, provider, firebaseAuth } from './firebase-code';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Login from './login.js';
 import Form from './form.js';
 
@@ -43,31 +44,35 @@ class Pet extends React.Component {
         render(){
             const pet = this.props.pet;
             return(
-                <div className="clearfix">
-                    <p className="user-pet-name">{pet.name}</p>
-                        <p className="user-description">{pet.petDescription}</p>
-                        <div className="user-display">
-                            <div className="shelter-user clearfix">
-                                <p>{pet.shelterName}</p>
-                                <p>{pet.shelterCity}</p>
-                                <p>{pet.shelterContact}</p>
+                <div>
+
+                    <div className="clearfix">
+                        <p className="user-pet-name">{pet.name}</p>
+                            <p className="user-description">{pet.petDescription}</p>
+                            <div className="user-display">
+                                <div className="shelter-user clearfix">
+                                    <p>{pet.shelterName}</p>
+                                    <p>{pet.shelterCity}</p>
+                                    <p>{pet.shelterContact}</p>
+                                </div>
+                            {pet.comments.map((comment, i) => {
+                                    return(
+                                        <Note key={i} definedUserNote={comment.userComment} noteKey={comment.userCommentKey} userID={this.props.userID} petKey={pet.key}/>
+                                    )
+                                })
+                            }
+                        <form onSubmit={this.handleSubmit}>
+                            <div className="user-input">
+                                <input type="text" name="userNotes" cols="66" rows="11" placeholder="Put some notes here!" onChange={this.handleChange} value={this.state.userNotes}/>
                             </div>
-                        {pet.comments.map((comment, i) => {
-                                return(
-                                    <Note key={i} definedUserNote={comment.userComment} noteKey={comment.userCommentKey} userID={this.props.userID} petKey={pet.key}/>
-                                )
-                            })
-                        }
-                    <form onSubmit={this.handleSubmit}>
-                        <div className="user-input">
-                            <input type="text" name="userNotes" cols="66" rows="11" placeholder="Put some notes here!" onChange={this.handleChange} value={this.state.userNotes}/>
+                            <div className="user-add-button">
+                                <button>Add Note</button>
+                            </div>
+                        </form>
                         </div>
-                        <div className="user-add-button">
-                            <button>Add Note</button>
-                        </div>
-                    </form>
                     </div>
                 </div>
+          
             )
         }
     }
@@ -80,13 +85,12 @@ class Pets extends React.Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
-        const dbRef = firebaseBase.ref(`${nextProps.userID}/animal`);
-        console.log('props', this.props, nextProps);
+    componentWillMount() {
+        const dbRef = firebaseBase.ref(`${this.props.userID}/animal`);
         dbRef.on("value", (firebaseData) => {
 
             const addPetArray = [];
-            console.log('mounted');
+        
 
             const addPetData = firebaseData.val();
            
@@ -116,9 +120,9 @@ class Pets extends React.Component {
 
     render(){
         return this.state.firebasePet.map((pet, i) => {
-            console.log(pet);
             return(
                     <Pet key={i} pet={pet} userID= {this.props.userID}/>
+                 
             )
         })
     }
@@ -165,6 +169,7 @@ class Notes extends React.Component {
     }
 
     render() {
+        console.log(this.props);
         return (
             <div className="third-frame">
                <div className="wrapper--inner">
@@ -178,8 +183,10 @@ class Notes extends React.Component {
                     </form>
                     <div>
                         <section>
-
-                            <Pets userID={this.props.userID} /> 
+                            <Link to='/'>Go Back To The Homepage!</Link>
+                       
+                            <Pets userID={this.props.match.params.userID} /> 
+                       
                             
                             
                         </section>

@@ -2,6 +2,7 @@ import React from 'react';//
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import { firebaseRef, firebaseBase, provider, firebaseAuth } from './firebase-code';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Login from './login.js';
 import Notes from './user-notes.js';
 import Qs from 'qs';
@@ -91,10 +92,10 @@ class Form extends React.Component {
                 shelters.push(getShelter(value));
             }
 
-            console.log('shelters', shelters);
+         
 
             Promise.all(shelters).then((shelterResponse) => {
-                console.log('shelterResponse', shelterResponse);
+       
                 let filteredResponse = shelterResponse.filter(hasInfo => {
 
                     const petfinder = hasInfo.data.petfinder;
@@ -119,7 +120,7 @@ class Form extends React.Component {
                 });
 
                 this.setState({ filteredResponse: matchedPetsResponse });
-                console.log(filteredResponse);
+               
 
             });
         })
@@ -150,8 +151,7 @@ class Form extends React.Component {
             shelterContact: shelterToFirebase.email.$t,
             comments: {}
         };
-        console.log(sendingPetsToFirebase);
-    
+
         const dbRef = firebaseBase.ref(`${this.props.userID}/animal`);
         const userPerferencePet = dbRef.push(sendingPetsToFirebase)
     }
@@ -189,96 +189,120 @@ class Form extends React.Component {
 
     render() {
         return (
-            <div className="second-frame">
-                <div className="wrapper--inner">
-                <h3>Find your Furrrever Friend!</h3>
-                <form onSubmit={this.addRequest} className="addForm">
-                    <div className="text-input">
-                        <label htmlFor="postalCode" className="locationInput">Enter your Postal Code: </label>
-                        <input type="text" name="postalCode" placeholder="ie.M9P 1N8" id="currentPostalCode" required="required" value={this.state.postalCode} onChange={this.handleChange} />
+            <div>
+
+                <section className="headerAnimals">
+                    {this.props.user ?
+                        <h2>{`Hi, ${this.props.user}, let's find you a furrrever friend!`}</h2>
+                        : <h2>Sign in to find your furrrever friend!</h2>
+                    }
+                    <div className="circleContainer">
+                        <p>Find a furry friend <span>near you!</span></p>
                     </div>
 
-                    {/* selecting between dog/cat */}
+                </section>
 
-                    <p>Select the type of animal</p>
-                    <div className="radio two-options clearfix">
-                        <div className="radioChoice">
-                            <label htmlFor="cat"><span className="custom-input">Cat</span></label>
-                            <input type="radio" value="cat" name="animal" required="required" id="currentAnimal" onChange={this.handleChange} />
+
+
+                <div className="second-frame">
+                    <div className="wrapper--inner">
+                    <h3>Find your Furrrever Friend!</h3>
+                    <form onSubmit={this.addRequest} className="addForm">
+                        <div className="text-input">
+                            <label htmlFor="postalCode" className="locationInput">Enter your Postal Code: </label>
+                            <input type="text" name="postalCode" placeholder="ie.M9P 1N8" id="currentPostalCode" required="required" value={this.state.postalCode} onChange={this.handleChange} />
                         </div>
-                        <div className="radioChoice">
-                            <label htmlFor="dog">Dog</label>
-                            <input type="radio" value="dog" name="animal" required="required" id="currentAnimal" onChange={this.handleChange} />
+
+                        {/* selecting between dog/cat */}
+
+                        <p>Select the type of animal</p>
+                        <div className="radio two-options clearfix">
+                            <div className="radioChoice">
+                                <label htmlFor="cat"><span className="custom-input">Cat</span></label>
+                                <input type="radio" value="cat" name="animal" required="required" id="currentAnimal" onChange={this.handleChange} />
+                            </div>
+                            <div className="radioChoice">
+                                <label htmlFor="dog">Dog</label>
+                                <input type="radio" value="dog" name="animal" required="required" id="currentAnimal" onChange={this.handleChange} />
+                            </div>
                         </div>
+
+                        {/* selecting a size of the animal*/}
+                        <p>Select the size of animal</p>
+                        <div className="radio clearfix">
+                            <div className="radioChoice">
+                                <label htmlFor="small">Small</label>
+                                <input type="radio" value="S" name="size" required="required" id="currentSize" onChange={this.handleChange} />
+                            </div>
+                            <div className="radioChoice">
+                                <label htmlFor="medium">Medium</label>
+                                <input type="radio" value="M" name="size" required="required" id="currentSize" onChange={this.handleChange} />
+                            </div>
+                            <div className="radioChoice">
+                                <label htmlFor="large">Large</label>
+                                <input type="radio" value="L" name="size" required="required" id="currentSize" onChange={this.handleChange} />
+                            </div>
+                        </div>
+
+                        {/* selecting the sex of the animal*/}
+                        <p>Select the sex of the animal</p>
+                        <div className="radio two-options clearfix">
+                            <div className="radioChoice">
+                                <label htmlFor="male">Male</label>
+                                <input type="radio" value="male" name="sex" required="required" id="currentSex" onChange={this.handleChange} />
+                            </div>
+                            <div className="radioChoice">
+                                <label htmlFor="female">Female</label>
+                                <input type="radio" value="female" name="sex" required="required" id="currentSex" onChange={this.handleChange} />
+                            </div>
+                        </div>
+
+                        <input type='submit' className='button-submit' value='Submit' />
+
+                    </form>
+                    {this.props.user ?
+                        <Link to={`/profile/${this.props.userID}`}>My Profile</Link>
+                        :
+                        null
+                    }
                     </div>
-
-                    {/* selecting a size of the animal*/}
-                    <p>Select the size of animal</p>
-                    <div className="radio clearfix">
-                        <div className="radioChoice">
-                            <label htmlFor="small">Small</label>
-                            <input type="radio" value="S" name="size" required="required" id="currentSize" onChange={this.handleChange} />
-                        </div>
-                        <div className="radioChoice">
-                            <label htmlFor="medium">Medium</label>
-                            <input type="radio" value="M" name="size" required="required" id="currentSize" onChange={this.handleChange} />
-                        </div>
-                        <div className="radioChoice">
-                            <label htmlFor="large">Large</label>
-                            <input type="radio" value="L" name="size" required="required" id="currentSize" onChange={this.handleChange} />
-                        </div>
-                    </div>
-
-                    {/* selecting the sex of the animal*/}
-                    <p>Select the sex of the animal</p>
-                    <div className="radio two-options clearfix">
-                        <div className="radioChoice">
-                            <label htmlFor="male">Male</label>
-                            <input type="radio" value="male" name="sex" required="required" id="currentSex" onChange={this.handleChange} />
-                        </div>
-                        <div className="radioChoice">
-                            <label htmlFor="female">Female</label>
-                            <input type="radio" value="female" name="sex" required="required" id="currentSex" onChange={this.handleChange} />
-                        </div>
-                    </div>
-
-                    <input type='submit' className='button-submit' value='Submit' />
-
-                </form>
-                </div>
-                <div>
+                    <div>
 
 
                     {this.state.filteredResponse.map((shelter, i) => {
                         const pets = shelter.pets;
                         return (
-                            <div className="shelter-appear" key={i}>
-                                <div className="shelter-sub wrapper--inner clearfix">
-                                <p className="shelter-name" id="name">{shelter.shelter.name.$t}</p>
-                                <p className="shelter-city" id="city">{shelter.shelter.city.$t}</p>
-                                <a href={shelter.shelter.email.$t}>Email the shelter!</a>
-                                </div>
-                                {pets.map((pet, index) => {
-                                    return (
-                                        <div className="animals-appear wrapper--inner clearfix" key={index}>
-                                            {/* displays first pet in array of images */}
-                                            <img src={this.getPetPhotos(pet.media)[0]} />
-                                            <div className="animal-info">
-                                                <p className="animals-name" id="animalsName">{pet.name.$t}</p>
-                                                <p className="animals-description" id="animals-descrip">{pet.description.$t}</p>
-                                                <button onClick={this.addPet} data-shelterinfo={JSON.stringify(shelter)} data-animalinfo={JSON.stringify(pet)}>PRESS ME </button>
+                            <div>
+                                
+                                <div className="shelter-appear" key={i}>
+                                    <div className="shelter-sub wrapper--inner clearfix">
+                                    <p className="shelter-name" id="name">{shelter.shelter.name.$t}</p>
+                                    <p className="shelter-city" id="city">{shelter.shelter.city.$t}</p>
+                                    <a href={shelter.shelter.email.$t}>Email the shelter!</a>
+                                    </div>
+                                    {pets.map((pet, index) => {
+                                        return (
+                                            <div className="animals-appear wrapper--inner clearfix" key={index}>
+                                                {/* displays first pet in array of images */}
+                                                <img src={this.getPetPhotos(pet.media)[0]} />
+                                                <div className="animal-info">
+                                                    <p className="animals-name" id="animalsName">{pet.name.$t}</p>
+                                                    <p className="animals-description" id="animals-descrip">{pet.description.$t}</p>
+                                                    <button onClick={this.addPet} data-shelterinfo={JSON.stringify(shelter)} data-animalinfo={JSON.stringify(pet)}>PRESS ME </button>
+                                                </div>
+
                                             </div>
+                                        )
+                                    })}
 
-                                        </div>
-                                    )
-                                })}
-
-                            </div>
+                                </div>
+                        </div>
                         )
 
                     })}
                 </div>
             </div>
+        </div>
         )
     }
 }
