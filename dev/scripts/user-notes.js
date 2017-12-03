@@ -1,5 +1,6 @@
 import React from 'react';
 import { firebaseRef, firebaseBase, provider, firebaseAuth } from './firebase-code';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Login from './login.js';
 import Form from './form.js';
 
@@ -47,6 +48,7 @@ class Pet extends React.Component {
             const pet = this.props.pet;
             return(
 
+
 //                 <div>
 //                     <p>{pet.name}</p>
 //                     <img src={pet.image} alt=""/>
@@ -89,9 +91,11 @@ class Pet extends React.Component {
 
                     <button value={pet.key} onClick={this.props.removeEntireItem}>Delete All</button>
 
+
                     </div>
 
                 </div>
+          
             )
         }
     }
@@ -123,13 +127,12 @@ class Pets extends React.Component {
         }
     }
 
-    componentWillReceiveProps(nextProps) {
-        const dbRef = firebaseBase.ref(`${nextProps.userID}/animal`);
-        console.log('props', this.props, nextProps);
+    componentWillMount() {
+        const dbRef = firebaseBase.ref(`${this.props.userID}/animal`);
         dbRef.on("value", (firebaseData) => {
 
             const addPetArray = [];
-            console.log('mounted');
+        
 
             const addPetData = firebaseData.val();
            
@@ -161,9 +164,10 @@ class Pets extends React.Component {
 
     render(){
         return this.state.firebasePet.map((pet, i) => {
-            console.log(pet);
             return(
+
                     <Pet key={i} pet={pet} userID= {this.props.userID} removeEntireItem={this.removeEntireItem}/>
+
             )
         })
     }
@@ -220,6 +224,7 @@ class Notes extends React.Component {
    
 
     render() {
+        console.log(this.props);
         return (
 
             <div>
@@ -247,8 +252,10 @@ class Notes extends React.Component {
 //                     </form>
                     <div>
                         <section>
-
-                            <Pets userID={this.props.userID} /> 
+                            <Link to='/'>Go Back To The Homepage!</Link>
+                       
+                            <Pets userID={this.props.match.params.userID} /> 
+                       
                             
                             
                         </section>

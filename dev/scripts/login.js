@@ -7,7 +7,6 @@ class Login extends React.Component {
     constructor() {
         super();
         this.state = {
-            loggedIn: false,
             user: null,
             userIDSet: null
         }
@@ -22,9 +21,6 @@ class Login extends React.Component {
             .then((data) => {
                 const user = data.user.displayName;
                 const userID = data.user.uid;
-                this.setState({
-                    loggedIn: true,
-                });
                 this.props.userLogin(
                     user,
                     userID
@@ -37,11 +33,9 @@ class Login extends React.Component {
         firebaseAuth.signOut()
             .then(() => {
                 console.log('logged out');
-                this.setState({
-                    loggedIn: false,
-                });
                 this.props.userLogout();
             })
+            
     }
 
     render() {
@@ -100,7 +94,7 @@ class Login extends React.Component {
                         <li>
                             <a href="" className="nav--signout"   onClick={this.logout}><div>Sign out  <i className="fa fa-google" aria-hidden="true"></i></div></a>
                         </li>
-                        :
+                        : 
                         <li>
                             <a href="" className="nav--signin" onClick={this.login}><div>Sign in  <i className="fa fa-google" aria-hidden="true"></i></div></a>
                         </li>
@@ -108,9 +102,10 @@ class Login extends React.Component {
                     </ul>
                 </nav>
             </header>
-            <section className="headerAnimals">
-                <div className="wrapper--inner">
-                    {this.state.loggedIn === true ?
+
+            {/* <section className="headerAnimals">
+                    {this.props.user ?
+
                         <h2>{`Hi, ${this.props.user}, let's find you a furrrever friend!`}</h2>
                         : <h2>Sign in to find your furrrever friend!</h2>
                     }
@@ -124,8 +119,7 @@ class Login extends React.Component {
                         
                 </div>
                 
-            </section>
-
+            </section> */}
         </div>
         )
     }
