@@ -129,8 +129,13 @@ class Form extends React.Component {
     addPet(event) {
         event.preventDefault();
 
+        if (!this.props.user) {
+            alert("Please login to save an animal to your profile.");
+            return;
+        }
+
         let sheltersToFirebase = (JSON.parse(event.target.dataset.shelterinfo));
-        const shelterToFirebase = sheltersToFirebase.shelter
+        const shelterToFirebase = sheltersToFirebase.shelter;
 
         let petToFirebase = (JSON.parse(event.target.dataset.animalinfo));
 
@@ -150,6 +155,7 @@ class Form extends React.Component {
         const dbRef = firebaseBase.ref(`${this.props.userID}/animal`);
         const userPerferencePet = dbRef.push(sendingPetsToFirebase)
     }
+
 
 
 
