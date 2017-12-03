@@ -62,18 +62,22 @@ class App extends React.Component {
     
     render() {
       return (
-        <div className="wrapper--max">
-          <main>
-            <Login user={this.state.user} userID={this.state.userIDSet} userLogin={this.login}/>
-          </main>
-            <Form user={this.state.user} userID={this.state.userIDSet}/>
-            <section>
-            
-                <Notes userID={this.state.userIDSet}/>
+        <Router>
+          <div className="wrapper--max">
+            <main>
+              <Login user={this.state.user} userID={this.state.userIDSet} userLogin={this.login}/>
+              <Link to="/profile">Profile</Link>
               
-            </section>
+            </main>
+              <Form user={this.state.user} userID={this.state.userIDSet}/>
+              <section>
+              
+                  <Notes userID={this.state.userIDSet}/>
+                  
+              </section>
 
-        </div>
+          </div>
+        </Router>
       )
     }
 }

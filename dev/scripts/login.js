@@ -1,5 +1,7 @@
 import React from 'react';
 import { firebaseRef, firebaseBase, provider, firebaseAuth } from './firebase-code';
+import Notes from './user-notes';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 class Login extends React.Component {
     constructor() {
@@ -79,7 +81,7 @@ class Login extends React.Component {
                 </header>
             </section> */}
             <header className="header">
-                <nav className="header__nav">
+                <nav className="header__nav wrapper--nav">
                     <ul>
                         <li>
                             <a href="https://twitter.com/share" className="nav--twitter" data-size="large" data-text="Adopt one of our animals" data-url="http://wewilladdasitelater.com"><div><i className="fa fa-twitter" aria-hidden="true"></i></div></a>
@@ -91,9 +93,11 @@ class Login extends React.Component {
                             </h1>
                         </li>
 
-                        <li>
+                        {/* <li>
                             <h1><span>Purrrfect</span> Friends</h1>
-                        </li>                            
+                        </li>           */}
+                        
+                                                                 
                         {this.props.user ?
 
                         <li>
@@ -108,13 +112,20 @@ class Login extends React.Component {
                 </nav>
             </header>
             <section className="headerAnimals">
+                <div className="wrapper--inner">
                     {this.state.loggedIn === true ?
-                        <h2>{`Hi, ${this.state.user}, let's find you a furrrever friend!`}</h2>
+                        <h2>{`Hi, ${this.props.user}, let's find you a furrrever friend!`}</h2>
                         : <h2>Sign in to find your furrrever friend!</h2>
                     }
-                    <div className="circleContainer">
-                        <p>Find a furry friend <span>near you!</span></p>
-                    </div>
+                    
+                            <div className="circle__wrapper">
+                                <div className="circle__content">
+                                    
+                                    <p>Find a furry friend <span>near you!</span></p>
+                                </div>
+                            </div>
+                        
+                </div>
                 
             </section>
 

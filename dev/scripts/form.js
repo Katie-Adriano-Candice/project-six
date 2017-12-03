@@ -16,7 +16,8 @@ class Form extends React.Component {
             sex: '',
             filteredResponse: [],
             petNameUnique: '',
-            petDescription: ''
+            petDescription: '',
+            imageOfPet: ''
         }
         this.addRequest = this.addRequest.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -56,8 +57,11 @@ class Form extends React.Component {
             }
         }).then((res) => {
             let petArray = res.data.petfinder.pets.pet;
-
-
+            console.log(petArray);
+            
+            
+            
+            
             petArray.forEach(id => {
                 getShelterList.push(id.shelterId.$t);
                 let petNameUnique = id.name.$t;
@@ -133,11 +137,21 @@ class Form extends React.Component {
         const shelterToFirebase = sheltersToFirebase.shelter
 
         let petToFirebase = (JSON.parse(event.target.dataset.animalinfo));
+        
 
+        let petImages = petToFirebase.media.photos.photo;
+        let petImage = petImages.map(photo => {
+                if (photo['@size'] === 'x') {
+                    return photo.$t
+                }
+            }).filter(photo => photo)
+
+        
 
         const sendingPetsToFirebase= {
             
-            // petImage: petToFirebase.pet.media[0],
+
+            petImage: petImage[0],
             name: petToFirebase.name.$t,
             petDescription: petToFirebase.description.$t,
             shelterName: shelterToFirebase.name.$t,
@@ -146,6 +160,7 @@ class Form extends React.Component {
             comments: {}
         };
         console.log(sendingPetsToFirebase);
+        console.log(petToFirebase);
     
         const dbRef = firebaseBase.ref(`${this.props.userID}/animal`);
         const userPerferencePet = dbRef.push(sendingPetsToFirebase)
@@ -160,6 +175,7 @@ class Form extends React.Component {
                 return photo.$t
             }
         }).filter(photo => photo)
+        
     }
 
     addRequest(e) {
