@@ -144,7 +144,9 @@ class Note extends React.Component {
         return (
             <div className="defined-user-note">
                 <p>{this.props.definedUserNote}</p>
-                <button onClick={this.removeItem}>Delete Note</button>
+                <div className="delete-note">
+                    <button onClick={this.removeItem}>Delete Note</button>
+                </div>
             </div>
         )
     }

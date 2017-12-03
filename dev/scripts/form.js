@@ -245,9 +245,9 @@ class Form extends React.Component {
                         const pets = shelter.pets;
                         return (
                             <div className="shelter-appear" key={i}>
-                                <div className="shelter-sub wrapper--inner">
-                                <p className="shelter-name">{shelter.shelter.name.$t}</p>
-                                <p className="shelter-city">{shelter.shelter.city.$t}</p>
+                                <div className="shelter-sub wrapper--inner clearfix">
+                                <p className="shelter-name" id="name">{shelter.shelter.name.$t}</p>
+                                <p className="shelter-city" id="city">{shelter.shelter.city.$t}</p>
                                 <a href={shelter.shelter.email.$t}>Email the shelter!</a>
                                 </div>
                                 {pets.map((pet, index) => {
@@ -256,8 +256,8 @@ class Form extends React.Component {
                                             {/* displays first pet in array of images */}
                                             <img src={this.getPetPhotos(pet.media)[0]} />
                                             <div className="animal-info">
-                                                <p className="anmials-name">{pet.name.$t}</p>
-                                                <p className="animals-description">{pet.description.$t}</p>
+                                                <p className="animals-name" id="animalsName">{pet.name.$t}</p>
+                                                <p className="animals-description" id="animals-descrip">{pet.description.$t}</p>
                                                 <button onClick={this.addPet} data-shelterinfo={JSON.stringify(shelter)} data-animalinfo={JSON.stringify(pet)}>PRESS ME </button>
                                             </div>
 
