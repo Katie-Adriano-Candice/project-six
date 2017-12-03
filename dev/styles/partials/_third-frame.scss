@@ -18,8 +18,10 @@
         border: 1px solid transparent;
         }
         input {
-            min-height: 100px;
-            width: 25%;
+            height: 150px;
+            width: 60%;
+            border: 1px solid transparent;
+            border-radius: 15px;
         }
         p {
             margin-top: 0;
@@ -28,6 +30,10 @@
         .button-notes {
             max-width: 50%;
         }
+}
+
+.user-input, .user-add-button {
+    text-align:center;
 }
 
 .user-description {
