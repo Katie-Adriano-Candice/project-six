@@ -1,6 +1,10 @@
-.header__nav {
+.header {
     background: lighten($headerBackground, 40);
-     box-shadow: 1px 1px 50px lighten($headerBackground, 20);
+    box-shadow: 1px 1px 50px lighten($headerBackground, 20);
+    
+}
+
+.header__nav {
     ul {
         position: relative;
         height: 100px;
@@ -14,6 +18,7 @@
                 left: 48%;
                 transform: translateX(-48%);
                 position: relative;
+                top: 10px;
              }
              &:nth-child(3) {                
                 right: 40px;
@@ -41,7 +46,7 @@ a.nav--twitter {
 } 
 
 a.nav--signin, a.nav--signout {
-    color: black;
+    color: $black;
     float: right;
     @include font-size-value(20);
     font-weight: 700;
@@ -67,7 +72,7 @@ h1 {
     display: inline-block;
     // margin-left: 10px;
     span {
-        color: grey;
+        color: $headerBackground;
     }
 }
 
@@ -76,7 +81,7 @@ h1 {
 }
 
 .headerAnimals {
-    background-image: url("../assets/pup_kitten_solo.png");
+    background-image: url("../assets/pup_kitten_solo.jpg");
     height: 80vh;    
     background-repeat: no-repeat;
     background-size: cover;
@@ -85,29 +90,56 @@ h1 {
         text-align: center;
         margin-top: 40px;
         letter-spacing: 2px;
+        margin: 0;
+        padding-top: 20px;
     }
-    .circleContainer {
-        height: 300px;
+    .circle__wrapper {
+        position: absolute;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+        margin: auto;
         width: 300px;
+        height: 300px;
         border-radius: 50%;
+        @include font-size-value(30);
         background: $primaryColour;
         text-align: center;
-        display:table-cell;
-        vertical-align:middle;
-        @include font-size-value(20);
-        color: white;
-        position: absolute;
-        left: 40%;
-        transform: translateX(-40%);
-        top: 50%;
-        transform: translateY(-50%);
+    }
+
+    .circle__content {
         p {
-            margin-top: 128px;
+            margin-top: 120px;
+            color: $white;
         }
         span {
-            display: block;
-            font-weight: 700;
+            font-weight: bold;
         }
-        
     }
+
+   
+    // .circleContainer {
+    //     height: 300px;
+    //     width: 300px;
+    //     border-radius: 50%;
+    //     background: $primaryColour;
+    //     text-align: center;
+    //     display:table-cell;
+    //     vertical-align:middle;
+    //     @include font-size-value(20);
+    //     color: $white;
+    //     position: absolute;
+    //     left: 40%;
+    //     transform: translateX(-40%);
+    //     top: 50%;
+    //     transform: translateY(-50%);
+    //     p {
+    //         margin-top: 128px;
+    //     }
+    //     span {
+    //         display: block;
+    //         font-weight: 700;
+    //     }        
+    // }
 }

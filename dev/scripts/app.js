@@ -69,6 +69,7 @@ class App extends React.Component {
     
     render() {
       return (
+
         <Router>
           <div className="wrapper--max">
             <main>
@@ -88,6 +89,7 @@ class App extends React.Component {
             </main>
           </div>
         </Router>
+
       )
     }
 }

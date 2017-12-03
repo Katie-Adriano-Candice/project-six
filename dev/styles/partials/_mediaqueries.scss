@@ -1,6 +1,6 @@
 @media (max-width: 970px) {
     .headerAnimals {
-        background-image: url("../assets/pup_solo2.png");
+        background-image: url("../assets/pup_solo2.jpg");
         object-fit: cover;
         background-position-y: 15%;
         .circleContainer {
@@ -10,11 +10,18 @@
 }
 
 @media (max-width: 770px) {
+    .header__nav {
+        height: 180px;
+    }
+    .header__nav ul li:nth-child(2) {
+        position: relative;
+        top: 100px;
+    }
     .headerAnimals {
         background-image: none;
         &::after {
             content: "";
-            background-image: url("../assets/pup_solo2.png");
+            background-image: url("../assets/pup_solo2.jpg");
             object-fit: cover;
             background-position-y: 15%;
             opacity: 0.5;
@@ -28,5 +35,30 @@
                 left: 30%;
             }
         }
+    }
+}
+
+@media (max-width: 400px) {
+    .header__nav ul {
+        padding-left: 10px;
+        & li:nth-child(2) h1 {
+            @include font-size-value(20);
+            letter-spacing: 1px;
+        }
+        & li:nth-child(3) {
+            right: 10px;
+        }
+    }
+    img.petLogo {
+            width: 15%;
+            margin-right: 10px;
+    }
+    .headerAnimals .circle__wrapper {
+        width: 200px;
+        height: 200px;
+        @include font-size-value(20);
+    }
+    .headerAnimals .circle__content p {
+        margin-top: 80px;
     }
 }
