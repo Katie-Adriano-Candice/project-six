@@ -60,10 +60,12 @@ class App extends React.Component {
     });
   }
 
-  logout() {
+  logout(history) {
     this.setState({
       user: null,
       userIDSet: null
+    }, function(){
+      history.push("/");  
     })  
   }
     

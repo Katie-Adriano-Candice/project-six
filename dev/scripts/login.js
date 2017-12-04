@@ -1,7 +1,7 @@
 import React from 'react';
 import { firebaseRef, firebaseBase, provider, firebaseAuth } from './firebase-code';
 import Notes from './user-notes';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link, withRouter } from 'react-router-dom';
 
 class Login extends React.Component {
     constructor() {
@@ -32,8 +32,7 @@ class Login extends React.Component {
         event.preventDefault();
         firebaseAuth.signOut()
             .then(() => {
-                console.log('logged out');
-                this.props.userLogout();
+                this.props.userLogout(this.props.history);
             })
             
     }
@@ -123,4 +122,4 @@ class Login extends React.Component {
 }
 
 
-export default Login;
+export default withRouter(Login);
