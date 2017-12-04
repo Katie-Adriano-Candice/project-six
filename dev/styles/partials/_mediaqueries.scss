@@ -1,7 +1,9 @@
 @media (max-width: 970px) {
     .headerAnimals {
         background-image: url("../assets/pup_solo2.jpg");
-        object-fit: cover;
+        background-repeat: no-repeat;
+        // object-fit: cover;
+        background-size: cover;
         background-position-y: 15%;
         .circleContainer {
             left: 60%;
@@ -33,6 +35,22 @@
             z-index: -1; 
             .circleContainer {
                 left: 30%;
+            }
+        }
+    }
+    #currentPostalCode {
+        padding: 10px 0 10px 20px;
+        width: 200px;
+    }
+    .radioChoice {
+        padding: 0;
+        .check {
+            height: 20px;
+            width: 20px;
+            top: 15px;
+            &::before {
+                top: -1px;
+                left: -1px;
             }
         }
     }
