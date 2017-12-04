@@ -9,15 +9,12 @@
     background-attachment:fixed;
     min-height: 100vh;    
     padding-top: 50px;
-    // border: 1px solid red;
     text-align:center;
-    // height: 100vh;
+    min-height: 100vh;
     p, .text-input {
         @include font-size-value(28);
         color: $red;
         padding: 1% 0;
-        // max-width: 50%;
-        // border: 1px solid red;
     }
 
     .text-input {
@@ -28,9 +25,7 @@
 
 .radio, .addForm, .text-input, h3{
     text-align:center;
-    // border: 1px solid red;
     margin: 0 auto;
-    // max-width: 50%;
 }
 
 .text-input input {
@@ -175,7 +170,6 @@ h3 {
         background-color: $blue;
         :hover {
         transition: 0.4s;
-        // background-color:$yellow;
         color:$red;
         border: 1px solid transparent;
         }
@@ -206,13 +200,11 @@ h3 {
         color: $red;
     }
     .shelter-sub {
-        // border: 1px solid $blue;
         max-width: 50%;
         margin: 0 auto;
         margin-bottom: 1%;
         padding: 2% 0;
     .shelter-name {
-        // float: left;
         text-align:center;
         width: 50%;
         margin: 0 auto;
@@ -231,18 +223,15 @@ h3 {
 }
 
 form input[type=radio] {
-    // margin: 10% 8%;
-    //
     position: absolute;
     visibility: hidden;
-    //
+   
 }
 
-//
+
 .radioChoice label {
     display: block;
     position: relative;
-    // font-weight: 300;
     @include font-size-value(18);
     padding: 8px 0px 10px 40px;
     margin: 10px auto;
@@ -251,13 +240,13 @@ form input[type=radio] {
     cursor: pointer;
     -webkit-transition: all 0.25s linear;
 }
-//
+
 
 .radioChoice:hover label {
     color: $secondaryColour;
 }
 
-//
+
 .radioChoice .check::before {
     display: block;
     position: absolute;
@@ -271,17 +260,13 @@ form input[type=radio] {
 	transition: background 0.25s linear;
 	-webkit-transition: background 0.25s linear;
 }
-//
 
-//
 .radioChoice {
     position: relative;
     display: block;
     
 }
-//
 
-// 
 .radioChoice:hover {
     color: $secondaryColour;
     & .check {        
@@ -304,20 +289,19 @@ form input[type=radio] {
 	transition: border .25s linear;
 	-webkit-transition: border .25s linear;
 }
-//
 
-//
+
 span.custom-input {
     margin-left: 20px;
 }
 
-//
+
 input[type=radio]:checked ~ .check {
   border: 5px solid $secondaryColour;
 }
-//
 
-//
+
+
 input[type=radio]:checked ~ .check::before{
   background: $secondaryColour;
 }
@@ -325,7 +309,7 @@ input[type=radio]:checked ~ .check::before{
 input[type=radio]:checked ~ label{
   color: $secondaryColour;
 }
-//
+
 
 .two-options {
     margin-right: 10%;
@@ -340,89 +324,45 @@ input[type=radio]:checked ~ label{
     }
 }
 
-// form input[type='radio'] {
-//     display: none;
-// }
+.second-frame--title {
+    h3 {
+        font-family: $header-font;
+        text-transform: none;
+    }
+    h3 {
+        padding-bottom: 0;
+        @include font-size-value(45);
+    }
+    margin-bottom: 20px;
+}
 
-// form input[type='radio']+label::before {
-//     content: '';
-//     display: inline-block;
-//     border: 5px solid #000;
-//     border-radius: 50%;
-//     margin: 2% 8%;
-// }
+ .floating--profile {
+    height: 90px;
+    width: 90px;
+    position: fixed;
+    right: 2%;
+    top: 15%;
+    padding-top: 8px;
+    background: rgba($grey, 0.5);
+    border-radius: 15px;
+    box-shadow: 0.3px 0.3px 0.5px 0.3px lighten($black, 40);
+    &:hover {
+                color: rgba($grey, 0.8);
+            }
+    a, .fa-paw {
+        color: rgba($red, 0.5);
+        display: block;
+        &:hover {
+                color: rgba($red, 0.8);
+            }
+    }
+    a {
+        @include font-size-value(20);
+        font-family: $body-font;
+        margin-bottom: 0.5px;
+    }
+ }
 
-// form input[type='radio']:checked+label::before {
-//     background-color: red;
-//     color: blue;
-// }
-
-// form input[type='radio']+label::before {
-//     width: 1.75rem;
-//     height: 1.75rem;
-// }
-
-// .shelter-sub p {
-//     border: 1px solid red;
-// }
-
-// .shelter-city {
-//     text-align:right;
-// }
-
-// form input[type='radio'] {
-//     display: none;
-// }
-
-// form input[type='radio']+label::before {
-//     content: '';
-//     display: inline-block;
-//     border: 5px solid #000;
-//     border-radius: 50%;
-//     margin: 0 0.5em;
-// }
-
-// form input[type='radio']:checked+label::before {
-//     background-color: #48d1cc;
-// }
-
-// form input[type='radio']+label::before {
-//     width: 1.5rem;
-//     height: 1.5rem;
-// }
-
-// .radioChoice label{
-//   position: relative;
-// }
-
-// .radioChoice .custom-input::before,
-// .radioChoice .custom-input::after {
-//   content: '';
-//   position: absolute;
-//   top: 0;
-//   bottom: 0;
-//   margin: auto;
-// }
-
-// .radioChoice .custom-input.radio:hover {
-//   cursor: pointer;
-// }
-// .radioChoice .custom-input.radio::before {
-//   left: -52px;
-//   width: 45px;
-//   height: 25px;
-//   background-color: #A8AAC1;
-//   border-radius: 50px;
-// }
-// .radioChoice .custom-input.radio::after {
-//   left: -49px;
-//   width: 17px;
-//   height: 17px;
-//   border-radius: 10px;
-//   background-color: #6C788A;
-//   transition: left .25s, background-color .25s;
-// }
-// input[type="radio"]:checked + label .custom-input.radio::after {
-//   left: -27px;
-//   background-color: #EBFF43;
-// }
+ .floating-profile--mediaquerie {
+     display: none;
+ }
