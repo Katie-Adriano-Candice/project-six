@@ -236,13 +236,14 @@ class Form extends React.Component {
                         <p>Select the type of animal</p>
                         <div className="radio two-options clearfix">
                             <div className="radioChoice">
+                                <input type="radio" value="cat" name="animal" required="required" id="cat" onChange={this.handleChange} />
+
                                 <label htmlFor="cat">Cat</label>
-                                <input type="radio" value="cat" name="animal" required="required" id="currentAnimal" onChange={this.handleChange} />
                                 <div className="check"></div>
                             </div>
                             <div className="radioChoice">
                                 <label htmlFor="dog"><span className="custom-input">Dog</span></label>
-                                <input type="radio" value="dog" name="animal" required="required" id="currentAnimal" onChange={this.handleChange} />
+                                <input type="radio" value="dog" name="animal" required="required" id="dog" onChange={this.handleChange} />
                                 <div className="check"></div>
                             </div>
                         </div>
@@ -252,15 +253,18 @@ class Form extends React.Component {
                         <div className="radio clearfix">
                             <div className="radioChoice">
                                 <label htmlFor="small">Small</label>
-                                <input type="radio" value="S" name="size" required="required" id="currentSize" onChange={this.handleChange} />
+                                <input type="radio" value="S" name="size" required="required" id="small" onChange={this.handleChange} />
+                                <div className="check"></div>
                             </div>
                             <div className="radioChoice">
                                 <label htmlFor="medium">Medium</label>
-                                <input type="radio" value="M" name="size" required="required" id="currentSize" onChange={this.handleChange} />
+                                <input type="radio" value="M" name="size" required="required" id="medium" onChange={this.handleChange} />
+                                <div className="check"></div>
                             </div>
                             <div className="radioChoice">
                                 <label htmlFor="large">Large</label>
-                                <input type="radio" value="L" name="size" required="required" id="currentSize" onChange={this.handleChange} />
+                                <input type="radio" value="L" name="size" required="required" id="large" onChange={this.handleChange} />
+                                <div className="check"></div>
                             </div>
                         </div>
 
@@ -269,11 +273,13 @@ class Form extends React.Component {
                         <div className="radio two-options clearfix">
                             <div className="radioChoice">
                                 <label htmlFor="male">Male</label>
-                                <input type="radio" value="M" name="sex" required="required" id="currentSex" onChange={this.handleChange} />
+                                <input type="radio" value="M" name="sex" required="required" id="male" onChange={this.handleChange} />
+                                <div className="check"></div>
                             </div>
                             <div className="radioChoice">
                                 <label htmlFor="female">Female</label>
-                                <input type="radio" value="F" name="sex" required="required" id="currentSex" onChange={this.handleChange} />
+                                <input type="radio" value="F" name="sex" required="required" id="female" onChange={this.handleChange} />
+                                <div className="check"></div>
                             </div>
                         </div>
 
