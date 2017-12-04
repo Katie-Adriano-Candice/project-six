@@ -222,7 +222,7 @@ class Form extends React.Component {
 
                 <div className="second-frame">
                     <div className="wrapper--inner">
-                    <h3>Find your Furrrever Friend!</h3>
+                    <h3>Find a furry friend near you!</h3>
                     <form onSubmit={this.addRequest} className="addForm">
                         <div className="text-input">
                             <label htmlFor="postalCode" className="locationInput">Enter your Postal Code: </label>
@@ -234,12 +234,14 @@ class Form extends React.Component {
                         <p>Select the type of animal</p>
                         <div className="radio two-options clearfix">
                             <div className="radioChoice">
-                                <label htmlFor="cat"><span className="custom-input">Cat</span></label>
+                                <label htmlFor="cat">Cat</label>
                                 <input type="radio" value="cat" name="animal" required="required" id="currentAnimal" onChange={this.handleChange} />
+                                <div className="check"></div>
                             </div>
                             <div className="radioChoice">
-                                <label htmlFor="dog">Dog</label>
+                                <label htmlFor="dog"><span className="custom-input">Dog</span></label>
                                 <input type="radio" value="dog" name="animal" required="required" id="currentAnimal" onChange={this.handleChange} />
+                                <div className="check"></div>
                             </div>
                         </div>
 
