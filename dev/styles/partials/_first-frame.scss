@@ -81,8 +81,8 @@ h1 {
 }
 
 .headerAnimals {
-    background-image: url("../assets/pup_kitten_solo.jpg");
-    height: 80vh;    
+    background-image: url("../assets/pup_kitten_solo_shadow.jpg");
+    min-height: calc(100vh - 100px);    
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
@@ -119,27 +119,27 @@ h1 {
     }
 
    
-    // .circleContainer {
-    //     height: 300px;
-    //     width: 300px;
-    //     border-radius: 50%;
-    //     background: $primaryColour;
-    //     text-align: center;
-    //     display:table-cell;
-    //     vertical-align:middle;
-    //     @include font-size-value(20);
-    //     color: $white;
-    //     position: absolute;
-    //     left: 40%;
-    //     transform: translateX(-40%);
-    //     top: 50%;
-    //     transform: translateY(-50%);
-    //     p {
-    //         margin-top: 128px;
-    //     }
-    //     span {
-    //         display: block;
-    //         font-weight: 700;
-    //     }        
-    // }
+    .circleContainer {
+        height: 300px;
+        width: 300px;
+        border-radius: 50%;
+        background: $primaryColour;
+        text-align: center;
+        display:table-cell;
+        vertical-align:middle;
+        @include font-size-value(20);
+        color: $white;
+        position: absolute;
+        left: 40%;
+        transform: translateX(-40%);
+        top: 50%;
+        transform: translateY(-50%);
+        p {
+            margin-top: 128px;
+        }
+        span {
+            display: block;
+            font-weight: 700;
+        }        
+    }
 }

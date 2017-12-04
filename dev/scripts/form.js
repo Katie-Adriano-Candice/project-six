@@ -32,7 +32,7 @@ class Form extends React.Component {
         });
     }
 
-    getAnimals(animal, size, place) {
+    getAnimals(animal, sex, size, place) {
         const key = 'e9a6ca7347527ff3b4dabbf7e663f9f1';
         const apiUrl = 'http://api.petfinder.com/';
         let getShelterList = [];
@@ -47,6 +47,7 @@ class Form extends React.Component {
                 reqUrl: `${apiUrl}pet.find`,
                 params: {
                     key: key,
+                    sex: sex,
                     animal: animal,
                     size: size,
                     output: 'full',
@@ -66,9 +67,11 @@ class Form extends React.Component {
             petArray.forEach(id => {
                 getShelterList.push(id.shelterId.$t);
                 let petNameUnique = id.name.$t;
+                let petSex = id.sex.$t;
                 let petDescription = id.description.$t;
 
                 this.setState({ petNameUnique });
+                this.setState({petSex});
                 this.setState({ petDescription });
             });
             const uniqueShelters = new Set(getShelterList);
@@ -194,7 +197,7 @@ class Form extends React.Component {
 
             }
 
-            this.getAnimals(this.state.animal, this.state.size, this.state.postalCode);
+            this.getAnimals(this.state.animal, this.state.sex, this.state.size, this.state.postalCode);
             this.setState({
                 postalCode: '',
             });
@@ -208,14 +211,13 @@ class Form extends React.Component {
             <div>
 
                 <section className="headerAnimals">
-                    {this.props.user ?
-                        <h2>{`Hi, ${this.props.user}, let's find you a furrrever friend!`}</h2>
-                        : <h2>Sign in to find your furrrever friend!</h2>
-                    }
+                    
                     <div className="circleContainer">
-                        <p>Find a furry friend <span>near you!</span></p>
+                        {this.props.user ?
+                            <p>{`Hi, ${this.props.user}, let's find you a furrrever friend!`}</p>
+                            : <p>Sign in to find your <span>furrrever friend!</span></p>
+                        }
                     </div>
-
                 </section>
 
 
@@ -265,11 +267,11 @@ class Form extends React.Component {
                         <div className="radio two-options clearfix">
                             <div className="radioChoice">
                                 <label htmlFor="male">Male</label>
-                                <input type="radio" value="male" name="sex" required="required" id="currentSex" onChange={this.handleChange} />
+                                <input type="radio" value="M" name="sex" required="required" id="currentSex" onChange={this.handleChange} />
                             </div>
                             <div className="radioChoice">
                                 <label htmlFor="female">Female</label>
-                                <input type="radio" value="female" name="sex" required="required" id="currentSex" onChange={this.handleChange} />
+                                <input type="radio" value="F" name="sex" required="required" id="currentSex" onChange={this.handleChange} />
                             </div>
                         </div>
 
