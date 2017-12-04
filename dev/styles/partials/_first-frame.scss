@@ -1,7 +1,6 @@
 .header {
     background: lighten($headerBackground, 40);
-    box-shadow: 1px 1px 50px lighten($headerBackground, 20);
-    
+    box-shadow: 1px 1px 50px lighten($headerBackground, 20);    
 }
 
 .header__nav {
@@ -103,42 +102,19 @@ h1 {
         width: 300px;
         height: 300px;
         border-radius: 50%;
-        @include font-size-value(30);
+        @include font-size-value(24);
         background: $primaryColour;
         text-align: center;
     }
-
     .circle__content {
+        text-align: center;
         p {
             margin-top: 120px;
             color: $white;
         }
         span {
-            font-weight: bold;
-        }
-    }
-
-    .circleContainer {
-        height: 300px;
-        width: 300px;
-        border-radius: 50%;
-        background: $primaryColour;
-        text-align: center;
-        display:table-cell;
-        vertical-align:middle;
-        @include font-size-value(20);
-        color: $white;
-        position: absolute;
-        left: 40%;
-        transform: translateX(-40%);
-        top: 50%;
-        transform: translateY(-50%);
-        p {
-            margin-top: 128px;
-        }
-        span {
             display: block;
             font-weight: 700;
-        }        
+        }
     }
 }
