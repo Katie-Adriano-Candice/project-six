@@ -45,9 +45,6 @@
             right: 0;
             position: absolute;
             z-index: -1; 
-            .circleContainer {
-                left: 30%;
-            }
         }
     }
     #currentPostalCode {
@@ -97,7 +94,7 @@
     .headerAnimals .circle__wrapper {
         width: 200px;
         height: 200px;
-        @include font-size-value(20);
+        @include font-size-value(18);
     }
     .headerAnimals .circle__content p {
         margin-top: 80px;
@@ -108,9 +105,6 @@
     }
 }
 
-} }
-
-
 @media (max-width: 770px) {
     .floating-profile--mediaquerie {
         display: block;
@@ -118,5 +112,4 @@
     .floating--profile {
         display: none;
     }
-}
 }
