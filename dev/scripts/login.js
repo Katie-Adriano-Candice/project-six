@@ -84,9 +84,6 @@ class Login extends React.Component {
                             </h1>
                         </li>
 
-                        {/* <li>
-                            <h1><span>Purrrfect</span> Friends</h1>
-                        </li>           */}
                         
                                                                  
                         {this.props.user ?
