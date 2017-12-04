@@ -79,7 +79,7 @@ class Pet extends React.Component {
                     </div>
 
                 </div>
-          
+
             )
         }
     }
@@ -113,10 +113,10 @@ class Pets extends React.Component {
 
     componentWillMount() {
         const dbRef = firebaseBase.ref(`${this.props.userID}/animal`);
-        dbRef.on("value", (firebaseData) => {
+         dbRef.on("value", (firebaseData) => {
 
             const addPetArray = [];
-        
+            
 
             const addPetData = firebaseData.val();
            
@@ -183,9 +183,9 @@ class Note extends React.Component {
             <div className="defined-user-note">
                 <p>{this.props.definedUserNote}</p>
                 <button onClick={this.removeItem}>Delete Note</button>
-                
 
-                <div className="delete-note">
+         
+              <div className="delete-note">
                     <button onClick={this.removeItem}>Delete Note</button>
                 </div>
 
@@ -200,27 +200,27 @@ class Notes extends React.Component {
         super();
         this.state = {
             events: [],
-            }
-        } 
-   
+            }        
+        }
 
+   
     render() {
         console.log(this.props);
-        return (
-
+        return (  
+                
 
             
-
-            <div className="third-frame">
+            
+             <div className="third-frame">
                <div className="wrapper--inner">
-                    <form onSubmit={this.handleSubmit}>
-                    </form>
+                  <form onSubmit={this.handleSubmit}>
+                     </form>
 
                     <div>
                         <section>
                             <Link to='/'>Go Back To The Homepage!</Link>
-                       
-                            <Pets userID={this.props.match.params.userID} />  
+
+                            <Pets userID={this.props.match.params.userID} />                             
                             
                         </section>
                     </div>
