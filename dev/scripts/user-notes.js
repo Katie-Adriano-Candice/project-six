@@ -47,22 +47,6 @@ class Pet extends React.Component {
         render(){
             const pet = this.props.pet;
             return(
-
-
-//                 <div>
-//                     <p>{pet.name}</p>
-//                     <img src={pet.image} alt=""/>
-//                     <p>{pet.petDescription}</p>
-//                     <p>{pet.shelterName}</p>
-//                     <p>{pet.shelterCity}</p>
-//                     <p>{pet.shelterContact}</p>
-//                     {pet.comments.map((comment, i) => {
-//                             return(
-//                                 <Note key={i} definedUserNote={comment.userComment} noteKey={comment.userCommentKey} userID={this.props.userID} petKey={pet.key}/>
-//                             )
-//                         })
-//                     }
-
                 <div className="clearfix">
                     <p className="user-pet-name">{pet.name}</p>
                     <img src={pet.image} alt=""/>
@@ -198,8 +182,7 @@ class Note extends React.Component {
         return (
             <div className="defined-user-note">
                 <p>{this.props.definedUserNote}</p>
-
-//                 <button onClick={this.removeItem}>Delete Note</button>
+                <button onClick={this.removeItem}>Delete Note</button>
                 
 
                 <div className="delete-note">
@@ -217,46 +200,25 @@ class Notes extends React.Component {
         super();
         this.state = {
             events: [],
-        }
-        
-    }
-
+            }
+        } 
    
 
     render() {
         console.log(this.props);
         return (
 
-            <div>
-                {/* <form onSubmit={this.handleSubmit}>
-
-                    <input type="text" name="userNotes" placeholder="Put some notes here!" onChange={this.handleChange} value={this.state.userNotes}/>
-
-                    <button>Add Note</button>
-                    
-                </form> */}
-                
-                <div>
-                    <section>
+            
 
             <div className="third-frame">
                <div className="wrapper--inner">
-//                     <form onSubmit={this.handleSubmit}>
-{/* 
-                        <input type="text" name="userNotes" placeholder="Put some notes here!" onChange={this.handleChange} value={this.state.userNotes}/> */}
-
-
-                        {/* <div className="button-notes">
-                            <button>Add Note</button>
-                        </div> */}
-//                     </form>
+                    <form onSubmit={this.handleSubmit}>
+                    </form>
                     <div>
                         <section>
                             <Link to='/'>Go Back To The Homepage!</Link>
                        
-                            <Pets userID={this.props.match.params.userID} /> 
-                       
-                            
+                            <Pets userID={this.props.match.params.userID} />  
                             
                         </section>
                     </div>
