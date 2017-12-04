@@ -47,10 +47,12 @@ class Pet extends React.Component {
         render(){
             const pet = this.props.pet;
             return(
-                <div className="clearfix">
-                    <p className="user-pet-name">{pet.name}</p>
+                <div className="animals-appear wrapper-inner clearfix">
                     <img src={pet.image} alt=""/>
-                        <p className="user-description">{pet.petDescription}</p>
+                    <div className="animals-info">
+                        <p className="animals-name" id="user-animal-name">{pet.name}</p>
+                        <p className="animals-description" id="user-animal-descrip">{pet.petDescription}</p>
+                    </div>
                         <div className="user-display">
                             <div className="shelter-user clearfix">
                                 <p>{pet.shelterName}</p>
@@ -72,8 +74,9 @@ class Pet extends React.Component {
                             <button>Add Note</button>
                         </div>
                     </form>
-
-                    <button value={pet.key} onClick={this.props.removeEntireItem}>Delete All</button>
+                    <div className="user-delete-animal">
+                        <button value={pet.key} onClick={this.props.removeEntireItem}>Delete All</button>
+                    </div>
 
 
                     </div>
@@ -182,12 +185,14 @@ class Note extends React.Component {
         return (
             <div className="defined-user-note">
                 <p>{this.props.definedUserNote}</p>
-                <button onClick={this.removeItem}>Delete Note</button>
 
-         
-              <div className="delete-note">
+                <div className="delete-note">
                     <button onClick={this.removeItem}>Delete Note</button>
                 </div>
+
+                {/* <div className="delete-note">
+                    <button onClick={this.removeItem}>Delete Note</button>
+                </div> */}
 
             </div>
         )
@@ -217,7 +222,7 @@ class Notes extends React.Component {
                      </form>
 
                     <div>
-                        <section>
+                        <section className="return-home-button">
                             <Link to='/'>Go Back To The Homepage!</Link>
 
                             <Pets userID={this.props.match.params.userID} />                             
