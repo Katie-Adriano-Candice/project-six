@@ -53,10 +53,16 @@
         padding: 10px 0 10px 20px;
         width: 200px;
     }
-    .radioChoice {
+    .addForm .radio {
+        width: 100%;
+    }
+    .radio, .radio .radioChoice {
         margin: 0 auto;
         padding: 0;
+    }        
+    .radio .radioChoice {
         float: none;
+        margin-bottom: 10px;
         .check {
             height: 20px;
             width: 20px;
@@ -66,6 +72,9 @@
                 left: -1px;
             }
         }
+    }
+    .addForm p {
+        margin: 10px 0;
     }
 }
 
@@ -92,13 +101,17 @@
     .headerAnimals .circle__content p {
         margin-top: 80px;
     }
+    .radio div.radioChoice {
+        width: 100%;
+    }
 }
 
 @media (max-width: 770px) {
- .floating-profile--mediaquerie {
-    display: block;
- }
- .floating--profile {
-     display: none;
- }
+    .floating-profile--mediaquerie {
+        display: block;
+    }
+    .floating--profile {
+        display: none;
+    }
+}
 }
