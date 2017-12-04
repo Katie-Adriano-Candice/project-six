@@ -208,12 +208,14 @@ class Notes extends React.Component {
         console.log(this.props);
         return (
 
+
             
 
             <div className="third-frame">
                <div className="wrapper--inner">
                     <form onSubmit={this.handleSubmit}>
                     </form>
+
                     <div>
                         <section>
                             <Link to='/'>Go Back To The Homepage!</Link>
