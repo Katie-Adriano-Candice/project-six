@@ -204,13 +204,15 @@ class Form extends React.Component {
             <div>
 
                 <section className="headerAnimals">
-                    
-                    <div className="circleContainer">
+                <div className="circle__wrapper">
+                    <div className="circle__content">
                         {this.props.user ?
                             <p>{`Hi ${this.props.user}, let's find you a furrrever friend!`}</p>
                             : <p>Sign in to find your <span>furrrever friend!</span></p>
                         }
                     </div>
+
+                </div>
                 </section>
 
                 <div className="second-frame">
