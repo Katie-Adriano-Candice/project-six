@@ -9,6 +9,17 @@
     }
 }
 
+@media (max-width: 830px) {
+    div.shelter-user p {
+        float:none;
+        margin: 2% auto;
+        width: 50%;
+    }
+.shelter-user p:nth-child(3) {
+    margin-right: none;
+}
+
+
 @media (max-width: 770px) {
     .header__nav {
         height: 180px;

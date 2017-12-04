@@ -40,16 +40,18 @@
     text-align:center;
 }
 
-.animal-info {
-    margin-top:9%;
-}
-
 #user-animal-name {
-    max-width: 50%;
+    max-width: 100%;
+    clear:both;
     margin:0 auto;
     // border: 1px solid white;
-    text-align:right;
+    text-align:center;
     color: $blue;
+    @include font-size-value(22);
+}
+
+#animal-picture-profile {
+    float:none;
 }
 
 .user-display {
@@ -85,10 +87,8 @@
 }
 
 .shelter-user {
-    width: 100%;
+    max-width: 100%;
     clear:both;
-    // float:right;
-    // border: 1px solid white;
     p {
         float:left;
         margin: 4px;
@@ -99,6 +99,7 @@
         padding: 2% 0;
         @include font-size-value(15);
         color: $grey;
+        overflow-x: scroll;
     }
 }
 
