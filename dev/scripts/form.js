@@ -61,9 +61,6 @@ class Form extends React.Component {
             let petArray = res.data.petfinder.pets.pet;
             console.log(petArray);
             
-            
-            
-            
             petArray.forEach(id => {
                 getShelterList.push(id.shelterId.$t);
                 let petNameUnique = id.name.$t;
@@ -99,10 +96,7 @@ class Form extends React.Component {
                 shelters.push(getShelter(value));
             }
 
-         
-
             Promise.all(shelters).then((shelterResponse) => {
-       
                 let filteredResponse = shelterResponse.filter(hasInfo => {
 
                     const petfinder = hasInfo.data.petfinder;
@@ -127,7 +121,6 @@ class Form extends React.Component {
                 });
 
                 this.setState({ filteredResponse: matchedPetsResponse });
-               
 
             });
         })
@@ -214,19 +207,18 @@ class Form extends React.Component {
                     
                     <div className="circleContainer">
                         {this.props.user ?
-                            <p>{`Hi, ${this.props.user}, let's find you a furrrever friend!`}</p>
+                            <p>{`Hi ${this.props.user}, let's find you a furrrever friend!`}</p>
                             : <p>Sign in to find your <span>furrrever friend!</span></p>
                         }
                     </div>
                 </section>
 
                 <div className="second-frame">
-                   
                     {this.props.user ?
-                     <div className="floating--profile">
+                        <div className="floating--profile">
                             <Link to={`/profile/${this.props.userID}`}>your profile <i className="fa fa-paw" aria-hidden="true"></i> </Link>
-                    </div>
-                            :
+                        </div>
+                        :
                             null
                         }
                 
@@ -235,105 +227,102 @@ class Form extends React.Component {
                         <h3>Find A Furry Friend Near You!</h3>
                         <div className= "floating-profile--mediaquerie">
                         {this.props.user ?
-                            <Link to={`/profile/${this.props.userID}`}>Go to your profile</Link>
-                             :
+                            <Link to={`/profile/${this.props.userID}`}>Go to your profile</Link>   
+                        :
                             null
                         }
                         </div>
                     </div>
                     <form onSubmit={this.addRequest} className="addForm">
                         <div className="text-input">
-                            <label htmlFor="postalCode" className="locationInput">Enter your Postal Code: </label>
-                            <input type="text" name="postalCode" placeholder="ie.M9P 1N8" id="currentPostalCode" required="required" value={this.state.postalCode} onChange={this.handleChange} />
+                            <label htmlFor="postalCode" className="locationInput">What's your postal code?</label>
+                            <input type="text" name="postalCode" placeholder="ie.M9P 1N8" id="currentPostalCode" rrequired="true" value={this.state.postalCode} onChange={this.handleChange} />
                         </div>
 
                         {/* selecting between dog/cat */}
 
-                        <p>Select the type of animal</p>
+                        <p>What kind of furry friend are you looking for?</p>
                         <div className="radio two-options clearfix">
                             <div className="radioChoice">
-                                <input type="radio" value="cat" name="animal" required="required" id="cat" onChange={this.handleChange} />
+                                <input type="radio" value="cat" name="animal" required="true" id="cat" onChange={this.handleChange} />
 
                                 <label htmlFor="cat">Cat</label>
                                 <div className="check"></div>
                             </div>
                             <div className="radioChoice">
                                 <label htmlFor="dog"><span className="custom-input">Dog</span></label>
-                                <input type="radio" value="dog" name="animal" required="required" id="dog" onChange={this.handleChange} />
+                                <input type="radio" value="dog" name="animal" required="true" id="dog" onChange={this.handleChange} />
                                 <div className="check"></div>
                             </div>
                         </div>
 
                         {/* selecting a size of the animal*/}
-                        <p>Select the size of animal</p>
+                        <p>How big of a companion are you looking for?</p>
                         <div className="radio clearfix">
                             <div className="radioChoice">
                                 <label htmlFor="small">Small</label>
-                                <input type="radio" value="S" name="size" required="required" id="small" onChange={this.handleChange} />
+                                    <input type="radio" value="S" name="size" required="true" id="small" onChange={this.handleChange} />
                                 <div className="check"></div>
                             </div>
                             <div className="radioChoice">
                                 <label htmlFor="medium">Medium</label>
-                                <input type="radio" value="M" name="size" required="required" id="medium" onChange={this.handleChange} />
+                                    <input type="radio" value="M" name="size" required="true" id="medium" onChange={this.handleChange} />
                                 <div className="check"></div>
                             </div>
                             <div className="radioChoice">
                                 <label htmlFor="large">Large</label>
-                                <input type="radio" value="L" name="size" required="required" id="large" onChange={this.handleChange} />
+                                    <input type="radio" value="L" name="size" required="true" id="large" onChange={this.handleChange} />
                                 <div className="check"></div>
                             </div>
                         </div>
 
                         {/* selecting the sex of the animal*/}
-                        <p>Select the sex of the animal</p>
+                        <p>Choose the sex of the animal you'd like to adopt.</p>
                         <div className="radio two-options clearfix">
                             <div className="radioChoice">
                                 <label htmlFor="male">Male</label>
-                                <input type="radio" value="M" name="sex" required="required" id="male" onChange={this.handleChange} />
+                                    <input type="radio" value="M" name="sex" required="true"  id="male" onChange={this.handleChange} />
                                 <div className="check"></div>
                             </div>
                             <div className="radioChoice">
                                 <label htmlFor="female">Female</label>
-                                <input type="radio" value="F" name="sex" required="required" id="female" onChange={this.handleChange} />
+                                    <input type="radio" value="F" name="sex" required="true" id="female" onChange={this.handleChange} />
                                 <div className="check"></div>
                             </div>
                         </div>
 
-                        <input type='submit' className='button-submit' value='Submit' />
-
+                        <input type='submit' className='button-submit' value="Find A Furry Friend!" />
                     </form>
-                    </div>
+                </div>
+            <div>
+            {this.state.filteredResponse.map((shelter, i) => {
+                const pets = shelter.pets;
+                return (
                     <div>
+                        
+                        <div className="shelter-appear" key={i}>
+                            <div className="shelter-sub wrapper--inner clearfix">
+                            <p className="shelter-name" id="name">{shelter.shelter.name.$t}</p>
+                            <p className="shelter-city" id="city">{shelter.shelter.city.$t}</p>
+                                <a href="mailto:{shelter.shelter.email.$t}">Email the shelter!</a>
+                            </div>
+                            {pets.map((pet, index) => {
+                                return (
+                                    <div className="animals-appear wrapper--inner clearfix" key={index}>
+                                        {/* displays first pet in array of images */}
+                                        <img src={this.getPetPhotos(pet.media)[0]} />
+                                        <div className="animal-info">
+                                            <p className="animals-name" id="animalsName">{pet.name.$t}</p>
+                                            <p className="animals-description" id="animals-descrip">{pet.description.$t}</p>
+                                            <button onClick={this.addPet} data-shelterinfo={JSON.stringify(shelter)} data-animalinfo={JSON.stringify(pet)}>Add This Animal To Your Profile</button>
+                                        </div>
 
-
-                    {this.state.filteredResponse.map((shelter, i) => {
-                        const pets = shelter.pets;
-                        return (
-                            <div>
-                                
-                                <div className="shelter-appear" key={i}>
-                                    <div className="shelter-sub wrapper--inner clearfix">
-                                    <p className="shelter-name" id="name">{shelter.shelter.name.$t}</p>
-                                    <p className="shelter-city" id="city">{shelter.shelter.city.$t}</p>
-                                    <a href={shelter.shelter.email.$t}>Email the shelter!</a>
                                     </div>
-                                    {pets.map((pet, index) => {
-                                        return (
-                                            <div className="animals-appear wrapper--inner clearfix" key={index}>
-                                                {/* displays first pet in array of images */}
-                                                <img src={this.getPetPhotos(pet.media)[0]} />
-                                                <div className="animal-info">
-                                                    <p className="animals-name" id="animalsName">{pet.name.$t}</p>
-                                                    <p className="animals-description" id="animals-descrip">{pet.description.$t}</p>
-                                                    <button onClick={this.addPet} data-shelterinfo={JSON.stringify(shelter)} data-animalinfo={JSON.stringify(pet)}>PRESS ME </button>
-                                                </div>
+                                )
+                            })}
 
-                                            </div>
-                                        )
-                                    })}
-
-                                </div>
                         </div>
+                </div>
                         )
 
                     })}
