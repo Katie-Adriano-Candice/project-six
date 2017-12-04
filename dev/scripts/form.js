@@ -220,11 +220,27 @@ class Form extends React.Component {
                     </div>
                 </section>
 
-
-
                 <div className="second-frame">
+                   
+                    {this.props.user ?
+                     <div className="floating--profile">
+                            <Link to={`/profile/${this.props.userID}`}>your profile <i className="fa fa-paw" aria-hidden="true"></i> </Link>
+                    </div>
+                            :
+                            null
+                        }
+                
                     <div className="wrapper--inner">
-                    <h3>Find a furry friend near you!</h3>
+                    <div className="second-frame--title">
+                        <h3>Find A Furry Friend Near You!</h3>
+                        <div className= "floating-profile--mediaquerie">
+                        {this.props.user ?
+                            <Link to={`/profile/${this.props.userID}`}>Go to your profile</Link>
+                             :
+                            null
+                        }
+                        </div>
+                    </div>
                     <form onSubmit={this.addRequest} className="addForm">
                         <div className="text-input">
                             <label htmlFor="postalCode" className="locationInput">Enter your Postal Code: </label>
@@ -280,11 +296,6 @@ class Form extends React.Component {
                         <input type='submit' className='button-submit' value='Submit' />
 
                     </form>
-                    {this.props.user ?
-                        <Link to={`/profile/${this.props.userID}`}>My Profile</Link>
-                        :
-                        null
-                    }
                     </div>
                     <div>
 

@@ -62,3 +62,12 @@
         margin-top: 80px;
     }
 }
+
+@media (max-width: 770px) {
+ .floating-profile--mediaquerie {
+    display: block;
+ }
+ .floating--profile {
+     display: none;
+ }
+}
