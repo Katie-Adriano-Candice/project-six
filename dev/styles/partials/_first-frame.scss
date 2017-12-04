@@ -86,7 +86,7 @@ h1 {
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
-    h2 {
+    h1 {
         text-align: center;
         margin-top: 40px;
         letter-spacing: 2px;
@@ -118,7 +118,6 @@ h1 {
         }
     }
 
-   
     .circleContainer {
         height: 300px;
         width: 300px;
@@ -143,3 +142,47 @@ h1 {
         }        
     }
 }
+
+// move to second frame
+.second-frame--title {
+    h3 {
+        font-family: $header-font;
+        text-transform: none;
+    }
+    h3 {
+        padding-bottom: 0;
+        @include font-size-value(45);
+    }
+    margin-bottom: 20px;
+}
+
+ .floating--profile {
+    height: 90px;
+    width: 90px;
+    position: fixed;
+    right: 2%;
+    top: 15%;
+    padding-top: 8px;
+    background: rgba($grey, 0.5);
+    border-radius: 15px;
+    box-shadow: 0.3px 0.3px 0.5px 0.3px lighten($black, 40);
+    &:hover {
+                color: rgba($grey, 0.8);
+            }
+    a, .fa-paw {
+        color: rgba($red, 0.5);
+        display: block;
+        &:hover {
+                color: rgba($red, 0.8);
+            }
+    }
+    a {
+        @include font-size-value(20);
+        font-family: $body-font;
+        margin-bottom: 0.5px;
+    }
+ }
+
+ .floating-profile--mediaquerie {
+     display: none;
+ }
