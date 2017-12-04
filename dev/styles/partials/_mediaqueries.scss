@@ -17,8 +17,9 @@
         margin: 2% auto;
         width: 50%;
     }
-.shelter-user p:nth-child(3) {
-    margin-right: none;
+    div.shelter-user p:nth-child(3) {
+    margin-right: 25%;
+}
 }
 
 
@@ -101,10 +102,14 @@
     .headerAnimals .circle__content p {
         margin-top: 80px;
     }
+
     .radio div.radioChoice {
         width: 100%;
     }
 }
+
+} }
+
 
 @media (max-width: 770px) {
     .floating-profile--mediaquerie {
