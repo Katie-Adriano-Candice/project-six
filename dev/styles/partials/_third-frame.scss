@@ -84,12 +84,6 @@
     @include font-size-value(30);
 }
 
-// #animal-picture-profile {
-//     float:none;
-//     border: 11px solid $grey;
-//     border-radius: 25px;
-// }
-
 .animals-appear .animals-picture-profile {
     float:none;
     border: 5px solid lighten($grey, 40);
