@@ -1,10 +1,10 @@
 .second-frame {
     font-family: $body-font;
     background: rgba($yellow, 0.6);
-    min-height: 100vh;  
-    padding: 35px 0;
+    // min-height: 100vh;  
+    padding: 20px 0 0 0;
     text-align:center;
-    min-height: 100vh;
+    // min-height: 100vh;
     p, .text-input {
         @include font-size-value(28);
         color: $red;
@@ -261,17 +261,9 @@ form input[type=radio] {
 	-webkit-transition: border .25s linear;
 }
 
-
-// span.custom-input {
-//     margin-left: 20px;
-// }
-
-
 input[type=radio]:checked ~ .check {
   border: 5px solid $yellow;
 }
-
-
 
 input[type=radio]:checked ~ .check::before{
   background: $yellow;
@@ -280,7 +272,6 @@ input[type=radio]:checked ~ .check::before{
 input[type=radio]:checked ~ label{
   color: $yellow;
 }
-
 
 .two-options {
     margin-right: 10%;
@@ -342,3 +333,28 @@ input[type=radio]:checked ~ label{
         color: $red;
       }
  }
+
+ .credits {
+     text-align:center;
+     margin: 0 auto;
+     padding: 20px 0;
+ }
+
+.credits__list {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    li {
+        @include font-size-value(12);
+        margin-right: 5px;
+        color: darken($grey, 50);
+        float: left;
+        display: inline;
+        a {
+            color: darken($grey, 50);
+            &:hover {
+                color: $red;
+            }
+        }
+    }
+}
