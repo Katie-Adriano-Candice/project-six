@@ -172,19 +172,19 @@ h3 {
         color: $red;
     }
     .shelter-sub {
-        max-width: 50%;
+        // max-width: 50%;
         margin: 0 auto;
         margin-bottom: 1%;
         padding: 2% 0;
     .shelter-name {
         text-align:center;
-        width: 50%;
+        // width: 50%;
         margin: 0 auto;
         text-transform: uppercase;
         font-family: $header-font;
     }
     .shelter-city {
-        width: 50%;
+        // width: 50%;
         margin: 0 auto;
         margin-bottom: 20px;
         text-transform: uppercase;
@@ -194,6 +194,7 @@ h3 {
 
 #name, #city {
     color:$blue;
+    text-align:center;
 }
 
 form input[type=radio] {
