@@ -55,9 +55,9 @@ class Pet extends React.Component {
                     </div>
                         <div className="user-display">
                             <div className="shelter-user clearfix">
-                                <p>Shelter: {pet.shelterName}</p>
-                                <p>City: {pet.shelterCity}</p>
-                                <p>Contact: {pet.shelterContact}</p>
+                                <p><span className="bolded-body">Shelter:</span>{pet.shelterName}</p>
+                                <p><span className="bolded-body">City:</span>{pet.shelterCity}</p>
+                                <p><span className="bolded-body">Contact:</span>{pet.shelterContact}</p>
                             </div>
                         {pet.comments.map((comment, i) => {
                                 return(
@@ -77,10 +77,7 @@ class Pet extends React.Component {
                     <div className="user-delete-animal">
                             <button value={pet.key} onClick={this.props.removeEntireItem}> 𝗫 Remove This Animal </button>
                     </div>
-
-
                     </div>
-
                 </div>
 
             )
@@ -114,13 +111,13 @@ class Pets extends React.Component {
         }
     }
 
+    // sending information to firebase
     componentWillMount() {
         const dbRef = firebaseBase.ref(`${this.props.userID}/animal`);
          dbRef.on("value", (firebaseData) => {
 
             const addPetArray = [];
             
-
             const addPetData = firebaseData.val();
            
             if (addPetData) {
@@ -146,7 +143,6 @@ class Pets extends React.Component {
             })
             }
         })
-
     }
 
     render(){
@@ -183,9 +179,6 @@ class Note extends React.Component {
             <div>
             <div className="defined-user-note">
                 <p>{this.props.definedUserNote}</p>
-                {/* <div className="delete-note">
-                    <button onClick={this.removeItem}>Delete Note</button>
-                </div> */}
             </div>
             <div className="delete-note">
                 <button onClick={this.removeItem}>𝗫 Delete Note</button>
@@ -195,7 +188,6 @@ class Note extends React.Component {
     }
 }
 
-
 class Notes extends React.Component {
     constructor() {
         super();
@@ -204,7 +196,6 @@ class Notes extends React.Component {
             }        
         }
 
-   
     render() {
         console.log(this.props);
         return (  
@@ -218,7 +209,8 @@ class Notes extends React.Component {
                             <div className="floating-homepage">
                                 <Link to='/'>home page <i className="fa fa-paw" aria-hidden="true"></i></Link>
                             </div>
-                            <h4>Your Next Furrrever Friends!</h4>
+                            <h2>Your Profile</h2>
+                            <h3>This is where you can revisit the animals you've saved</h3>
                             <div className="floating-homepage-query">
                                 <Link to='/'>Return to home page</Link>
                             </div>
