@@ -93,7 +93,10 @@ h3 {
     @include font-size-value(18);
     color: darken($grey, 40);
     line-height: 25px;
+}
 
+.animals-info .animals-description {
+    background-color: lighten($grey, 40);
 }
 
 #animalsName {

@@ -75,7 +75,7 @@ class Pet extends React.Component {
                         </div>
                     </form>
                     <div className="user-delete-animal">
-                            <button value={pet.key} onClick={this.props.removeEntireItem}> 𝗫 Remove This Animal From Profile</button>
+                            <button value={pet.key} onClick={this.props.removeEntireItem}> 𝗫 Remove This Animal </button>
                     </div>
 
 
@@ -180,17 +180,16 @@ class Note extends React.Component {
 
     render() {
         return (
+            <div>
             <div className="defined-user-note">
                 <p>{this.props.definedUserNote}</p>
-
-                <div className="delete-note">
-                    <button onClick={this.removeItem}>𝗫 Delete this Note</button>
-                </div>
-
                 {/* <div className="delete-note">
                     <button onClick={this.removeItem}>Delete Note</button>
                 </div> */}
-
+            </div>
+            <div className="delete-note">
+                <button onClick={this.removeItem}>𝗫 Delete Note</button>
+            </div>
             </div>
         )
     }
