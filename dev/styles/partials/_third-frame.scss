@@ -1,7 +1,7 @@
 .third-frame {
-    background: $blue;
-    padding-top: 1%;
-    min-height: 90vh;
+    background: lighten($blue, 5);
+    padding-top: 20px;
+    padding: 1px;
         button {
         padding: 1% 4%;
         border-radius: 25px;
@@ -12,9 +12,9 @@
         color: lighten($grey, 40);
         background-color: $red;
         font-family: $body-font;
+        transition: 0.4s;
         }
         button:hover {
-        transition: 0.4s;
         background-color:$yellow;
         color:$red;
         border: 1px solid transparent;
@@ -37,11 +37,34 @@
         .button-notes {
             max-width: 50%;
         }
+        .return-home-button h2 {
+        @include font-size-value(45);
+        text-transform: uppercase;
+        color: lighten($grey, 40);
+        margin-top: 20px;
+        margin-bottom: 0;
+        letter-spacing: 4px;
+        font-family: $header-font;
+    }
+        .return-home-button h3 {
+        @include font-size-value(20);
+        font-family: $body-font;
+        text-transform: none;
+        margin: 0;
+        padding: 0;
+        letter-spacing: 0;
+        color: darken($red, 10);
+    }
 }
 
 .user-input, .user-add-button, .user-delete-animal {
     text-align:center;
     font-family: $body-font;
+}
+
+
+.user-display .bolded-body {
+    color: darken($grey, 40);
 }
 
 .animals-info .animals-name {
@@ -50,7 +73,15 @@
     margin:0 auto;
     text-align:center;
     color: lighten($grey, 40);
+}
+
+.animals-info {
     @include font-size-value(22);
+}
+
+.animals-name {
+    font-family: $header-font;
+    @include font-size-value(30);
 }
 
 // #animal-picture-profile {
@@ -61,7 +92,7 @@
 
 .animals-appear .animals-picture-profile {
     float:none;
-    border: 5px solid lighten($grey, 40);;
+    border: 5px solid lighten($grey, 40);
     border-radius: 25px;
 }
 
@@ -73,7 +104,6 @@
     overflow-y: scroll;
     color: $grey;
     background-color: $blue;
-    // border: 1px solid $red;
     border-radius: 25px;
     border: 8px solid $red;
     @include font-size-value(20);
@@ -88,7 +118,6 @@
     text-align:center;
     color: $grey;
     @include font-size-value(20);
-    // margin-top:20%;
     border: 3px solid $blue;
     border-radius: 15px;
     margin: 0 auto;
@@ -141,17 +170,6 @@
     }
 }
 
-h4 {
-   @include font-size-value(40);
-    text-transform: uppercase;
-    color: lighten($grey, 40);
-    padding: 2% 0;
-    margin: 0;
-    letter-spacing: 4px;
-    font-family: $header-font;
-    text-transform: none;
-}
-
 .return-home-button {
     text-align:center;
     padding-bottom: 2%;
@@ -165,11 +183,11 @@ h4 {
     right: 4%;
     top: 20%;
     padding-top: 8px;
-    background: rgba(lighten($red, 5), 0.5);
+    background: rgba(lighten($red, 5), 0.8);
     border-radius: 15px;
     box-shadow: 0.3px 0.3px 0.5px 0.3px lighten($black, 40);
     &:hover {
-                color: rgba($red, 0.8);
+                color: rgba($red, 1);
             }
     a, .fa-paw {
         color: lighten($grey, 40);;
