@@ -18,10 +18,9 @@
         width: 50%;
     }
     div.shelter-user p:nth-child(3) {
-    margin-right: 25%;
+        margin-right: 25%;
+    }
 }
-}
-
 
 @media (max-width: 770px) {
     .header__nav {
@@ -39,7 +38,7 @@
         &::after {
             content: "";
             background-image: url("../assets/pup_solo2.jpg");
-            background-attachment: fixed;
+            background-size:cover;
             object-fit: cover;
             background-position-y: 15%;
             opacity: 0.5;
@@ -48,9 +47,18 @@
             bottom: 0;
             right: 0;
             position: absolute;
-            z-index: -1; 
+            z-index: -1;
         }
     }
+    .headerAnimals .circle__wrapper {
+            width: 200px;
+            height: 200px;
+            @include font-size-value(18);
+    }
+    .headerAnimals .circle__content p {
+        margin-top: 80px;
+    } 
+        
     #currentPostalCode {
         padding: 10px 0 10px 20px;
         width: 200px;
@@ -80,6 +88,28 @@
     }
     .credits {
         padding-left: 10px;
+    }
+    .floating-profile--mediaquerie {
+        display: block;
+    }
+    .floating--profile {
+        display: none;
+    }
+    .floating-homepage-query {
+        display: block;
+    }
+    .floating-homepage {
+        display: none;
+    }
+    i.fa.fa-arrow-down.arrow {
+        display: none;
+    }
+}
+
+@media (max-width: 650px) {
+    .animals-appear img {
+        float:none;
+        margin-right:0;
     }
 }
 
@@ -116,34 +146,4 @@
     .credits {
         padding-left: 20px;
     }
-}
-@media (max-width: 770px) {
-    .floating-profile--mediaquerie {
-        display: block;
-    }
-    .floating--profile {
-        display: none;
-    }
-    .floating-homepage-query {
-        display: block;
-    }
-    .floating-homepage {
-        display: none;
-    }
-}
-
-@media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
-    .headerAnimals {
-        height: 300px;
-        .circle__wrapper {
-            width: 200px;
-            height: 200px;
-            margin: 20px auto;
-            p {
-                margin-top: 90px;
-                @include font-size-value(16);
-            }
-        }
-    }
-    
 }

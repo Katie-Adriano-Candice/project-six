@@ -8,14 +8,13 @@
         color: $red;
         padding: 1% 0;
     }
-
     .text-input {
         padding-bottom: 0;
     }
     p {
         margin: 10px 0;
     }
-}
+
 
 .radio, .addForm, .text-input, h3{
     text-align:center;
@@ -81,7 +80,7 @@ h3 {
     border: 1px solid transparent;
 }
 
-.shelter-appear .animals-description {
+.shelter-appear .animals-description, .animals-info .animals-description {
     overflow-y: scroll;
     border-radius: 25px;
     border: 5px solid $blue;
@@ -92,7 +91,10 @@ h3 {
     @include font-size-value(18);
     color: darken($grey, 40);
     line-height: 25px;
+}
 
+.animals-info .animals-description {
+    background-color: lighten($grey, 40);
 }
 
 #animalsName {
@@ -232,8 +234,7 @@ form input[type=radio] {
 
 .radioChoice {
     position: relative;
-    display: block;
-    
+    display: block;    
 }
 
 .radioChoice:hover {

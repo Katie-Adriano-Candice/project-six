@@ -9,8 +9,9 @@
         box-shadow: 2px 2px rgba(0, 0, 0, 0.8);
         @include font-size-value(15);
         margin:2%;
-        color: $grey;
+        color: lighten($grey, 40);
         background-color: $red;
+        font-family: $body-font;
         }
         button:hover {
         transition: 0.4s;
@@ -19,10 +20,16 @@
         border: 1px solid transparent;
         }
         input {
-            // height: 150px;
-            // width: 60%;
-            border: 1px solid transparent;
-            border-radius: 15px;
+        border: 1px solid transparent;
+        border-radius: 15px;
+        color: #242624;
+        background-color: lighten($grey, 40);
+        @include font-size-value(16);
+        width: 60%;
+        padding-bottom:20%;
+        margin-top:2%;
+        overflow-x:auto;
+        white-space: initial;
         }
         p {
             padding-top: 1%;
@@ -32,32 +39,29 @@
         }
 }
 
-#user-note-input{
-    color: $blue;
-    background-color: $grey;
-    @include font-size-value(16);
-    // height: 150px;
-    width: 60%;
-    padding-bottom:20%;
-}
-
 .user-input, .user-add-button, .user-delete-animal {
     text-align:center;
+    font-family: $body-font;
 }
 
-
-#user-animal-name {
+.animals-info .animals-name {
     max-width: 100%;
     clear:both;
     margin:0 auto;
     text-align:center;
-    color: $grey;
+    color: lighten($grey, 40);
     @include font-size-value(22);
 }
 
-#animal-picture-profile {
+// #animal-picture-profile {
+//     float:none;
+//     border: 11px solid $grey;
+//     border-radius: 25px;
+// }
+
+.animals-appear .animals-picture-profile {
     float:none;
-    border: 11px solid $grey;
+    border: 5px solid lighten($grey, 40);;
     border-radius: 25px;
 }
 
@@ -101,11 +105,11 @@
         margin: 2px 1px;
         width: calc(33% - 4px);
         text-align:center;
-        border: 3px solid $grey;
+        border: 3px solid lighten($grey, 40);
         border-radius: 15px;
         padding: 2% 0;
         @include font-size-value(15);
-        color: $grey;
+        color: lighten($grey, 40);
         word-break: normal;
         padding-top:2%;
         overflow-x: scroll;
@@ -118,14 +122,14 @@
 }
 
 .defined-user-note {
-    border: 3px solid $grey;
+    border: 3px solid lighten($grey, 40);;
     margin: 2% auto;
     width: 60%;
     border-radius: 15px;
     padding: 1% 1%;
     overflow-x: scroll;
     p {
-        color: $grey;
+        color: lighten($grey, 40);
         @include font-size-value(16);
         text-align:center;
     }
@@ -140,8 +144,9 @@
 h4 {
    @include font-size-value(40);
     text-transform: uppercase;
-    color: $grey;
+    color: lighten($grey, 40);
     padding: 2% 0;
+    margin: 0;
     letter-spacing: 4px;
     font-family: $header-font;
     text-transform: none;
@@ -157,7 +162,7 @@ h4 {
     height: 90px;
     width: 90px;
     position: fixed;
-    left: 4%;
+    right: 4%;
     top: 20%;
     padding-top: 8px;
     background: rgba(lighten($red, 5), 0.5);
@@ -167,7 +172,7 @@ h4 {
                 color: rgba($red, 0.8);
             }
     a, .fa-paw {
-        color: rgba($grey, 0.5);
+        color: lighten($grey, 40);;
         display: block;
         &:hover {
                 color: rgba($grey, 0.8);
@@ -185,6 +190,6 @@ h4 {
       a {
         @include font-size-value(20);
         font-family: $body-font;
-        color: $grey;
+        color: lighten($grey, 40);
       }
  }
