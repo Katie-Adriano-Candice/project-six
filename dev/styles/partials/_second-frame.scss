@@ -77,7 +77,7 @@ h3 {
     border: 1px solid transparent;
 }
 
-.shelter-appear .animals-description {
+.shelter-appear .animals-description, .animals-info .animals-description {
     overflow-y: scroll;
     // background-color: darken($grey, 2);
     border-radius: 25px;
@@ -89,7 +89,10 @@ h3 {
     @include font-size-value(18);
     color: darken($grey, 40);
     line-height: 25px;
+}
 
+.animals-info .animals-description {
+    background-color: lighten($grey, 40);
 }
 
 #animalsName {

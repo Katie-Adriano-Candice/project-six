@@ -106,6 +106,13 @@
     }
 }
 
+@media (max-width: 650px) {
+    .animals-appear img {
+        float:none;
+        margin-right:0;
+    }
+}
+
 @media (max-width: 400px) {
     .header__nav {
         height: 130px;

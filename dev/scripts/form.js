@@ -343,7 +343,7 @@ class Form extends React.Component {
                                         <img src={this.getPetPhotos(pet.media)[0]} />
                                         <div className="animal-info">
                                             <p className="animals-name" id="animalsName">{pet.name.$t}</p>
-                                            <p className="animals-description" id="animals-descrip">{pet.description.$t}</p>
+                                            <p className="animals-description">{pet.description.$t}</p>
                                             <button onClick={this.addPet} data-shelterinfo={JSON.stringify(shelter)} data-animalinfo={JSON.stringify(pet)}>Add This Animal To Your Profile</button>
                                         </div>
 
