@@ -15,9 +15,6 @@ class Pet extends React.Component {
         this.handleChange = this.handleChange.bind(this);
 
     }
-
-    
-
          // sending info to firebase for user notes with dynamic user-specific id
     handleSubmit(event) {
         event.preventDefault();
@@ -71,14 +68,14 @@ class Pet extends React.Component {
 
                     <form onSubmit={this.handleSubmit}>
                         <div className="user-input">
-                            <input type="text" name="userNotes" cols="66" rows="11" id="user-note-input" placeholder="Put some notes here!" onChange={this.handleChange} value={this.state.userNotes}/>
+                            <input type="text" name="userNotes" cols="66" rows="11" id="user-note-input" placeholder="Put some notes here about your furry friend!" onChange={this.handleChange} value={this.state.userNotes}/>
                         </div>
                         <div className="user-add-button">
                             <button>Add Note</button>
                         </div>
                     </form>
                     <div className="user-delete-animal">
-                        <button value={pet.key} onClick={this.props.removeEntireItem}>Delete All</button>
+                            <button value={pet.key} onClick={this.props.removeEntireItem}> 𝗫 Remove This Animal From Profile</button>
                     </div>
 
 
@@ -169,9 +166,6 @@ class Note extends React.Component {
         this.removeItem = this.removeItem.bind(this);
         
     }
-
-    
-
     // removing items with dynamtic folders
     removeItem() {
         const userResponse = confirm('Are you sure you want to delete this note?')
@@ -190,7 +184,7 @@ class Note extends React.Component {
                 <p>{this.props.definedUserNote}</p>
 
                 <div className="delete-note">
-                    <button onClick={this.removeItem}>Delete Note</button>
+                    <button onClick={this.removeItem}>𝗫 Delete this Note</button>
                 </div>
 
                 {/* <div className="delete-note">
@@ -215,10 +209,6 @@ class Notes extends React.Component {
     render() {
         console.log(this.props);
         return (  
-                
-
-            
-            
              <div className="third-frame">
                <div className="wrapper--inner">
                   <form onSubmit={this.handleSubmit}>
@@ -229,7 +219,6 @@ class Notes extends React.Component {
                             <Link to='/'>Go Back To The Homepage!</Link>
 
                             <Pets userID={this.props.match.params.userID} />                             
-                            
                         </section>
                     </div>
                 </div>
