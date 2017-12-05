@@ -303,9 +303,10 @@ class Form extends React.Component {
                         <input type='submit' className='button-submit' value="Find A Furry Friend!" />
                     </form>
                     <nav className="credits">
-                        <ul>
-                            <li><a href="">Adriano Boin</a></li>
-                            <li><a href="">Katie D'Angelo</a></li>
+                        <ul className="credits__list">
+                            <li>Website Created By:</li>
+                            <li><a href="https://twitter.com/adriboin">Adriano Boin,</a></li>
+                            <li><a href="https://twitter.com/Kate_DAngelo">Katie D'Angelo,</a></li>
                             <li><a href="https://twitter.com/candicecodes">Candice Mayes</a></li>
                         </ul>
                     </nav>
