@@ -81,7 +81,7 @@ h3 {
     border: 1px solid transparent;
 }
 
-.shelter-appear .animals-description {
+.shelter-appear .animals-description, .animals-info .animals-description {
     overflow-y: scroll;
     background-color: darken($grey, 2);
     border-radius: 25px;

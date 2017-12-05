@@ -77,6 +77,13 @@
     }
 }
 
+@media (max-width: 650px) {
+    .animals-appear img {
+        float:none;
+        margin-right:0;
+    }
+}
+
 @media (max-width: 400px) {
     .header__nav ul {
         padding-left: 10px;
@@ -106,16 +113,10 @@
     }
 }
 @media (max-width: 770px) {
-    .floating-profile--mediaquerie {
+    .floating-profile--mediaquerie, div.floating-homepage-query {
         display: block;
     }
-    .floating--profile {
-        display: none;
-    }
-    .floating-homepage-query {
-        display: block;
-    }
-    .floating-homepage {
+    .floating--profile, .floating-homepage  {
         display: none;
     }
 }

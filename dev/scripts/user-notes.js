@@ -47,7 +47,7 @@ class Pet extends React.Component {
                 <div className="animals-appear wrapper-inner clearfix">
                     
                     <div>
-                    <img src={pet.image} alt="" id="animal-picture-profile"/>
+                    <img src={pet.image} alt="" className="animals-picture-profile" id="animal-picture-profile"/>
                     </div>
                     <div className="animals-info">
                         <p className="animals-name" id="user-animal-name">{pet.name}</p>

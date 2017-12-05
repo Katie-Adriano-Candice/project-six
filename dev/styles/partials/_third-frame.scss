@@ -19,10 +19,14 @@
         border: 1px solid transparent;
         }
         input {
-            // height: 150px;
-            // width: 60%;
-            border: 1px solid transparent;
-            border-radius: 15px;
+        border: 1px solid transparent;
+        border-radius: 15px;
+        color: $blue;
+        background-color: $grey;
+        @include font-size-value(16);
+        width: 60%;
+        padding-bottom:20%;
+        margin-top:2%;
         }
         p {
             padding-top: 1%;
@@ -32,21 +36,11 @@
         }
 }
 
-#user-note-input{
-    color: $blue;
-    background-color: $grey;
-    @include font-size-value(16);
-    // height: 150px;
-    width: 60%;
-    padding-bottom:20%;
-}
-
 .user-input, .user-add-button, .user-delete-animal {
     text-align:center;
 }
 
-
-#user-animal-name {
+.animals-info .animals-name {
     max-width: 100%;
     clear:both;
     margin:0 auto;
@@ -55,9 +49,15 @@
     @include font-size-value(22);
 }
 
-#animal-picture-profile {
+// #animal-picture-profile {
+//     float:none;
+//     border: 11px solid $grey;
+//     border-radius: 25px;
+// }
+
+.animals-appear .animals-picture-profile {
     float:none;
-    border: 11px solid $grey;
+    border: 5px solid $grey;
     border-radius: 25px;
 }
 
@@ -142,6 +142,7 @@ h4 {
     text-transform: uppercase;
     color: $grey;
     padding: 2% 0;
+    margin-bottom:0;
     letter-spacing: 4px;
     font-family: $header-font;
     text-transform: none;
@@ -157,7 +158,7 @@ h4 {
     height: 90px;
     width: 90px;
     position: fixed;
-    left: 4%;
+    right: 4%;
     top: 20%;
     padding-top: 8px;
     background: rgba(lighten($red, 5), 0.5);
