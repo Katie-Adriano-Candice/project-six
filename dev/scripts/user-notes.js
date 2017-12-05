@@ -216,8 +216,13 @@ class Notes extends React.Component {
 
                     <div>
                         <section className="return-home-button">
-                            <Link to='/'>Go Back To The Homepage!</Link>
-
+                            <div className="floating-homepage">
+                                <Link to='/'>home page <i className="fa fa-paw" aria-hidden="true"></i></Link>
+                            </div>
+                            <h4>Your Next Furrrever Friends!</h4>
+                            <div className="floating-homepage-query">
+                                <Link to='/'>Return to home page</Link>
+                            </div>
                             <Pets userID={this.props.match.params.userID} />                             
                         </section>
                     </div>
