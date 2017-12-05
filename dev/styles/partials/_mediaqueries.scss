@@ -36,6 +36,7 @@
         &::after {
             content: "";
             background-image: url("../assets/pup_solo2.jpg");
+            background-attachment: fixed;
             object-fit: cover;
             background-position-y: 15%;
             opacity: 0.5;

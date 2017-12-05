@@ -204,15 +204,17 @@ class Form extends React.Component {
             <div>
 
                 <section className="headerAnimals">
-                <div className="circle__wrapper">
-                    <div className="circle__content">
-                        {this.props.user ?
-                            <p>{`Hi ${this.props.user}, let's find you a furrrever friend!`}</p>
-                            : <p>Sign in to find your <span>furrrever friend!</span></p>
-                        }
+                    <div className="circle__wrapper">
+                        <div className="circle__content">
+                            {this.props.user ?
+                                <p>{`Hi ${this.props.user}, let's find you a furrrever friend!`}</p>
+                                : <p>Sign in to find your <span>furrrever friend!</span></p>
+                            }
+                        </div>
                     </div>
-
-                </div>
+                    <a href="#" className="arrow">
+                        <i class="fa fa-arrow-down" aria-hidden="true"></i>
+                    </a>
                 </section>
 
                 <div className="second-frame">
@@ -252,8 +254,8 @@ class Form extends React.Component {
                                 <div className="check"></div>
                             </div>
                             <div className="radioChoice">
-                                <label htmlFor="dog"><span className="custom-input">Dog</span></label>
                                 <input type="radio" value="dog" name="animal" required="true" id="dog" onChange={this.handleChange} />
+                                <label htmlFor="dog">Dog</label>
                                 <div className="check"></div>
                             </div>
                         </div>
@@ -262,18 +264,18 @@ class Form extends React.Component {
                         <p>How big of a companion are you looking for?</p>
                         <div className="radio clearfix">
                             <div className="radioChoice">
+                                <input type="radio" value="S" name="size" required="true" id="small" onChange={this.handleChange} />
                                 <label htmlFor="small">Small</label>
-                                    <input type="radio" value="S" name="size" required="true" id="small" onChange={this.handleChange} />
                                 <div className="check"></div>
                             </div>
                             <div className="radioChoice">
+                                <input type="radio" value="M" name="size" required="true" id="medium" onChange={this.handleChange} />
                                 <label htmlFor="medium">Medium</label>
-                                    <input type="radio" value="M" name="size" required="true" id="medium" onChange={this.handleChange} />
                                 <div className="check"></div>
                             </div>
                             <div className="radioChoice">
+                                <input type="radio" value="L" name="size" required="true" id="large" onChange={this.handleChange} />
                                 <label htmlFor="large">Large</label>
-                                    <input type="radio" value="L" name="size" required="true" id="large" onChange={this.handleChange} />
                                 <div className="check"></div>
                             </div>
                         </div>
@@ -282,15 +284,22 @@ class Form extends React.Component {
                         <p>Choose the sex of the animal you'd like to adopt.</p>
                         <div className="radio two-options clearfix">
                             <div className="radioChoice">
+                                <input type="radio" value="M" name="sex" required="true"  id="male" onChange={this.handleChange} />
                                 <label htmlFor="male">Male</label>
-                                    <input type="radio" value="M" name="sex" required="true"  id="male" onChange={this.handleChange} />
                                 <div className="check"></div>
                             </div>
                             <div className="radioChoice">
+                                <input type="radio" value="F" name="sex" required="true" id="female" onChange={this.handleChange} />
                                 <label htmlFor="female">Female</label>
-                                    <input type="radio" value="F" name="sex" required="true" id="female" onChange={this.handleChange} />
                                 <div className="check"></div>
                             </div>
+                            <nav className="credits">
+                                <ul>
+                                    <li><a href="">Adriano Boin</a></li>
+                                    <li><a href="">Katie D'Angelo</a></li>
+                                    <li><a href="https://twitter.com/candicecodes">Candice Mayes</a></li>
+                                </ul>
+                            </nav>
                         </div>
 
                         <input type='submit' className='button-submit' value="Find A Furry Friend!" />
