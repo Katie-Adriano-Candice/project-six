@@ -15,9 +15,6 @@ class Pet extends React.Component {
         this.handleChange = this.handleChange.bind(this);
 
     }
-
-    
-
          // sending info to firebase for user notes with dynamic user-specific id
     handleSubmit(event) {
         event.preventDefault();
