@@ -3,9 +3,13 @@ import ReactDOM from 'react-dom';
 import axios from 'axios';
 import { firebaseRef, firebaseBase, provider, firebaseAuth } from './firebase-code';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import Scroll, { scroller, Link as LinkScroll } from 'react-scroll';
 import Login from './login.js';
 import Notes from './user-notes.js';
 import Qs from 'qs';
+
+// smooth scroll componeent
+let scroll = Scroll.animateScroll;
 
 class Form extends React.Component {
     constructor() {
@@ -200,6 +204,11 @@ class Form extends React.Component {
         }
     }
 
+    scrollTo() {
+        scroll.scrollTo(810);
+        smooth: "easeOutQuad"
+    }
+
     render() {
         return (
             <div>
@@ -213,9 +222,12 @@ class Form extends React.Component {
                             }
                         </div>
                     </div>
-                    <a href="#" className="arrow">
-                        <i class="fa fa-arrow-down" aria-hidden="true"></i>
+
+                    <a onClick={this.scrollTo}>
+
+                            <i className="fa fa-arrow-down arrow" aria-hidden="true" aria-label="Go Down To Form Section"></i>
                     </a>
+                    
                 </section>
 
                 <div className="second-frame">
@@ -228,7 +240,7 @@ class Form extends React.Component {
                         }
                 
                     <div className="wrapper--inner">
-                    <div className="second-frame--title">
+                        <div className="second-frame--title" name="test1">
                         <h3>Find A Furry Friend Near You!</h3>
                         <div className= "floating-profile--mediaquerie">
                         {this.props.user ?

@@ -2,15 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { firebaseRef, firebaseBase, provider, firebaseAuth } from './firebase-code';
 import axios from 'axios';
-import Scroll, { scroller } from 'react-scroll';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import Login from './login.js';
 import Form from './form.js';
 import  Notes from './user-notes.js';
 
-
-// smooth scroll componeent
-// const Link = Scroll.Link; -- might have to change this to const Element
 
 let unSubscribe = function () {}
 
@@ -24,7 +20,6 @@ class App extends React.Component {
       this.login = this.login.bind(this);
       this.logout = this.logout.bind(this);
     }  
-
 
   // user logging in or out, while grabbing user uid
   componentDidMount() {
