@@ -1,20 +1,16 @@
 .second-frame {
     font-family: $body-font;
     background: rgba($yellow, 0.6);
-    // min-height: 100vh;  
     padding: 20px 0 0 0;
     text-align:center;
-    // min-height: 100vh;
     p, .text-input {
         @include font-size-value(28);
         color: $red;
         padding: 1% 0;
     }
-
     .text-input {
         padding-bottom: 0;
-    }
-    
+    }    
 }
 
 .radio, .addForm, .text-input, h3{
@@ -236,8 +232,7 @@ form input[type=radio] {
 
 .radioChoice {
     position: relative;
-    display: block;
-    
+    display: block;    
 }
 
 .radioChoice:hover {

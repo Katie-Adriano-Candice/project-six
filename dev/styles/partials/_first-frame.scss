@@ -113,8 +113,8 @@ h1 {
         margin: auto;
         width: 300px;
         height: 300px;
-        border-radius: 50%;
         @include font-size-value(24);
+        border-radius: 50%;
         background: $red;
         text-align: center;
     }
@@ -131,7 +131,7 @@ h1 {
     }
     .arrow {
         position: absolute;
-        bottom: 20px;
+        bottom: 10px;
         left: 50%;
         transform: translateX(-50%);
         @include font-size-value(30);
