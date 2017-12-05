@@ -1,10 +1,8 @@
 .second-frame {
     font-family: $body-font;
     background: rgba($yellow, 0.6);
-    // min-height: 100vh;  
     padding: 20px 0 0 0;
     text-align:center;
-    // min-height: 100vh;
     p, .text-input {
         @include font-size-value(28);
         color: $red;
@@ -14,7 +12,9 @@
     .text-input {
         padding-bottom: 0;
     }
-    
+    p {
+        margin: 10px 0;
+    }
 }
 
 .radio, .addForm, .text-input, h3{
@@ -83,7 +83,6 @@ h3 {
 
 .shelter-appear .animals-description {
     overflow-y: scroll;
-    // background-color: darken($grey, 2);
     border-radius: 25px;
     border: 5px solid $blue;
     height: 25vh;
@@ -107,6 +106,7 @@ h3 {
     padding: 20px 0 20px 20px;
     background-color: lighten($grey, 40);
     border-radius: 40px;
+    margin-top: 15px;
 }
 
 #currentSize, #currentAnimal, #currentSex {
@@ -170,19 +170,16 @@ h3 {
         color: $red;
     }
     .shelter-sub {
-        // max-width: 50%;
         margin: 0 auto;
         margin-bottom: 1%;
         padding: 2% 0;
     .shelter-name {
         text-align:center;
-        // width: 50%;
         margin: 0 auto;
         text-transform: uppercase;
         font-family: $header-font;
     }
     .shelter-city {
-        // width: 50%;
         margin: 0 auto;
         margin-bottom: 20px;
         text-transform: uppercase;
@@ -198,7 +195,6 @@ h3 {
 form input[type=radio] {
     position: absolute;
     visibility: hidden;
-   
 }
 
 
@@ -290,8 +286,6 @@ input[type=radio]:checked ~ label{
     h3 {
         font-family: $header-font;
         text-transform: none;
-    }
-    h3 {
         padding-bottom: 0;
         @include font-size-value(45);
     }
@@ -305,17 +299,17 @@ input[type=radio]:checked ~ label{
     right: 4%;
     top: 20%;
     padding-top: 8px;
-    background: rgba(lighten($blue, 5), 0.5);
+    background: rgba($blue, 0.7);
     border-radius: 15px;
     box-shadow: 0.3px 0.3px 0.5px 0.3px lighten($black, 40);
     &:hover {
-                color: rgba($blue, 0.8);
+                color: rgba($blue, 0.9);
             }
     a, .fa-paw {
-        color: rgba($red, 0.5);
+        color: rgba($red, 0.7);
         display: block;
         &:hover {
-                color: rgba($red, 0.8);
+                color: rgba($red, 1);
             }
     }
     a {

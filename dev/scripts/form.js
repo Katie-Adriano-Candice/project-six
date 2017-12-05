@@ -63,7 +63,6 @@ class Form extends React.Component {
             }
         }).then((res) => {
             let petArray = res.data.petfinder.pets.pet;
-            console.log(petArray);
             
             petArray.forEach(id => {
                 getShelterList.push(id.shelterId.$t);
@@ -110,7 +109,9 @@ class Form extends React.Component {
                 const matchedPetsResponse = filteredResponse.map((shelter) => {
                     const petMatch = [];
 
-                    petArray.forEach((animalPet) => {
+                    petArray
+                    .filter(pet => pet.media.photos !== undefined && pet.description.$t !== undefined)
+                    .forEach((animalPet) => {
                         if (shelter.id.$t === animalPet.shelterId.$t) {
 
 
@@ -146,6 +147,7 @@ class Form extends React.Component {
         
 
         let petImages = petToFirebase.media.photos.photo;
+        
         let petImage = petImages.map(photo => {
                 if (photo['@size'] === 'x') {
                     return photo.$t
@@ -172,11 +174,8 @@ class Form extends React.Component {
     }
 
 
-
-
     // gets get photo at size of x
     getPetPhotos(media) {
-        console.log(media);
         return media.photos.photo.map(photo => {
             if (photo['@size'] === 'x') {
                 return photo.$t
@@ -205,7 +204,7 @@ class Form extends React.Component {
     }
 
     scrollTo() {
-        scroll.scrollTo(810);
+        scroll.scrollTo(825);
         smooth: "easeOutQuad"
     }
 
@@ -252,7 +251,7 @@ class Form extends React.Component {
                     </div>
                     <form onSubmit={this.addRequest} className="addForm">
                         <div className="text-input">
-                            <label htmlFor="postalCode" className="locationInput">What's your postal code*</label>
+                            <label htmlFor="postalCode" className="locationInput">What's your postal code?*</label>
                             <input type="text" name="postalCode" placeholder="ie.M9P 1N8" id="currentPostalCode" rrequired="true" value={this.state.postalCode} onChange={this.handleChange} />
                         </div>
 
@@ -326,7 +325,6 @@ class Form extends React.Component {
             <div>
             {this.state.filteredResponse.map((shelter, i) => {
                 const pets = shelter.pets;
-                console.log(shelter);
                 return (
                     <div>
                         
