@@ -56,8 +56,8 @@ class Pet extends React.Component {
                         <div className="user-display">
                             <div className="shelter-user clearfix">
 
-                                <p><span className="bolded-body">Shelter:</span>{pet.shelterName}</p>
-                                <p><span className="bolded-body">City:</span>{pet.shelterCity}</p>
+                                <p><span className="bolded-body">Shelter: </span>{pet.shelterName}</p>
+                                <p><span className="bolded-body">City: </span>{pet.shelterCity}</p>
                                 <p><span className="bolded-body">Contact: <a href="mailto:{pet.shelterContact}"> Click here </a></span></p>
 
                             </div>
