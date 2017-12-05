@@ -55,9 +55,15 @@ class Pet extends React.Component {
                     </div>
                         <div className="user-display">
                             <div className="shelter-user clearfix">
+              
+                                <p>Shelter : {pet.shelterName}</p>
+                                <p>City : {pet.shelterCity}</p>
+                                <p>Contact : <a href="mailto:{pet.shelterContact}"> Click here </a></p>
+
                                 <p><span className="bolded-body">Shelter:</span>{pet.shelterName}</p>
                                 <p><span className="bolded-body">City:</span>{pet.shelterCity}</p>
                                 <p><span className="bolded-body">Contact:</span>{pet.shelterContact}</p>
+
                             </div>
                         {pet.comments.map((comment, i) => {
                                 return(
