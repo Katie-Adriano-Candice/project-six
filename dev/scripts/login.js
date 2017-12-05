@@ -44,7 +44,7 @@ class Login extends React.Component {
                 <nav className="header__nav wrapper--nav">
                     <ul>
                         <li>
-                            <a href="https://twitter.com/share" className="nav--twitter" data-size="large" data-text="Adopt one of our animals" data-url="http://wewilladdasitelater.com"><div><i className="fa fa-twitter" aria-hidden="true"></i></div></a>
+                            <a href="https://twitter.com/share" className="nav--twitter" data-text="Adopt one of our animals" data-url="" target="_blank"><div><i className="fa fa-twitter" aria-hidden="true"></i></div></a>
                         </li>
                         <li>
                             <img src="/public/assets/pup_kitten_logo.png" className="petLogo" alt="Icon that has a cat and dog in a bathtub"/>
