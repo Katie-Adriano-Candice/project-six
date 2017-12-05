@@ -172,6 +172,7 @@ class Form extends React.Component {
 
     // gets get photo at size of x
     getPetPhotos(media) {
+        console.log(media);
         return media.photos.photo.map(photo => {
             if (photo['@size'] === 'x') {
                 return photo.$t
@@ -237,13 +238,13 @@ class Form extends React.Component {
                     </div>
                     <form onSubmit={this.addRequest} className="addForm">
                         <div className="text-input">
-                            <label htmlFor="postalCode" className="locationInput">What's your postal code?</label>
+                            <label htmlFor="postalCode" className="locationInput">What's your postal code*</label>
                             <input type="text" name="postalCode" placeholder="ie.M9P 1N8" id="currentPostalCode" rrequired="true" value={this.state.postalCode} onChange={this.handleChange} />
                         </div>
 
                         {/* selecting between dog/cat */}
 
-                        <p>What kind of furry friend are you looking for?</p>
+                        <p>What kind of furry friend are you looking for?*</p>
                         <div className="radio two-options clearfix">
                             <div className="radioChoice">
                                 <input type="radio" value="cat" name="animal" required="true" id="cat" onChange={this.handleChange} />
@@ -259,7 +260,7 @@ class Form extends React.Component {
                         </div>
 
                         {/* selecting a size of the animal*/}
-                        <p>How big of a companion are you looking for?</p>
+                        <p>How big of a companion are you looking for?*</p>
                         <div className="radio clearfix">
                             <div className="radioChoice">
                                 <label htmlFor="small">Small</label>
@@ -279,8 +280,8 @@ class Form extends React.Component {
                         </div>
 
                         {/* selecting the sex of the animal*/}
-                        <p>Choose the sex of the animal you'd like to adopt.</p>
-                        <div className="radio two-options clearfix">
+                        <p>Choose the sex of the animal you'd like to adopt.*</p>
+                        <div className="radio clearfix">
                             <div className="radioChoice">
                                 <label htmlFor="male">Male</label>
                                     <input type="radio" value="M" name="sex" required="true"  id="male" onChange={this.handleChange} />
@@ -291,6 +292,11 @@ class Form extends React.Component {
                                     <input type="radio" value="F" name="sex" required="true" id="female" onChange={this.handleChange} />
                                 <div className="check"></div>
                             </div>
+                            <div className="radioChoice">
+                                <label htmlFor="both">Either</label>
+                                <input type="radio" value="" name="sex" required="true" id="both" onChange={this.handleChange} />
+                                <div className="check"></div>
+                            </div>
                         </div>
 
                         <input type='submit' className='button-submit' value="Find A Furry Friend!" />
@@ -299,18 +305,19 @@ class Form extends React.Component {
             <div>
             {this.state.filteredResponse.map((shelter, i) => {
                 const pets = shelter.pets;
+                console.log(shelter);
                 return (
                     <div>
                         
-                        <div className="shelter-appear" key={i}>
+                        <div className="shelter-appear" key={shelter.shelter.id.$t}>
                             <div className="shelter-sub wrapper--inner clearfix">
-                            <p className="shelter-name" id="name">{shelter.shelter.name.$t}</p>
-                            <p className="shelter-city" id="city">{shelter.shelter.city.$t}</p>
-                                <a href="mailto:{shelter.shelter.email.$t}">Email the shelter!</a>
+                                <p className="shelter-name" id="name">{shelter.shelter.name.$t}</p>
+                                <p className="shelter-city" id="city">{shelter.shelter.city.$t}</p>
+                                    <a href="mailto:{shelter.shelter.email.$t}">Email the shelter</a>
                             </div>
                             {pets.map((pet, index) => {
                                 return (
-                                    <div className="animals-appear wrapper--inner clearfix" key={index}>
+                                    <div className="animals-appear wrapper--inner clearfix" key={pet.id.$t}>
                                         {/* displays first pet in array of images */}
                                         <img src={this.getPetPhotos(pet.media)[0]} />
                                         <div className="animal-info">
