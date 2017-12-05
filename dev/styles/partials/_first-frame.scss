@@ -1,6 +1,6 @@
 .header {
-    background: lighten($headerBackground, 40);
-    box-shadow: 1px 1px 50px lighten($headerBackground, 20);    
+    background: lighten($grey, 40);
+    box-shadow: 1px 1px 50px lighten($grey, 20);    
 }
 
 .header__nav {
@@ -27,19 +27,27 @@
 }
 
 a.nav--twitter {
-    color: darken($primaryColour, 30);
+    color: darken($red, 30);
     @include font-size-value(30);
     div {
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        background: $primaryColour;
+        background: $red;
         text-align: center;
         display:table-cell;
         vertical-align:middle;
+        transition: all .2s ease-in-out;
+        &:hover {
+            transform: scale(1.1);
+        }
         i {
             padding-top: 6px;
             padding-left: 3px;
+            transition: all .2s ease-in-out;
+            &:hover {
+                transform: scale(1.1);
+            }
         }
     }
 } 
@@ -53,12 +61,16 @@ a.nav--signin, a.nav--signout {
         height: 50px;
         width: 140px;
         border-radius: 30px;
-        background: $secondaryColour;
+        background: $yellow;
         text-align: center;
         display:table-cell;
         vertical-align:middle;
+        transition: all .2s ease-in-out;
+        &:hover {
+            transform: scale(1.1);
+        }
         i {
-            color: $primaryColour;
+            color: $red;
             @include font-size-value(26);
             padding-left: 3px;
         }
@@ -71,7 +83,7 @@ h1 {
     display: inline-block;
     // margin-left: 10px;
     span {
-        color: $headerBackground;
+        color: $grey;
     }
 }
 
@@ -103,7 +115,7 @@ h1 {
         height: 300px;
         border-radius: 50%;
         @include font-size-value(24);
-        background: $primaryColour;
+        background: $red;
         text-align: center;
     }
     .circle__content {
@@ -116,5 +128,13 @@ h1 {
             display: block;
             font-weight: 700;
         }
+    }
+    .arrow {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        @include font-size-value(30);
+        color: $blue;
     }
 }
