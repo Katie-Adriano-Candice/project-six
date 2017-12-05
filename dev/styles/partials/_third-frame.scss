@@ -36,8 +36,9 @@
     color: $blue;
     background-color: $grey;
     @include font-size-value(16);
-    height: 150px;
+    // height: 150px;
     width: 60%;
+    padding-bottom:20%;
 }
 
 .user-input, .user-add-button, .user-delete-animal {
@@ -97,7 +98,7 @@
     clear:both;
     p {
         float:left;
-        margin: 4px;
+        margin: 2px 1px;
         width: calc(33% - 4px);
         text-align:center;
         border: 3px solid $grey;
@@ -105,7 +106,10 @@
         padding: 2% 0;
         @include font-size-value(15);
         color: $grey;
+        word-break: normal;
+        padding-top:2%;
         overflow-x: scroll;
+        min-height: 85px;
     }
 }
 
@@ -133,25 +137,54 @@
     }
 }
 
+h4 {
+   @include font-size-value(40);
+    text-transform: uppercase;
+    color: $grey;
+    padding: 2% 0;
+    letter-spacing: 4px;
+    font-family: $header-font;
+    text-transform: none;
+}
+
 .return-home-button {
     text-align:center;
-    padding-bottom: 5%;
+    padding-bottom: 2%;
     margin: 2%;
 }
 
-.return-home-button a {
-        padding: 1% 4%;
-        border-radius: 25px;
-        border: 1px solid transparent;
-        box-shadow: 2px 2px rgba(0, 0, 0, 0.8);
-        @include font-size-value(15);
-        margin:2%;
+.floating-homepage {
+    height: 90px;
+    width: 90px;
+    position: fixed;
+    left: 4%;
+    top: 20%;
+    padding-top: 8px;
+    background: rgba(lighten($red, 5), 0.5);
+    border-radius: 15px;
+    box-shadow: 0.3px 0.3px 0.5px 0.3px lighten($black, 40);
+    &:hover {
+                color: rgba($red, 0.8);
+            }
+    a, .fa-paw {
+        color: rgba($grey, 0.5);
+        display: block;
+        &:hover {
+                color: rgba($grey, 0.8);
+            }
+    }
+    a {
+        @include font-size-value(20);
+        font-family: $body-font;
+        margin-bottom: 0.5px;
+    }
+ }
+
+ .floating-homepage-query {
+     display: none;
+      a {
+        @include font-size-value(20);
+        font-family: $body-font;
         color: $grey;
-        background-color: $red; 
-}
-.return-home-button a:hover {
-        transition: 0.4s;
-        background-color:$yellow;
-        color:$red;
-        border: 1px solid transparent;
-}
+      }
+ }
