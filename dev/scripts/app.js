@@ -66,7 +66,6 @@ class App extends React.Component {
     
     render() {
       return (
-
         <Router>
           <div className="wrapper--max">
             <main>
@@ -74,14 +73,8 @@ class App extends React.Component {
               <Login user={this.state.user} userID={this.state.userIDSet} userLogin={this.login} userLogout={this.logout}/>
 
                 <Route exact path="/" render = {() => <Form user={this.state.user} userID={this.state.userIDSet} />} /> 
-                {/* // <Form user={this.state.user} userID={this.state.userIDSet}/> */}
 
-              <Route path="/profile/:userID" component={Notes} />
-              {/* {this.state.user ?
-                  // <Notes userID={this.state.userIDSet} />
-                  :
-                  null
-              } */}
+              <Route exact path="/profile/:userID" component={Notes} />
               </section>
             </main>
           </div>

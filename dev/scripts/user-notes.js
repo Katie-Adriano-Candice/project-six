@@ -77,10 +77,7 @@ class Pet extends React.Component {
                     <div className="user-delete-animal">
                             <button value={pet.key} onClick={this.props.removeEntireItem}> 𝗫 Remove This Animal </button>
                     </div>
-
-
                     </div>
-
                 </div>
 
             )
@@ -114,13 +111,13 @@ class Pets extends React.Component {
         }
     }
 
+    // sending information to firebase
     componentWillMount() {
         const dbRef = firebaseBase.ref(`${this.props.userID}/animal`);
          dbRef.on("value", (firebaseData) => {
 
             const addPetArray = [];
             
-
             const addPetData = firebaseData.val();
            
             if (addPetData) {
@@ -146,7 +143,6 @@ class Pets extends React.Component {
             })
             }
         })
-
     }
 
     render(){
@@ -192,7 +188,6 @@ class Note extends React.Component {
     }
 }
 
-
 class Notes extends React.Component {
     constructor() {
         super();
@@ -201,7 +196,6 @@ class Notes extends React.Component {
             }        
         }
 
-   
     render() {
         console.log(this.props);
         return (  

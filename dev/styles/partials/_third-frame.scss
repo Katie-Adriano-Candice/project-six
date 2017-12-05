@@ -141,7 +141,6 @@
         color: lighten($grey, 40);
         word-break: normal;
         padding-top:2%;
-        overflow-x: scroll;
         min-height: 85px;
     }
 }
@@ -193,7 +192,7 @@
         color: lighten($grey, 40);;
         display: block;
         &:hover {
-                color: rgba($grey, 0.8);
+                color: $black;
             }
     }
     a {

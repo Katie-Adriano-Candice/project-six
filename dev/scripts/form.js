@@ -1,4 +1,4 @@
-import React from 'react';//
+import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import { firebaseRef, firebaseBase, provider, firebaseAuth } from './firebase-code';
@@ -36,6 +36,7 @@ class Form extends React.Component {
         });
     }
 
+    // axios request
     getAnimals(animal, sex, size, place) {
         const key = 'e9a6ca7347527ff3b4dabbf7e663f9f1';
         const apiUrl = 'http://api.petfinder.com/';
@@ -102,6 +103,8 @@ class Form extends React.Component {
             Promise.all(shelters).then((shelterResponse) => {
                 let filteredResponse = shelterResponse.filter(hasInfo => {
 
+                    // flitering out shelters that opt out, ones that don't have photos and lack pet descriptions
+
                     const petfinder = hasInfo.data.petfinder;
                     return petfinder.shelter && petfinder.header.status.message.$t !== 'shelter opt-out';
                 }).map((shelter) => shelter.data.petfinder.shelter);
@@ -113,7 +116,6 @@ class Form extends React.Component {
                     .filter(pet => pet.media.photos !== undefined && pet.description.$t !== undefined)
                     .forEach((animalPet) => {
                         if (shelter.id.$t === animalPet.shelterId.$t) {
-
 
                             petMatch.push(animalPet);
                         }
@@ -154,11 +156,8 @@ class Form extends React.Component {
                 }
             }).filter(photo => photo)
 
-        
-
         const sendingPetsToFirebase= {
             
-
             petImage: petImage[0],
             name: petToFirebase.name.$t,
             petDescription: petToFirebase.description.$t,
@@ -203,6 +202,8 @@ class Form extends React.Component {
         }
     }
 
+
+    // smooth scroll function
     scrollTo() {
         scroll.scrollTo(825);
         smooth: "easeOutQuad"
@@ -221,14 +222,11 @@ class Form extends React.Component {
                             }
                         </div>
                     </div>
-
                     <a onClick={this.scrollTo}>
 
                             <i className="fa fa-arrow-down arrow" aria-hidden="true" aria-label="Go Down To Form Section"></i>
                     </a>
-                    
                 </section>
-
                 <div className="second-frame">
                     {this.props.user ?
                         <div className="floating--profile">
@@ -348,11 +346,9 @@ class Form extends React.Component {
                                     </div>
                                 )
                             })}
-
                         </div>
                 </div>
                         )
-
                     })}
                 </div>
             </div>
