@@ -160,7 +160,6 @@
     width: 60%;
     border-radius: 15px;
     padding: 1% 1%;
-    overflow-x: scroll;
     p {
         color: lighten($grey, 40);
         @include font-size-value(16);
